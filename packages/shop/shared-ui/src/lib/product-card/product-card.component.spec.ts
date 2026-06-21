@@ -37,9 +37,15 @@ describe('ProductCardComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
 
-    expect(compiled.querySelector('.product-name').textContent).toContain('Test Product');
-    expect(compiled.querySelector('.product-category').textContent).toContain('Electronics');
-    expect(compiled.querySelector('.product-price').textContent).toContain('99.99');
+    expect(compiled.querySelector('.product-name').textContent).toContain(
+      'Test Product'
+    );
+    expect(compiled.querySelector('.product-category').textContent).toContain(
+      'Electronics'
+    );
+    expect(compiled.querySelector('.product-price').textContent).toContain(
+      '99.99'
+    );
   });
 
   it('should emit productClick event when card is clicked', () => {
@@ -58,7 +64,9 @@ describe('ProductCardComponent', () => {
 
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('.out-of-stock-overlay')).toBeTruthy();
-    expect(compiled.querySelector('.product-card').classList).toContain('out-of-stock');
+    expect(compiled.querySelector('.product-card').classList).toContain(
+      'out-of-stock'
+    );
   });
 
   it('should calculate star ratings correctly', () => {

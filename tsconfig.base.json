@@ -21,7 +21,9 @@
       "@org/shop/feature-product-detail": [
         "packages/shop/feature-product-detail/src/index.ts"
       ],
-      "@org/shop/feature-products": ["packages/shop/feature-products/src/index.ts"],
+      "@org/shop/feature-products": [
+        "packages/shop/feature-products/src/index.ts"
+      ],
       "@org/shop/shared-ui": ["packages/shop/shared-ui/src/index.ts"]
     }
   },

@@ -1,0 +1,11 @@
+export const APP_STORAGE = {
+  language: 'language',
+  token: 'token',
+};
+
+export const APP_LANGUAGES = {
+  en: 'en',
+  ar: 'ar',
+} as const;
+
+export const DEFAULT_LANGUAGE = APP_LANGUAGES.en;

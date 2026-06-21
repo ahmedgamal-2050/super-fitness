@@ -1,0 +1,9 @@
+{
+  "name": "super-fitness-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/super-fitness-e2e/src",
+  "implicitDependencies": ["super-fitness"],
+  "// targets": "to see all targets run: nx show project super-fitness-e2e --web",
+  "targets": {}
+}

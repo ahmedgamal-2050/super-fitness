@@ -29,7 +29,7 @@ describe('ProductsService', () => {
       const filter: ProductFilter = { category: 'Electronics' };
       const result = service.getAllProducts(filter);
 
-      result.items.forEach((product) => {
+      result.items.forEach(product => {
         expect(product.category).toBe('Electronics');
       });
     });
@@ -38,7 +38,7 @@ describe('ProductsService', () => {
       const filter: ProductFilter = { minPrice: 50, maxPrice: 150 };
       const result = service.getAllProducts(filter);
 
-      result.items.forEach((product) => {
+      result.items.forEach(product => {
         expect(product.price).toBeGreaterThanOrEqual(50);
         expect(product.price).toBeLessThanOrEqual(150);
       });
@@ -48,7 +48,7 @@ describe('ProductsService', () => {
       const filter: ProductFilter = { searchTerm: 'Product 1' };
       const result = service.getAllProducts(filter);
 
-      result.items.forEach((product) => {
+      result.items.forEach(product => {
         const matchesSearch =
           product.name.toLowerCase().includes('product 1') ||
           product.description.toLowerCase().includes('product 1');

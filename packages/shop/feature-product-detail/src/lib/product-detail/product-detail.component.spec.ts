@@ -80,7 +80,9 @@ describe('ProductDetailComponent', () => {
   });
 
   it('should handle error when loading fails', () => {
-    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const consoleSpy = vi
+      .spyOn(console, 'error')
+      .mockImplementation(() => undefined);
     mockProductsService.getProductById.mockReturnValue(
       throwError(() => new Error('Network error'))
     );
@@ -101,8 +103,12 @@ describe('ProductDetailComponent', () => {
   });
 
   it('should handle add to cart action', () => {
-    const alertSpy = vi.spyOn(window, 'alert').mockImplementation(() => undefined);
-    const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => undefined);
+    const alertSpy = vi
+      .spyOn(window, 'alert')
+      .mockImplementation(() => undefined);
+    const consoleSpy = vi
+      .spyOn(console, 'log')
+      .mockImplementation(() => undefined);
     component.product.set(mockProduct);
 
     component.addToCart();

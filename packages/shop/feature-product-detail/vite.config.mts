@@ -21,7 +21,8 @@ export default defineConfig(() => ({
     setupFiles: ['src/test-setup.ts'],
     reporters: ['default'],
     coverage: {
-      reportsDirectory: '../../../coverage/packages/shop/feature-product-detail',
+      reportsDirectory:
+        '../../../coverage/packages/shop/feature-product-detail',
       provider: 'v8' as const,
     },
   },

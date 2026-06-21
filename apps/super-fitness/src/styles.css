@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400..800&family=Cairo:wght@200..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import 'tailwindcss';
+@import 'tailwindcss-primeui';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+  --font-baloo: 'Baloo Thambi 2', system-ui;
+  --font-cairo: 'Cairo', sans-serif;
+
+  --color-main: #ff4100;
+  --color-disabled: #d3d3d3;
+  --color-dark: #242424;
+  --color-light: #f3f3f4;
+}
+
+body {
+  font-family: var(--font-baloo);
+  overflow-x: hidden;
+  @apply bg-light text-dark dark:bg-dark dark:text-light;
+}
+
+[dir='rtl'] body {
+  font-family: var(--font-cairo);
+}
+
+input {
+  outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition:
+    background-color 0s 600000s,
+    color 0s 600000s !important;
+}
+
+button {
+  cursor: pointer;
+  vertical-align: middle;
+}

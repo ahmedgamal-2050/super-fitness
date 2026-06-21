@@ -1,8 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
-import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
+import {
+  provideHttpClientTesting,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { ProductsService } from './products.service';
-import { Product, ApiResponse, PaginatedResponse, ProductFilter } from '@org/models';
+import {
+  Product,
+  ApiResponse,
+  PaginatedResponse,
+  ProductFilter,
+} from '@org/models';
 
 describe('ProductsService', () => {
   let service: ProductsService;
@@ -14,7 +22,7 @@ describe('ProductsService', () => {
       providers: [
         provideHttpClient(),
         provideHttpClientTesting(),
-        ProductsService
+        ProductsService,
       ],
     });
     service = TestBed.inject(ProductsService);
@@ -65,7 +73,7 @@ describe('ProductsService', () => {
     };
 
     it('should return products with default pagination', () => {
-      service.getProducts().subscribe((response) => {
+      service.getProducts().subscribe(response => {
         expect(response.items.length).toBe(2);
         expect(response.total).toBe(2);
         expect(response.page).toBe(1);
@@ -87,7 +95,7 @@ describe('ProductsService', () => {
         searchTerm: 'test',
       };
 
-      service.getProducts(filter, 2, 20).subscribe((response) => {
+      service.getProducts(filter, 2, 20).subscribe(response => {
         expect(response).toBeTruthy();
       });
 
@@ -102,13 +110,15 @@ describe('ProductsService', () => {
       const errorResponse: ApiResponse<PaginatedResponse<Product>> = {
         success: false,
         error: 'Server error',
-        data: undefined as unknown
+        data: undefined as unknown,
       };
 
       // Silence console.error for this test
-      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+      const consoleErrorSpy = vi
+        .spyOn(console, 'error')
+        .mockImplementation(() => undefined);
 
-      service.getProducts().subscribe((response) => {
+      service.getProducts().subscribe(response => {
         expect(response.items).toEqual([]);
         expect(response.total).toBe(0);
         expect(service.error()).toContain('Server error');
@@ -122,9 +132,11 @@ describe('ProductsService', () => {
 
     it('should handle network error', () => {
       // Silence console.error for this test
-      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+      const consoleErrorSpy = vi
+        .spyOn(console, 'error')
+        .mockImplementation(() => undefined);
 
-      service.getProducts().subscribe((response) => {
+      service.getProducts().subscribe(response => {
         expect(response.items).toEqual([]);
         expect(response.total).toBe(0);
         expect(service.error()).toBeTruthy();
@@ -156,7 +168,7 @@ describe('ProductsService', () => {
         data: mockProduct,
       };
 
-      service.getProductById('1').subscribe((product) => {
+      service.getProductById('1').subscribe(product => {
         expect(product).toEqual(mockProduct);
         expect(service.loading()).toBeFalsy();
         expect(service.error()).toBeNull();
@@ -169,9 +181,11 @@ describe('ProductsService', () => {
 
     it('should return null on error', () => {
       // Silence console.error for this test
-      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+      const consoleErrorSpy = vi
+        .spyOn(console, 'error')
+        .mockImplementation(() => undefined);
 
-      service.getProductById('1').subscribe((product) => {
+      service.getProductById('1').subscribe(product => {
         expect(product).toBeNull();
         expect(service.error()).toBeTruthy();
       });
@@ -191,7 +205,7 @@ describe('ProductsService', () => {
         data: mockCategories,
       };
 
-      service.getCategories().subscribe((categories) => {
+      service.getCategories().subscribe(categories => {
         expect(categories).toEqual(mockCategories);
       });
 
@@ -202,9 +216,11 @@ describe('ProductsService', () => {
 
     it('should return empty array on error', () => {
       // Silence console.error for this test
-      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+      const consoleErrorSpy = vi
+        .spyOn(console, 'error')
+        .mockImplementation(() => undefined);
 
-      service.getCategories().subscribe((categories) => {
+      service.getCategories().subscribe(categories => {
         expect(categories).toEqual([]);
       });
 
@@ -223,7 +239,7 @@ describe('ProductsService', () => {
         data: mockPriceRange,
       };
 
-      service.getPriceRange().subscribe((range) => {
+      service.getPriceRange().subscribe(range => {
         expect(range).toEqual(mockPriceRange);
       });
 
@@ -234,9 +250,11 @@ describe('ProductsService', () => {
 
     it('should return default range on error', () => {
       // Silence console.error for this test
-      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+      const consoleErrorSpy = vi
+        .spyOn(console, 'error')
+        .mockImplementation(() => undefined);
 
-      service.getPriceRange().subscribe((range) => {
+      service.getPriceRange().subscribe(range => {
         expect(range).toEqual({ min: 0, max: 1000 });
       });
 
@@ -255,14 +273,19 @@ describe('ProductsService', () => {
       expect(service.loading()).toBeTruthy();
 
       const req = httpMock.expectOne(`${apiUrl}/products?page=1&pageSize=12`);
-      req.flush({ success: true, data: { items: [], total: 0, page: 1, pageSize: 12, totalPages: 0 } });
+      req.flush({
+        success: true,
+        data: { items: [], total: 0, page: 1, pageSize: 12, totalPages: 0 },
+      });
 
       expect(service.loading()).toBeFalsy();
     });
 
     it('should set error message on failure', () => {
       // Silence console.error for this test
-      const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+      const consoleErrorSpy = vi
+        .spyOn(console, 'error')
+        .mockImplementation(() => undefined);
       expect(service.error()).toBeNull();
 
       service.getProductById('1').subscribe(() => {

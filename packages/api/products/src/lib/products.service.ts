@@ -4,11 +4,18 @@ export class ProductsService {
   private products: Product[] = this.generateMockProducts();
 
   private generateMockProducts(): Product[] {
-    const categories = ['Electronics', 'Clothing', 'Books', 'Home & Garden', 'Sports'];
+    const categories = [
+      'Electronics',
+      'Clothing',
+      'Books',
+      'Home & Garden',
+      'Sports',
+    ];
     const products: Product[] = [];
 
     for (let i = 1; i <= 50; i++) {
-      const category = categories[Math.floor(Math.random() * categories.length)];
+      const category =
+        categories[Math.floor(Math.random() * categories.length)];
       products.push({
         id: `prod-${i}`,
         name: `Product ${i}`,
