@@ -1,3 +1,7 @@
-<div class="w-full max-w-md flex flex-col gap-8">
-  <app-step-personal-info />
+<div class="w-full  flex flex-col gap-8">
+  @if (!showGender) {
+  <app-step-personal-info (loginClicked)="showGender = true" />
+  } @else {
+  <app-choose-gender />
+  }
 </div>

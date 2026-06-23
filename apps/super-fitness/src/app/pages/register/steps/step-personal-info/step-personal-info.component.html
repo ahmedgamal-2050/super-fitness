@@ -4,8 +4,7 @@
   <p class="text-white font-bold text-2xl mb-4">Create An Account</p>
 
   <!-- Form card -->
-  <div
-    class="w-full border border-disabled rounded-[50px] p-8 flex flex-col justify-center gap-4">
+  <div class="w-full border border-disabled rounded-[50px] p-8 flex flex-col justify-center gap-4">
     <p class="text-white font-extrabold text-2xl text-center">Register</p>
 
     <!-- Inputs -->
@@ -38,14 +37,11 @@
     </div>
 
     <!-- Register button -->
-    <sf-button
-      variant="primary"
-      label="Register"
-      type="submit"
-      class="mt-1 w-3/4 m-auto" />
+    <sf-button variant="primary" label="Register" type="submit" class="mt-1 w-3/4 m-auto"
+      (click)="loginClicked.emit()" />
 
     <!-- Login link -->
-    <p class="text-white text-base font-normal mt-3 text-center">
+    <p class=" text-white text-base font-normal mt-3 text-center">
       Already Have An Account ?
       <button class="text-main font-semibold hover:underline ml-1">
         Login

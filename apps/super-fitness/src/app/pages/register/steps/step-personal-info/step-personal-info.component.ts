@@ -1,5 +1,5 @@
 /* eslint-disable @nx/enforce-module-boundaries */
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SfButtonComponent } from 'apps/super-fitness/src/app/shared/components/sf-button/sf-button.component';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { SfInputComponent } from 'apps/super-fitness/src/app/shared/components/sf-input/sf-input.component';
@@ -11,4 +11,6 @@ import { SfInputComponent } from 'apps/super-fitness/src/app/shared/components/s
   styleUrl: './step-personal-info.component.css',
   standalone: true,
 })
-export class StepPersonalInfoComponent {}
+export class StepPersonalInfoComponent {
+  @Output() loginClicked = new EventEmitter<void>();
+}
