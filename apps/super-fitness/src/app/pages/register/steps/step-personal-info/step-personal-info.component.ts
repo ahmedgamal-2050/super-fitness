@@ -1,0 +1,14 @@
+/* eslint-disable @nx/enforce-module-boundaries */
+import { Component } from '@angular/core';
+import { SfButtonComponent } from 'apps/super-fitness/src/app/shared/components/sf-button/sf-button.component';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { SfInputComponent } from 'apps/super-fitness/src/app/shared/components/sf-input/sf-input.component';
+
+@Component({
+  selector: 'app-step-personal-info',
+  imports: [SfInputComponent, SfButtonComponent],
+  templateUrl: './step-personal-info.component.html',
+  styleUrl: './step-personal-info.component.css',
+  standalone: true,
+})
+export class StepPersonalInfoComponent {}

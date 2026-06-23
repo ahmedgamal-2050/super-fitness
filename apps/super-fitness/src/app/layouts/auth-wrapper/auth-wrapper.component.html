@@ -1,7 +1,7 @@
-<section class="h-screen bg-dark/60 relative">
+<section class="h-screen overflow-hidden bg-dark/60 relative">
   <div
     class="absolute top-0 inset-x-0 h-screen bg-[url(/assets/images/auth-bg.png)] bg-cover bg-center blur-[86px] z-0"></div>
-  <div class="grid grid-cols-1 lg:grid-cols-2 h-screen relative z-1">
+  <div class="grid grid-cols-1 lg:grid-cols-2 h-full relative z-1">
     <!-- Left side -->
     <div
       class="col-span-2 lg:col-span-1 hidden lg:flex flex-col items-center justify-center bg-dark/20 border-e-2 border-main/20 px-8 gap-20">
@@ -21,9 +21,9 @@
     </div>
 
     <!-- Right side -->
-    <div class="col-span-2 lg:col-span-1">
+    <div class="col-span-2 lg:col-span-1 h-full overflow-y-auto">
       <div
-        class="min-h-screen w-full flex flex-col items-center justify-center py-29 px-36.5">
+        class="min-h-full w-full flex flex-col items-center justify-center py-12 px-36.5">
         <!-- content -->
         <router-outlet />
       </div>
