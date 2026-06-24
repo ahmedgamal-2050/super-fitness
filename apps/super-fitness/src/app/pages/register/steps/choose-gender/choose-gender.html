@@ -1,4 +1,7 @@
 <section class="flex flex-col items-center text-center justify-between gap-2 w-full">
+  <p class="text-white font-medium text-3xl mb-2 ">
+    1/6
+  </p>
   <p class="text-white font-extrabold text-4xl mb-1 uppercase">
     TELL US ABOUT YOURSELF!
   </p>
@@ -39,5 +42,6 @@
     </button>
   </div>
 
-  <sf-button variant="primary" label="Next" type="submit" class="mt-1 w-3/4 m-auto" [disabled]="!selectedGender" />
+  <sf-button variant="primary" label="Next" type="submit" class="mt-1 w-3/4 m-auto" [disabled]="!selectedGender"
+    (click)="loginClicked.emit()" />
 </section>

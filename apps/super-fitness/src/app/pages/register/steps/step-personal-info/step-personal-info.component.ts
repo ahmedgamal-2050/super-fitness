@@ -8,7 +8,6 @@ import { SfInputComponent } from 'apps/super-fitness/src/app/shared/components/s
   selector: 'app-step-personal-info',
   imports: [SfInputComponent, SfButtonComponent],
   templateUrl: './step-personal-info.component.html',
-  styleUrl: './step-personal-info.component.css',
   standalone: true,
 })
 export class StepPersonalInfoComponent {

@@ -1,7 +1,11 @@
 <div class="w-full  flex flex-col gap-8">
   @if (!showGender) {
   <app-step-personal-info (loginClicked)="showGender = true" />
+  } @else if(!showAge) {
+  <app-choose-gender (loginClicked)="showAge = true" />
+  } @else if (!showWeight) {
+  <app-choose-age (nextClicked)="showWeight = true" />
   } @else {
-  <app-choose-gender />
+  <app-choose-weight />
   }
 </div>
