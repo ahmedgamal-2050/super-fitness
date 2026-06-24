@@ -4,10 +4,12 @@ import { Component, output } from '@angular/core';
 import { SfButtonComponent } from 'apps/super-fitness/src/app/shared/components/sf-button/sf-button.component';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { SfWheelComponent } from 'apps/super-fitness/src/app/shared/components/sf-wheel/sf-wheel.component';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { SfStepProgressComponent } from 'apps/super-fitness/src/app/shared/components/sf-step-progress/sf-step-progress.component';
 
 @Component({
   selector: 'app-choose-weight',
-  imports: [NgStyle, SfButtonComponent, SfWheelComponent],
+  imports: [NgStyle, SfButtonComponent, SfWheelComponent, SfStepProgressComponent],
   templateUrl: './choose-weight.html',
 })
 export class ChooseWeight {
