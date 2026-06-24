@@ -5,7 +5,10 @@
   <app-choose-gender (loginClicked)="showAge = true" />
   } @else if (!showWeight) {
   <app-choose-age (nextClicked)="showWeight = true" />
-  } @else {
-  <app-choose-weight />
+  } @else if (!showHeight){
+  <app-choose-weight (nextClicked)="showHeight = true" />
+  }
+  @else {
+  <app-choose-height />
   }
 </div>

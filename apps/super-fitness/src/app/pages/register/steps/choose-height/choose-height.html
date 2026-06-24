@@ -1,0 +1,18 @@
+<section class="flex flex-col items-center text-center justify-between gap-2 w-full">
+  <p class="text-white font-medium text-3xl mb-2 ">
+    4/6
+  </p>
+  <p class="text-white font-extrabold text-4xl mb-1 capitalize">
+    what is your height ?
+  </p>
+
+  <p class="text-white font-normal text-base capitalize">
+    this helps us create Your personalized plan
+  </p>
+
+  <div class="flex flex-col justify-center items-center w-3/4 gap-6 my-8">
+    <sf-wheel class="w-full" [max]="250" [min]="150" [quantity]="'CM'" [initialValue]="180" />
+  </div>
+
+  <sf-button variant="primary" label="Next" type="submit" class="mt-1 w-3/4 m-auto" (click)="nextClicked.emit()" />
+</section>

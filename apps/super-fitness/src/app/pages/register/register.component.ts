@@ -3,10 +3,17 @@ import { StepPersonalInfoComponent } from './steps/step-personal-info/step-perso
 import { ChooseGender } from './steps/choose-gender/choose-gender';
 import { ChooseAge } from './steps/choose-age/choose-age';
 import { ChooseWeight } from './steps/choose-weight/choose-weight';
+import { ChooseHeight } from './steps/choose-height/choose-height';
 
 @Component({
   selector: 'app-register',
-  imports: [StepPersonalInfoComponent, ChooseGender, ChooseAge, ChooseWeight],
+  imports: [
+    StepPersonalInfoComponent,
+    ChooseGender,
+    ChooseAge,
+    ChooseWeight,
+    ChooseHeight,
+  ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
@@ -14,4 +21,5 @@ export class RegisterComponent {
   showGender = false;
   showAge = false;
   showWeight = false;
+  showHeight = false;
 }
