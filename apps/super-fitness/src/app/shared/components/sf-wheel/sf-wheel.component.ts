@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { Component, input, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
