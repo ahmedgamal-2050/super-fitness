@@ -57,51 +57,48 @@
       </div>
 
       <div class="flex items-center justify-center gap-4">
-        <button
+        <app-custom-button
           type="button"
-          class="flex h-10 w-10 items-center justify-center border border-[#2f2f2f]/70 bg-[#2f2f2f] rounded-full transition hover:border-main"
-          aria-label="Login with Facebook">
+          variant="icon"
+          ariaLabel="Login with Facebook">
           <img
             [src]="socialIcons.facebook"
             alt=""
             class="h-10 w-10 object-contain" />
-        </button>
-        <button
+        </app-custom-button>
+        <app-custom-button
           type="button"
-          class="flex h-10 w-10 items-center justify-center rounded-full border border-[#2f2f2f]/70 transition bg-[#2f2f2f] hover:border-main"
-          aria-label="Login with Google">
+          variant="icon"
+          ariaLabel="Login with Google">
           <img
             [src]="socialIcons.google"
             alt=""
             class="h-10 w-10 object-contain" />
-        </button>
-        <button
+        </app-custom-button>
+        <app-custom-button
           type="button"
-          class="flex h-10 w-10 items-center justify-center border border-[#2f2f2f]/70 bg-[#2f2f2f] rounded-full transition hover:border-main"
-          aria-label="Login with Apple">
+          variant="icon"
+          ariaLabel="Login with Apple">
           <img
             [src]="socialIcons.apple"
             alt=""
             class="h-10 w-10 object-contain" />
-        </button>
+        </app-custom-button>
       </div>
 
-      <button
+      <app-custom-button
         type="submit"
-        class="w-full rounded-xl bg-main py-3 mt-2 text-base font-bold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-        [disabled]="loginForm.invalid || isLoading()">
-        @if (isLoading()) {
-        <span>Loading...</span>
-        } @else {
-        <span>Login</span>
-        }
-      </button>
+        buttonClass="mt-2"
+        [disabled]="loginForm.invalid"
+        [loading]="isLoading()">
+        Login
+      </app-custom-button>
 
       @if (errorMessage()) {
       <p class="text-center text-sm text-main">{{ errorMessage() }}</p>
       }
 
-      <p class="pt-1 text-center text-sm text-disabled">
+      <p class="pt-1 text-center text-[16px] text-disabled">
         Dont Have An Account Yet?
         <a
           routerLink="./register"

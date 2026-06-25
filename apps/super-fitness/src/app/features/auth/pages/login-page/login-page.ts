@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { CustomButton } from '../../../../shared/components/custom-button/custom-button';
 import { CustomFormField } from '../../../../shared/components/custom-form-field/custom-form-field';
 import { CustomInput } from '../../../../shared/components/custom-input/custom-input';
 import { Lock, LucideAngularModule, Mail } from 'lucide-angular';
@@ -23,12 +24,12 @@ import {
   imports: [
     ReactiveFormsModule,
     RouterLink,
+    CustomButton,
     CustomFormField,
     CustomInput,
     LucideAngularModule,
   ],
   templateUrl: './login-page.html',
-  styleUrl: './login-page.scss',
 })
 export class LoginPage {
   private readonly authService = inject(AuthService);

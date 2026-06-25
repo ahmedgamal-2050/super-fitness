@@ -1,0 +1,11 @@
+<button
+  [type]="type"
+  [class]="classes"
+  [disabled]="disabled || loading"
+  [attr.aria-label]="ariaLabel ?? null">
+  @if (loading) {
+  <span>{{ loadingLabel }}</span>
+  } @else {
+  <ng-content />
+  }
+</button>
