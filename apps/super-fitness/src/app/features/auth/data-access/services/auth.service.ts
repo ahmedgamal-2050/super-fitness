@@ -21,17 +21,10 @@ export class AuthService {
 
   readonly isAuthenticated = computed(() => !!this.getToken());
 
-  login(
-    credentials: LoginRequest,
-    options?: { rememberMe?: boolean }
-  ): Observable<LoginResponse> {
+  login(credentials: LoginRequest): Observable<LoginResponse> {
     return this.http
       .post<LoginResponse>(`${BASE_URL}${AuthEndpoint.SIGN_IN}`, credentials)
-      .pipe(
-        tap(response =>
-          this.setToken(response.token, options?.rememberMe ?? false)
-        )
-      );
+      .pipe(tap(response => this.setToken(response.token)));
   }
 
   forgotPassword(
@@ -66,15 +59,16 @@ export class AuthService {
   }
 
   clearToken(): void {
+    sessionStorage.removeItem(APP_STORAGE.token);
     this.cookieService.delete(APP_STORAGE.token, '/');
   }
 
-  private setToken(token: string, rememberMe = false): void {
+  private setToken(token: string): void {
+    sessionStorage.removeItem(APP_STORAGE.token);
     this.cookieService.set(APP_STORAGE.token, token, {
       path: '/',
       sameSite: 'Lax',
       secure: !isDevMode(),
-      ...(rememberMe ? { expires: 7 } : {}),
     });
   }
 }
