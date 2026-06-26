@@ -15,27 +15,32 @@
       [formGroup]="loginForm"
       (ngSubmit)="submitLoginForm()"
       class="flex flex-col gap-y-3">
-      <app-custom-form-field [error]="emailError" errorClass="mt-1 text-sm">
+      <app-custom-form-field
+        [error]="emailError"
+        errorClass="mt-1 text-sm text-main">
         <div class="relative">
           <lucide-icon
             [name]="icons.Mail"
             size="16"
-            class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-disabled me-2" />
+            class="pointer-events-none absolute left-3 top-1/2 z-10 -translate-y-1/2 text-disabled" />
           <app-custom-input
-            inputClass="w-full rounded-full focus:border-main border border-[#D3D3D3] bg-[#2f2f2f] py-3.5 pl-12 pr-4 text-light placeholder:text-disabled outline-none"
+            inputClass="w-full rounded-full text-main focus:border-main border border-[#D3D3D3] bg-[#2f2f2f] py-3.5 pl-12 pr-4 text-light placeholder:text-disabled outline-none"
             formControlName="email"
             type="email"
             placeholder="Email" />
         </div>
       </app-custom-form-field>
-      <app-custom-form-field [error]="passwordError" errorClass="mt-1 text-sm">
+      <app-custom-form-field
+        [error]="passwordError"
+        errorClass="mt-1 text-sm text-main">
         <div class="relative">
           <lucide-icon
             [name]="icons.Lock"
             size="16"
             class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-disabled z-10" />
           <app-custom-input
-            inputClass="w-full rounded-full focus:border-main border border-[#D3D3D3] bg-[#2f2f2f] py-3.5 pl-12 pr-12 text-light placeholder:text-disabled outline-none"
+            inputClass="w-full rounded-full text-main focus:border-main border border-[#D3D3D3] bg-[#2f2f2f] py-3.5 pl-12 pr-12 text-light placeholder:text-disabled outline-none"
+            +
             formControlName="password"
             type="password"
             placeholder="Password" />
