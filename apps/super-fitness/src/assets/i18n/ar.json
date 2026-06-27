@@ -113,15 +113,13 @@
   "landing_page_meals_section_card_dinner_title_text": "العشاء",
   "landing_page_meals_section_card_dinner_btn_label": "اقرأ المزيد",
 
-  "landing_page_footer_section_brand_desc_text": "عقل سليم، جسم سليم، حياة سعيدة. ابنِ قوتك واكتشف نسخة أكثر صحة وسعادة من نفسك.",
+  "landing_page_footer_section_brand_desc_text": "ادفع بقوة أكبر، وحقق أهدافك. رحلتك نحو اللياقة تبدأ اليوم!",
   "landing_page_footer_section_col_contact_title_text": "اتصل بنا",
-  "landing_page_footer_section_phone_label_text": "الهاتف",
-  "landing_page_footer_section_phone_value_text": "+١ ٢٣٤ ٥٦٧ ٨٩٠",
-  "landing_page_footer_section_email_label_text": "البريد الإلكتروني",
-  "landing_page_footer_section_email_value_text": "info@fitness.com",
-  "landing_page_footer_section_col_hours_title_text": "أوقات العمل",
-  "landing_page_footer_section_hours_weekdays_text": "الإثنين - الجمعة: ٦:٠٠ ص - ١٠:٠٠ م",
+  "landing_page_footer_section_phone_value_text": "+91 123 456 789",
+  "landing_page_footer_section_email_value_text": "info@gmail.com",
+  "landing_page_footer_section_col_hours_title_text": "مواعيد الجيم",
+  "landing_page_footer_section_hours_weekdays_text": "الإثنين - الجمعة: ٨:٠٠ ص - ١٠:٠٠ م",
   "landing_page_footer_section_hours_weekends_text": "السبت - الأحد: ٨:٠٠ ص - ٨:٠٠ م",
   "landing_page_footer_section_col_location_title_text": "موقعنا",
-  "landing_page_footer_section_address_value_text": "١٢٣ شارع اللياقة، القاهرة، مصر"
+  "landing_page_footer_section_address_value_text": "2715 Ash Dr. San Jose, South Dakota 83475"
 }

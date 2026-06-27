@@ -113,15 +113,13 @@
   "landing_page_meals_section_card_dinner_title_text": "DINNER",
   "landing_page_meals_section_card_dinner_btn_label": "Read More",
 
-  "landing_page_footer_section_brand_desc_text": "Fit mind, fit body, fit life. Build your strength and discover a healthier, happier version of yourself.",
+  "landing_page_footer_section_brand_desc_text": "Push harder, go further. Your fitness journey starts today!",
   "landing_page_footer_section_col_contact_title_text": "CONTACT US",
-  "landing_page_footer_section_phone_label_text": "Phone",
-  "landing_page_footer_section_phone_value_text": "+1 234 567 890",
-  "landing_page_footer_section_email_label_text": "Email",
-  "landing_page_footer_section_email_value_text": "info@fitness.com",
-  "landing_page_footer_section_col_hours_title_text": "OPENING HOURS",
-  "landing_page_footer_section_hours_weekdays_text": "Mon-Fri: 6:00 AM - 10:00 PM",
-  "landing_page_footer_section_hours_weekends_text": "Sat-Sun: 8:00 AM - 8:00 PM",
+  "landing_page_footer_section_phone_value_text": "+91 123 456 789",
+  "landing_page_footer_section_email_value_text": "info@gmail.com",
+  "landing_page_footer_section_col_hours_title_text": "OUR GYM TIMING",
+  "landing_page_footer_section_hours_weekdays_text": "Mon - Fri : 08:00 AM - 10:00 PM",
+  "landing_page_footer_section_hours_weekends_text": "Sat - Sun : 08:00 AM - 09:00 PM",
   "landing_page_footer_section_col_location_title_text": "OUR LOCATION",
-  "landing_page_footer_section_address_value_text": "123 Fitness Street, Cairo, Egypt"
+  "landing_page_footer_section_address_value_text": "2715 Ash Dr. San Jose, South Dakota 83475"
 }

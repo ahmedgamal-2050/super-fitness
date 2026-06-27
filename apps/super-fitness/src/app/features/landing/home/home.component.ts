@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HeroComponent } from './components/hero/hero.component';
 
 @Component({
@@ -6,5 +6,6 @@ import { HeroComponent } from './components/hero/hero.component';
   standalone: true,
   imports: [HeroComponent],
   templateUrl: './home.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {}
