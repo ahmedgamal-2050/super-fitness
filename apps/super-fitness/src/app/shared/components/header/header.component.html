@@ -1,0 +1,106 @@
+<header
+  class="fixed top-0 z-50 w-full backdrop-blur-md transition-all duration-300">
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 group">
+      <div class="p-2 transition-transform duration-300 group-hover:scale-105">
+        <img
+          src="assets/images/logo-on-light-bg.png"
+          alt="B&S Logo"
+          class="h-12 w-auto object-contain" />
+      </div>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-8">
+      @for (item of headerMenuList(); track item.label) {
+        <a
+          [routerLink]="[item.route]"
+          routerLinkActive="text-main!"
+          class="font-bold text-dark hover:text-main dark:text-light transition-colors duration-300 text-xl">
+          {{ item.label | transloco }}
+        </a>
+      }
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="hidden md:flex items-center gap-8">
+      <app-button
+        type="link"
+        [routerLink]="['/auth/login']"
+        [isPrimary]="true"
+        [isLargeSpacing]="false">
+        {{ 'landing_page_header_section_sign_in_label' | transloco }}
+      </app-button>
+
+      <app-button
+        type="link"
+        [routerLink]="['/auth/register']"
+        [isPrimary]="false"
+        [isLargeSpacing]="false">
+        {{ 'landing_page_header_section_join_us_label' | transloco }}
+      </app-button>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <div class="flex items-center gap-3 md:hidden">
+      <!-- Burger Icon -->
+      <button
+        (click)="toggleMenu()"
+        type="button"
+        class="text-dark dark:text-light hover:text-main focus:outline-none cursor-pointer"
+        aria-label="Toggle menu">
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor">
+          @if (isMenuOpen()) {
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12" />
+          } @else {
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          }
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  @if (isMenuOpen()) {
+    <div
+      class="md:hidden bg-white/95 dark:bg-dark/95 backdrop-blur-md border-b border-black/5 dark:border-white/5 transition-all duration-300 shadow-lg">
+      <div class="px-4 pt-2 pb-6 space-y-3">
+        @for (item of headerMenuList(); track item.label) {
+          <a
+            (click)="toggleMenu()"
+            [routerLink]="[item.route]"
+            routerLinkActive="text-main!"
+            class="block py-2 px-3 font-medium rounded-lg text-dark hover:text-main dark:text-light transition-all duration-200">
+            {{ item.label | transloco }}
+          </a>
+        }
+
+        <!-- CTA in mobile -->
+        <div class="pt-2 px-3">
+          <app-button
+            (click)="toggleMenu()"
+            type="link"
+            [routerLink]="['/auth/register']"
+            [isPrimary]="false"
+            [isLargeSpacing]="false">
+            {{ 'landing_page_header_section_join_us_label' | transloco }}
+          </app-button>
+        </div>
+      </div>
+    </div>
+  }
+</header>
