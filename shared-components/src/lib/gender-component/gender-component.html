@@ -1,0 +1,50 @@
+<div class="relative h-screen w-full overflow-hidden">
+  <!-- Content -->
+  <div
+    class="relative z-10 flex h-full flex-col items-center pt-8 px-5 text-center">
+    <!-- Title -->
+    <lib-auth-main-header
+      mainHeader="Tell Us About Yourself!"></lib-auth-main-header>
+
+    <!-- Subtitle -->
+    <lib-auth-second-header
+      seconHeader="We Need To Know Your Gender"></lib-auth-second-header>
+    <!-- Gender Buttons -->
+    <div class="mt-16 flex flex-col items-center gap-8">
+      <!-- Male -->
+      <button
+        (click)="selectGender('male')"
+        class="w-32 h-32 rounded-full border flex flex-col items-center justify-center transition-all duration-300"
+        [class]="
+    gender === 'male'
+      ? 'bg-orange-600 border-orange-600 text-white'
+      : 'bg-transparent border-white text-white'
+  ">
+        <i class="fa-solid fa-mars text-5xl"></i>
+
+        <span class="mt-2 font-semibold">Male</span>
+      </button>
+
+      <!-- Female -->
+      <button
+        (click)="selectGender('female')"
+        class="w-32 h-32 rounded-full border flex flex-col items-center justify-center transition-all duration-300"
+        [class]="
+    gender === 'female'
+      ? 'bg-orange-600 border-orange-600 text-white'
+      : 'bg-transparent border-white text-white'
+  ">
+        <i class="fa-solid fa-venus text-5xl"></i>
+
+        <span class="mt-2 font-semibold">Female</span>
+      </button>
+    </div>
+
+    <!-- i will replace the button with the reusable btn that mayar make it  -->
+    <!-- Next Button -->
+    <button
+      class="mt-8 h-[52px] w-[440px] max-w-full rounded-full bg-[#ff4d0d] text-[18px] font-bold text-white transition hover:bg-[#ff5a1f]">
+      Next
+    </button>
+  </div>
+</div>
