@@ -1,0 +1,107 @@
+<section id="classes" class="relative py-16 md:py-24 bg-dark dark:bg-black/90 text-white overflow-hidden transition-colors duration-300">
+  
+  <!-- Decorative background subtle light leak -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-main/5 rounded-full blur-3xl -z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Title -->
+    <div class="text-center max-w-3xl mx-auto space-y-4">
+      <div class="text-main font-bold tracking-widest text-sm uppercase">
+        {{ 'landing_page_why_us_section_subtitle_label' | transloco }}
+      </div>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight">
+        {{ 'landing_page_workouts_section_heading_main_text' | transloco }}
+        <span class="text-main bg-gradient-to-r from-main to-orange-500 bg-clip-text text-transparent">
+          {{ 'landing_page_workouts_section_heading_highlight_text' | transloco }}
+        </span>
+      </h2>
+    </div>
+
+    <!-- Filter Category Tabs -->
+    <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-4 my-8 md:my-12">
+      @for (cat of categories; track cat.id) {
+        <button 
+          (click)="selectCategory(cat.id)"
+          [class]="selectedCategory() === cat.id 
+            ? 'bg-main text-white border-2 border-main px-6 py-2 rounded-full font-bold shadow-lg shadow-main/30 scale-105 transition-all duration-300 cursor-pointer' 
+            : 'bg-transparent text-white/70 hover:text-white border-2 border-white/10 hover:border-white/30 px-6 py-2 rounded-full font-semibold transition-all duration-300 cursor-pointer'"
+        >
+          {{ cat.labelKey | transloco }}
+        </button>
+      }
+    </div>
+
+    <!-- Cards Slider -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
+      @for (workout of filteredWorkouts(); track $index) {
+        <!-- Workout Card -->
+        <div 
+          class="relative h-[380px] sm:h-[430px] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10 group transition-all duration-500 hover:-translate-y-2 hover:shadow-main/15"
+          [class.hidden]="activeSlideIndex() === 1 && $index === 0" 
+        >
+          <!-- Background Image -->
+          <img 
+            [src]="workout.image" 
+            [alt]="workout.titleKey | transloco" 
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" 
+          />
+
+          <!-- Gradient Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-95 transition-opacity duration-300"></div>
+
+          <!-- Card Content -->
+          <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end items-start space-y-4">
+            
+            <!-- Category Tag -->
+            <span class="bg-white/10 backdrop-blur-md text-main px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-white/10">
+              {{ selectedCategory() === 'all' ? 'Workout' : selectedCategory() }}
+            </span>
+
+            <!-- Title -->
+            <h3 class="text-xl sm:text-2xl font-extrabold uppercase tracking-wide text-white group-hover:text-main transition-colors duration-300">
+              {{ workout.titleKey | transloco }}
+            </h3>
+
+            <!-- Action explore -->
+            <a 
+              href="#join" 
+              class="inline-flex items-center gap-2 text-white font-bold group/btn text-sm hover:text-main transition-colors duration-300"
+            >
+              <span>{{ workout.btnKey | transloco }}</span>
+              <div class="w-8 h-8 rounded-full bg-main text-white flex items-center justify-center shadow-md transition-transform duration-300 group-hover/btn:translate-x-1.5 rtl:group-hover/btn:-translate-x-1.5">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke-width="3" 
+                  stroke="currentColor" 
+                  class="w-4 h-4 rtl:rotate-180">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Carousel Nav Dots -->
+    <div class="flex justify-center items-center gap-2 mt-10 md:mt-14">
+      <button 
+        (click)="setSlideIndex(0)"
+        class="h-2 rounded-full transition-all duration-300 cursor-pointer"
+        [class]="activeSlideIndex() === 0 ? 'w-8 bg-main' : 'w-2 bg-white/20 hover:bg-white/40'"
+        aria-label="Slide page 1"
+      ></button>
+      <button 
+        (click)="setSlideIndex(1)"
+        class="h-2 rounded-full transition-all duration-300 cursor-pointer"
+        [class]="activeSlideIndex() === 1 ? 'w-8 bg-main' : 'w-2 bg-white/20 hover:bg-white/40'"
+        aria-label="Slide page 2"
+      ></button>
+    </div>
+
+  </div>
+</section>
