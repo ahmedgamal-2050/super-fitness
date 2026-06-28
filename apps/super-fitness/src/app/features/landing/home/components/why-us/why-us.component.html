@@ -1,0 +1,62 @@
+<section class="relative py-16 md:py-24 dark:bg-dark">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <!-- Left Content: Bullet features -->
+      <div class="lg:col-span-6 flex flex-col items-start text-start space-y-6">
+        <div class="space-y-6">
+          <app-landing-section-title
+            type="why-us"
+            title="landing_page_why_us_section_subtitle_label" />
+
+          <h2
+            class="text-3xl sm:text-4xl font-bold text-dark dark:text-light leading-tight uppercase mt-6">
+            {{ 'landing_page_why_us_section_heading_main_text' | transloco }}
+            <span class="text-main">
+              {{
+                'landing_page_why_us_section_heading_highlight_text' | transloco
+              }}
+            </span>
+            {{ 'landing_page_why_us_section_heading_suffix_text' | transloco }}
+          </h2>
+        </div>
+
+        <p
+          class="text-dark dark:text-light text-base md:text-lg max-w-xl mb-16">
+          {{ 'landing_page_why_us_section_paragraph_text' | transloco }}
+        </p>
+
+        <!-- Numbered List -->
+        <div class="space-y-8 w-full max-w-xl">
+          @for (feature of whyUsFeatures(); track feature.id) {
+            <div class="flex items-center gap-4 sm:gap-6 group">
+              <div
+                class="size-15 rounded-full bg-main text-white font-extrabold flex items-center justify-center shrink-0 font-inter text-xs">
+                {{ feature.id }}
+              </div>
+
+              <div class="space-y-1">
+                <h3
+                  class="font-bold text-base text-dark dark:text-light capitalize">
+                  {{ feature.title | transloco }}
+                </h3>
+
+                <p class="text-base text-dark dark:text-light font-normal">
+                  {{ feature.description | transloco }}
+                </p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Right Content: Staggered Image Grid -->
+      <div
+        class="lg:col-span-6 relative h-185 w-full max-w-lg mx-auto lg:max-w-none">
+        <img
+          src="assets/images/why-choose-images.png"
+          alt="Workout Exercise"
+          class="w-full h-full object-contain" />
+      </div>
+    </div>
+  </div>
+</section>
