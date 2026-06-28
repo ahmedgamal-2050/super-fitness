@@ -1,0 +1,13 @@
+<section class="age w-[80%] mx-auto flex justify-center items-center flex-col">
+  <!-- Title -->
+  <lib-auth-main-header mainHeader="How Old Are you ?"></lib-auth-main-header>
+
+  <!-- Subtitle -->
+  <lib-auth-second-header
+    seconHeader="this helps us create Your personalized plan"></lib-auth-second-header>
+  <lib-wheel-picker
+    [start]="13"
+    [end]="100"
+    [initialValue]="30"
+    label="year"></lib-wheel-picker>
+</section>
