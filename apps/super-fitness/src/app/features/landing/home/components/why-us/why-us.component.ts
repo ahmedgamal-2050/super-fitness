@@ -8,6 +8,7 @@ import { LandingSectionTitle } from '../../../../../shared/components/landing-se
   imports: [TranslocoPipe, LandingSectionTitle],
   templateUrl: './why-us.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./why-us.component.css']
 })
 export class WhyUsComponent {
   whyUsFeatures = signal([

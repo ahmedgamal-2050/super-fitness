@@ -26,9 +26,12 @@
         </p>
 
         <!-- Numbered List -->
-        <div class="space-y-8 w-full max-w-xl">
+        <div class="space-y-8 w-full max-w-xl relative">
+          <div
+            class="absolute inset-s-7.5 top-4 h-[calc(100%-3rem)] border border-dark/15 dark:border-light/15 border-dashed border-gap z-0"></div>
+
           @for (feature of whyUsFeatures(); track feature.id) {
-            <div class="flex items-center gap-4 sm:gap-6 group">
+            <div class="flex items-center gap-4 sm:gap-6 relative z-1">
               <div
                 class="size-15 rounded-full bg-main text-white font-extrabold flex items-center justify-center shrink-0 font-inter text-xs">
                 {{ feature.id }}
