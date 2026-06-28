@@ -1,0 +1,6 @@
+:host ::ng-deep .p-card {
+  background-color: #fff;
+  border-radius: 1rem;
+  width: '25rem';
+  overflow: 'hidden' !important;
+}

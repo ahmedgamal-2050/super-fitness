@@ -1,0 +1,22 @@
+<p-card [style]="{ width: '25rem', overflow: 'hidden' }">
+  <ng-template #header>
+    <img alt="Card" class="w-full h-[300px] object-cover" [src]="cardImage()" />
+  </ng-template>
+
+  <ng-template #title>
+    <div class="p-3">
+      <h2 class="text-dark dark:text-light font-bold h1 text-lg">
+        {{cardTitle()}}
+      </h2>
+    </div>
+  </ng-template>
+
+  <!-- card body -->
+  <div class="p-3">
+    <!-- i well add the btn that eng/ahmed gamal added -->
+    <button
+      class="h-[52px] px-9 max-w-full rounded-full bg-[#ff4d0d] text-[18px] font-bold text-white transition hover:bg-[#ff5a1f]">
+      Next
+    </button>
+  </div>
+</p-card>
