@@ -1,0 +1,77 @@
+<section id="home" class="relative overflow-hidden pt-32 md:pt-48">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 retaive">
+    <div
+      class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-end relative z-1">
+      <!-- Left Content -->
+      <div
+        class="lg:col-span-7 flex flex-col items-start text-start space-y-6 md:space-y-8 pb-30">
+        <!-- Heading -->
+        <h1
+          class="text-4xl sm:text-5xl md:text-6xl font-bold ltr:tracking-tight uppercase ltr:leading-[1.1] rtl:leading-tight text-dark dark:text-light">
+          {{ 'landing_page_hero_section_heading_main_text_1' | transloco }}
+          <span class="text-main">
+            {{ 'landing_page_hero_section_heading_highlight_text' | transloco }}
+          </span>
+          {{ 'landing_page_hero_section_heading_main_text_2' | transloco }}
+        </h1>
+
+        <!-- Paragraph -->
+        <p
+          class="text-dark dark:text-light text-lg max-w-xl border-s-4 border-main py-1 ps-5">
+          {{ 'landing_page_hero_section_paragraph_text' | transloco }}
+        </p>
+
+        <!-- Counters -->
+        <div class="grid grid-cols-3 gap-4 sm:gap-8 pt-6 w-full">
+          @for (counter of counterList(); track counter.label) {
+            <div class="space-y-1">
+              <div
+                class="text-2xl font-bold text-dark dark:text-light font-inter">
+                {{ counter.label | transloco }}
+              </div>
+
+              <div
+                class="text-xs sm:text-sm font-medium text-dark dark:text-light">
+                {{ counter.value | transloco }}
+              </div>
+            </div>
+          }
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex items-center gap-10">
+          <!-- Get Started -->
+          <app-button type="link" [routerLink]="['/']">
+            {{ 'landing_page_hero_section_cta_start_label' | transloco }}
+          </app-button>
+
+          <!-- Explore More -->
+          <app-button type="link" [routerLink]="['/']" [isPrimary]="false">
+            {{ 'landing_page_hero_section_cta_video_label' | transloco }}
+          </app-button>
+        </div>
+      </div>
+
+      <!-- Right Image Grid -->
+      <div
+        class="lg:col-span-5 relative flex justify-center items-center mt-10 lg:mt-0">
+        <!-- Big Picture Frame -->
+        <div
+          class="relative w-full max-w-sm sm:max-w-md aspect-3/4 overflow-hidden hover:scale-[1.01] transition-transform duration-500">
+          <img
+            src="assets/images/hero-main-object.png"
+            alt="Muscular Fitness Trainer"
+            class="w-full h-full object-contain object-top hover:scale-105 transition-transform duration-700 ease-out" />
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="absolute w-full h-full bg-[url('/assets/images/hero-bg.png')] bg-cover bg-no-repeat bg-center top-0 inset-x-0 z-0"></div>
+    <div
+      class="absolute w-full h-full bg-white/80 dark:bg-black/80 top-0 inset-x-0 z-0 backdrop-blur-2xl"></div>
+  </div>
+
+  <!-- Scrolling Marquee Banner -->
+  <app-scrolling-marquee-banner />
+</section>

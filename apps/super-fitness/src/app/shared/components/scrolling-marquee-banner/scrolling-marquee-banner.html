@@ -1,0 +1,34 @@
+<div
+  class="w-full bg-main py-4 overflow-hidden select-none border-y border-white/10 shadow-md relative z-2">
+  <div class="marquee-container">
+    <div
+      class="marquee-content text-white font-bold text-lg sm:text-xl tracking-[0.2em] uppercase">
+      <ng-container [ngTemplateOutlet]="marqueeTemplate" />
+      <ng-container [ngTemplateOutlet]="marqueeTemplate" />
+      <ng-container [ngTemplateOutlet]="marqueeTemplate" />
+      <ng-container [ngTemplateOutlet]="marqueeTemplate" />
+    </div>
+  </div>
+</div>
+
+<ng-template #marqueeTemplate>
+  <span>{{ 'landing_page_marquee_section_text_1' | transloco }}</span>
+
+  <ng-container [ngTemplateOutlet]="marqueeIconTemplate" />
+
+  <span>{{ 'landing_page_marquee_section_text_2' | transloco }}</span>
+
+  <ng-container [ngTemplateOutlet]="marqueeIconTemplate" />
+
+  <span>{{ 'landing_page_marquee_section_text_3' | transloco }}</span>
+
+  <ng-container [ngTemplateOutlet]="marqueeIconTemplate" />
+
+  <span>{{ 'landing_page_marquee_section_text_4' | transloco }}</span>
+
+  <ng-container [ngTemplateOutlet]="marqueeIconTemplate" />
+</ng-template>
+
+<ng-template #marqueeIconTemplate>
+  <svg lucideSparkle class="text-white" fill="currentColor"></svg>
+</ng-template>
