@@ -15,9 +15,7 @@
       [formGroup]="loginForm"
       (ngSubmit)="submitLoginForm()"
       class="flex flex-col gap-y-3">
-      <app-custom-form-field
-        [error]="emailError"
-        errorClass="mt-1 text-sm text-main">
+      <app-custom-form-field>
         <div class="relative">
           <lucide-icon
             [name]="icons.Mail"
@@ -29,10 +27,11 @@
             type="email"
             placeholder="Email" />
         </div>
+        <app-input-error-message
+          [control]="loginForm.controls.email"
+          [messages]="emailErrorMessages" />
       </app-custom-form-field>
-      <app-custom-form-field
-        [error]="passwordError"
-        errorClass="mt-1 text-sm text-main">
+      <app-custom-form-field>
         <div class="relative">
           <lucide-icon
             [name]="icons.Lock"
@@ -40,11 +39,13 @@
             class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-disabled z-10" />
           <app-custom-input
             inputClass="w-full rounded-full text-main focus:border-main border border-[#D3D3D3] bg-[#2f2f2f] py-3.5 pl-12 pr-12 text-light placeholder:text-disabled outline-none"
-            +
             formControlName="password"
             type="password"
             placeholder="Password" />
         </div>
+        <app-input-error-message
+          [control]="loginForm.controls.password"
+          [messages]="passwordErrorMessages" />
       </app-custom-form-field>
 
       <div class="flex justify-end -mt-1">

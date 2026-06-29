@@ -6,18 +6,15 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { CustomButton } from '../../../../shared/components/custom-button/custom-button';
 import { CustomFormField } from '../../../../shared/components/custom-form-field/custom-form-field';
 import { CustomInput } from '../../../../shared/components/custom-input/custom-input';
+import { InputErrorMessage } from '../../../../shared/components/input-error-message/input-error-message';
 import { Lock, LucideAngularModule, Mail } from 'lucide-angular';
 import { APP_ROUTES } from '../../../../shared/constants/app-routes';
-import { AuthService } from '../../data-access';
-import {
-  getEmailError,
-  getNewPasswordError,
-  PASSWORD_PATTERN,
-} from '../../utils/auth-form.utils';
+import { AuthFacade } from '../../data-access';
+import { PASSWORD_PATTERN } from '../../utils/auth-form.utils';
 
 @Component({
   selector: 'app-login-page',
@@ -27,13 +24,13 @@ import {
     CustomButton,
     CustomFormField,
     CustomInput,
+    InputErrorMessage,
     LucideAngularModule,
   ],
   templateUrl: './login-page.html',
 })
 export class LoginPage {
-  private readonly authService = inject(AuthService);
-  private readonly router = inject(Router);
+  private readonly authFacade = inject(AuthFacade);
   private readonly destroyRef = inject(DestroyRef);
 
   readonly authRoutes = APP_ROUTES.AUTH;
@@ -47,6 +44,17 @@ export class LoginPage {
   isLoading = signal(false);
   errorMessage = signal<string | null>(null);
 
+  readonly emailErrorMessages = {
+    required: 'Email is required',
+    email: 'Invalid email address',
+  };
+
+  readonly passwordErrorMessages = {
+    required: 'Password is required',
+    pattern:
+      'Password must include upper, lower, number, and special character',
+  };
+
   loginForm = new FormGroup({
     email: new FormControl('', {
       nonNullable: true,
@@ -58,14 +66,6 @@ export class LoginPage {
     }),
   });
 
-  get emailError(): string | null {
-    return getEmailError(this.loginForm.controls.email);
-  }
-
-  get passwordError(): string | null {
-    return getNewPasswordError(this.loginForm.controls.password);
-  }
-
   submitLoginForm(): void {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
@@ -76,15 +76,13 @@ export class LoginPage {
     this.isLoading.set(true);
     this.errorMessage.set(null);
 
-    this.authService
+    this.authFacade
       .login({ email, password })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: () => {
           this.isLoading.set(false);
           console.log('login success');
-
-          void this.router.navigate(['/home']);
         },
         error: (err: {
           apiErrorMessage?: string;
