@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { KnobModule } from 'primeng/knob';
 import { FormsModule } from '@angular/forms';
 
@@ -8,13 +8,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './sf-step-progress.component.html',
   imports: [KnobModule, FormsModule],
 })
-export class SfStepProgressComponent implements OnChanges {
+export class SfStepProgressComponent {
   @Input() current = 1;
   @Input() total = 6;
-
-  value = 0;
-
-  ngOnChanges(): void {
-    this.value = Math.round((this.current / this.total) * 100);
-  }
 }

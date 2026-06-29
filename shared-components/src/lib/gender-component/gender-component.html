@@ -39,7 +39,15 @@
 
     <!-- i will replace the button with the reusable btn that mayar make it  -->
   </div>
-  <!-- Next Button -->
-  <sf-button variant="primary" label="Next" type="submit" class=" w-3/4 m-auto" [disabled]="!gender"
-    (click)="loginClicked.emit()" />
+  <!-- Next + Back -->
+  <div class="flex items-center gap-3 w-3/4 m-auto">
+    <button type="button" (click)="backClicked.emit()"
+      class="w-10 h-10 shrink-0 flex items-center justify-center rounded-full border border-white text-white hover:bg-white/10 transition-colors">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+    <sf-button variant="primary" label="Next" type="submit" class="flex-1" [disabled]="!gender"
+      (click)="loginClicked.emit(gender!)" />
+  </div>
 </div>

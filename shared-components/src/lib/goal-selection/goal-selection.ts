@@ -1,4 +1,4 @@
-import { Component, output, signal } from '@angular/core';
+import { Component, Input, OnInit, output, signal } from '@angular/core';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { SfButtonComponent } from 'apps/super-fitness/src/app/shared/components/sf-button/sf-button.component';
 // eslint-disable-next-line @nx/enforce-module-boundaries
@@ -21,8 +21,11 @@ import { OptionItem } from '../../../../apps/super-fitness/src/app/shared/compon
   templateUrl: './goal-selection.html',
   styleUrl: './goal-selection.css',
 })
-export class GoalSelection {
-  nextClicked = output<void>();
+export class GoalSelection implements OnInit {
+  @Input() savedGoal: string | null = null;
+
+  nextClicked = output<string>();
+  backClicked = output<void>();
 
   goals = [
     'Gain Weight',
@@ -33,6 +36,12 @@ export class GoalSelection {
   ];
 
   selectedGoal = signal<string | null>(null);
+
+  ngOnInit() {
+    if (this.savedGoal) {
+      this.selectedGoal.set(this.savedGoal);
+    }
+  }
 
   selectGoal(goal: string) {
     this.selectedGoal.set(goal);

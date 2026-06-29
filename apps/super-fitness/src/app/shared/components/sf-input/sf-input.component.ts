@@ -18,6 +18,7 @@ export class SfInputComponent implements ControlValueAccessor {
   @Input() type: 'text' | 'email' | 'password' = 'text';
   @Input() placeholder = '';
   @Input() icon: InputIcon | null = null;
+  @Input() error = false;
 
   value = '';
   showPassword = false;
