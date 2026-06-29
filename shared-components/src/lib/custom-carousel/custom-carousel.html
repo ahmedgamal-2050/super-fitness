@@ -1,0 +1,9 @@
+<div class="m-auto w-full">
+  <swiper-container #swiper init="false">
+    @for (card of items(); track $index) {
+    <swiper-slide>
+      <lib-shared-card [cardTitle]="card.title" />
+    </swiper-slide>
+    }
+  </swiper-container>
+</div>
