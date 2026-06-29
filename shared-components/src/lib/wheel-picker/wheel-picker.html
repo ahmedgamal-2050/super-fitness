@@ -1,0 +1,41 @@
+<div class="w-full flex flex-col items-center select-none">
+  <!-- label -->
+  <div class="mb-3 text-orange-500 text-lg font-medium">{{ label() }}</div>
+
+  <!-- wheel -->
+  <div class="relative w-[500px] h-28 overflow-hidden border-0">
+    <!-- left fade -->
+    <div
+      class="absolute left-0 top-0 h-full w-28 z-20 pointer-events-none border-0"></div>
+
+    <!-- right fade -->
+    <div
+      class="absolute right-0 top-0 h-full w-28 z-20 pointer-events-none"></div>
+
+    <!-- swiper -->
+    <swiper-container
+      slides-per-view="5"
+      centered-slides="true"
+      loop="true"
+      speed="500"
+      space-between="5"
+      class="h-full w-full flex items-center"
+      (swiperslidechange)="onSlideChange($event)">
+      @for (value of values(); track $index) {
+      <swiper-slide>
+        <div
+          class="h-28 flex items-center justify-center font-bold transition-all duration-300 tabular-nums"
+          [class]="getClass($index)">
+          {{ value }}
+        </div>
+      </swiper-slide>
+      }
+    </swiper-container>
+  </div>
+
+  <!-- arrow -->
+  <div class="mt-3">
+    <div
+      class="w-0 h-0 border-l-[8px] border-r-[8px] border-b-[10px] border-l-transparent border-r-transparent border-b-orange-500"></div>
+  </div>
+</div>
