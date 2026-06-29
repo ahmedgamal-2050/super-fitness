@@ -10,20 +10,18 @@ export const appRoutes: Route[] = [
       ),
     loadChildren: () => import('./layouts/auth.routes').then(m => m.authRoutes),
   },
-
-  //   {
-  //     path: APP_ROUTES.LANDING.ROOT,
-  //     loadComponent: () =>
-  //       import('./layout/landing-wrapper/landing-wrapper.component').then(
-  //         m => m.LandingWrapperComponent
-  //       ),
-  //     loadChildren: () =>
-  //       import('./features/landing/landing.routes').then(m => m.landingRoutes),
-  //   },
-
+  {
+    path: APP_ROUTES.LANDING.ROOT,
+    loadComponent: () =>
+      import('./layouts/landing-wrapper/landing-wrapper.component').then(
+        m => m.LandingWrapperComponent
+      ),
+    loadChildren: () =>
+      import('./layouts/landing.routes').then(m => m.landingRoutes),
+  },
   {
     path: '**',
-    redirectTo: APP_ROUTES.AUTH.ROOT,
+    redirectTo: APP_ROUTES.LANDING.ROOT,
     pathMatch: 'full',
   },
 ];

@@ -1,0 +1,23 @@
+@if (type() === 'link') {
+<a [routerLink]="routerLink()" [class]="buttonClass() || defaultClass()">
+  <ng-container [ngTemplateOutlet]="contentTemplate" />
+</a>
+} @else {
+<button
+  type="button"
+  [class]="buttonClass() || defaultClass()"
+  (click)="buttonClick.emit()">
+  <ng-container [ngTemplateOutlet]="contentTemplate" />
+</button>
+}
+
+<ng-template #contentTemplate>
+  <ng-content />
+
+  <div
+    class="absolute -inset-e-6 size-9 border-2 border-white bg-main flex items-center justify-center rounded-full"
+    [class.top-0]="!isLargeSpacing()"
+    [class.top-2]="isLargeSpacing()">
+    <svg lucideArrowUpRight class="text-white size-6 rtl:rotate-270"></svg>
+  </div>
+</ng-template>
