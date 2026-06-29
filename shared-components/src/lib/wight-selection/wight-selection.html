@@ -1,8 +1,8 @@
-<section class="age w-[80%] mx-auto flex justify-center items-center flex-col">
+<section class="age w-full mx-auto flex justify-center items-center flex-col">
   <sf-step-progress [current]="3" [total]="6" class="mb-2" />
 
   <!-- Title -->
-  <lib-auth-main-header mainHeader="what is your weight ? "></lib-auth-main-header>
+  <lib-auth-main-header class="text-center" mainHeader="what is your weight?"></lib-auth-main-header>
 
   <!-- Subtitle -->
   <lib-auth-second-header seconHeader="this helps us create Your personalized plan"></lib-auth-second-header>
@@ -12,11 +12,12 @@
     [initialValue]="90"
     label="Kg"></lib-wheel-picker> -->
   <sf-wheel class="w-full my-5" [max]="250" [min]="30" [quantity]="'Kg'" [initialValue]="90" [(ngModel)]="weight" />
-  <div class="flex items-center gap-3 w-3/4 m-auto mt-1">
+  <div class="flex items-center gap-3 w-full  m-auto mt-1">
     <button type="button" (click)="backClicked.emit()"
       class="w-10 h-10 shrink-0 flex items-center justify-center rounded-full border border-white text-white hover:bg-white/10 transition-colors">
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15 18l-6-6 6-6"/>
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6" />
       </svg>
     </button>
     <sf-button variant="primary" label="Next" type="submit" class="flex-1" (click)="onNext()" />

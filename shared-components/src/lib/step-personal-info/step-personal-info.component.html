@@ -1,4 +1,4 @@
-<section class="flex flex-col items-center gap-2 w-[90%] px-4 sm:px-0">
+<section class="flex flex-col items-center gap-2 w-full px-4 sm:px-0">
   <!-- Header text -->
   <p class="text-white font-normal text-sm sm:text-base">Hey There</p>
   <p class="text-white font-bold text-xl sm:text-2xl mb-2 sm:mb-4">Create An Account</p>
@@ -19,9 +19,9 @@
         <sf-input formControlName="password" icon="lock" placeholder="Password" type="password"
           [error]="passwordError" />
         @if (passwordError) {
-          <p class="text-red-500 text-xs px-2">
-            Must be 8+ characters with uppercase, lowercase, number &amp; special character (#?!&#64;$%^&amp;*-).
-          </p>
+        <p class="text-red-500 text-xs px-2">
+          Must be 8+ characters with uppercase, lowercase, number &amp; special character (#?!&#64;$%^&amp;*-).
+        </p>
         }
       </div>
 
@@ -30,7 +30,7 @@
         <sf-input formControlName="rePassword" icon="lock" placeholder="Confirm Password" type="password"
           [error]="rePasswordError" />
         @if (rePasswordError) {
-          <p class="text-red-500 text-xs px-2">{{ rePasswordErrorMessage }}</p>
+        <p class="text-red-500 text-xs px-2">{{ rePasswordErrorMessage }}</p>
         }
       </div>
     </div>
