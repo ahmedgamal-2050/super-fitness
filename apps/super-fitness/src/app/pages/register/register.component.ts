@@ -1,18 +1,25 @@
+/* eslint-disable @nx/enforce-module-boundaries */
 import { Component } from '@angular/core';
-import { StepPersonalInfoComponent } from './steps/step-personal-info/step-personal-info.component';
-import { ChooseGender } from './steps/choose-gender/choose-gender';
-import { ChooseAge } from './steps/choose-age/choose-age';
-import { ChooseWeight } from './steps/choose-weight/choose-weight';
-import { ChooseHeight } from './steps/choose-height/choose-height';
+import { StepPersonalInfoComponent } from '../../../../../../shared-components/src/lib/step-personal-info/step-personal-info.component';
+import { GoalSelection } from '../../../../../../shared-components/src/lib/goal-selection/goal-selection';
+import { PhyscialSelection } from '../../../../../../shared-components/src/lib/physcial-selection/physcial-selection';
+import {
+  AgeSelection,
+  GenderComponent,
+  HeightSelection,
+  WightSelection,
+} from '@org/shared-components';
 
 @Component({
   selector: 'app-register',
   imports: [
     StepPersonalInfoComponent,
-    ChooseGender,
-    ChooseAge,
-    ChooseWeight,
-    ChooseHeight,
+    GenderComponent,
+    AgeSelection,
+    WightSelection,
+    HeightSelection,
+    GoalSelection,
+    PhyscialSelection,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
@@ -22,4 +29,6 @@ export class RegisterComponent {
   showAge = false;
   showWeight = false;
   showHeight = false;
+  showGoal = false;
+  showPhysical = false;
 }

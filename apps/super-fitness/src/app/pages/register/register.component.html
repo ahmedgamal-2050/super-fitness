@@ -1,14 +1,20 @@
-<div class="w-full  flex flex-col gap-8">
+<div class="w-full  flex flex-col gap-8 text-white">
   @if (!showGender) {
   <app-step-personal-info (loginClicked)="showGender = true" />
   } @else if(!showAge) {
-  <app-choose-gender (loginClicked)="showAge = true" />
+  <lib-gender-component (loginClicked)="showAge = true" />
   } @else if (!showWeight) {
-  <app-choose-age (nextClicked)="showWeight = true" />
+  <lib-age-selection (nextClicked)="showWeight = true" />
   } @else if (!showHeight){
-  <app-choose-weight (nextClicked)="showHeight = true" />
+  <lib-weight-selection (nextClicked)="showHeight = true" />
+  }
+  @else if (!showGoal) {
+  <lib-height-selection (nextClicked)="showGoal = true" />
+  }
+  @else if (!showPhysical) {
+  <lib-goal-selection (nextClicked)="showPhysical = true" />
   }
   @else {
-  <app-choose-height />
+  <lib-physcial-selection />
   }
 </div>

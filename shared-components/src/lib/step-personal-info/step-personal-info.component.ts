@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-selector */
 /* eslint-disable @nx/enforce-module-boundaries */
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SfButtonComponent } from 'apps/super-fitness/src/app/shared/components/sf-button/sf-button.component';

@@ -1,18 +1,17 @@
-<div class="relative w-full overflowx-hidden overflowy-scroll">
+<div class="flex flex-col items-center text-center justify-between  overflowx-hidden overflowy-scroll">
+  <p class="text-white font-medium text-3xl my-3 text-center">1/6</p>
+
   <!-- Content -->
-  <div class="relative z-10 flex flex-col items-center pt-8 px-5 text-center">
+  <div class="relative z-10 flex flex-col items-center px-5 text-center my-6">
     <!-- Title -->
-    <lib-auth-main-header
-      mainHeader="Tell Us About Yourself!"></lib-auth-main-header>
+    <lib-auth-main-header mainHeader="Tell Us About Yourself!"></lib-auth-main-header>
 
     <!-- Subtitle -->
-    <lib-auth-second-header
-      seconHeader="We Need To Know Your Gender"></lib-auth-second-header>
+    <lib-auth-second-header seconHeader="We Need To Know Your Gender"></lib-auth-second-header>
     <!-- Gender Buttons -->
-    <div class="mt-16 flex flex-col items-center gap-8">
+    <div class="mt-3 flex flex-col items-center gap-8">
       <!-- Male -->
-      <button
-        (click)="selectGender('male')"
+      <button (click)="selectGender('male')"
         class="w-32 h-32 rounded-full border flex flex-col items-center justify-center transition-all duration-300"
         [class]="
     gender === 'male'
@@ -25,8 +24,7 @@
       </button>
 
       <!-- Female -->
-      <button
-        (click)="selectGender('female')"
+      <button (click)="selectGender('female')"
         class="w-32 h-32 rounded-full border flex flex-col items-center justify-center transition-all duration-300"
         [class]="
     gender === 'female'
@@ -40,10 +38,8 @@
     </div>
 
     <!-- i will replace the button with the reusable btn that mayar make it  -->
-    <!-- Next Button -->
-    <button
-      class="mt-8 h-[52px] w-[440px] max-w-full rounded-full bg-[#ff4d0d] text-[18px] font-bold text-white transition hover:bg-[#ff5a1f]">
-      Next
-    </button>
   </div>
+  <!-- Next Button -->
+  <sf-button variant="primary" label="Next" type="submit" class=" w-3/4 m-auto" [disabled]="!gender"
+    (click)="loginClicked.emit()" />
 </div>
