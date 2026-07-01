@@ -48,7 +48,7 @@ export class AuthService {
   resetPassword(
     payload: ResetPasswordRequest
   ): Observable<AuthMessageResponse> {
-    return this.http.post<AuthMessageResponse>(
+    return this.http.put<AuthMessageResponse>(
       `${BASE_URL}${AuthEndpoint.RESET_PASSWORD}`,
       payload
     );
