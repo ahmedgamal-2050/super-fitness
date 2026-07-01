@@ -59,7 +59,8 @@
   "landing_page_marquee_section_text_3": "حصص مباشرة",
   "landing_page_marquee_section_text_4": "مدربون شخصيون",
 
-  "landing_page_services_section_subtitle_label": "الخدمات",
+  "landing_page_services_section_title_label": "تمارين رياضية",
+  "landing_page_services_section_subtitle_label": "عنا",
   "landing_page_services_section_heading_main_text": "تمكينك من تحقيق",
   "landing_page_services_section_heading_highlight_text": "أهداف اللياقة البدنية",
   "landing_page_services_section_heading_suffix_text": "الخاصة بك",
@@ -70,8 +71,8 @@
   "landing_page_services_section_feature_coaching_desc_text": "تعلم من مدربين شخصيين معتمدين يرشدونك ويحفزونك يوميًا.",
   "landing_page_services_section_feature_equip_title_text": "معدات عالية الجودة",
   "landing_page_services_section_feature_equip_desc_text": "تدرب باستخدام آلات القوة والكارديو الحديثة والمصانة جيدًا.",
-  "landing_page_services_section_feature_nutr_title_text": "تغذية صحية",
-  "landing_page_services_section_feature_nutr_desc_text": "احصل على خطط وجبات صحية ونصائح لتغذية جسمك بشكل صحيح.",
+  "landing_page_services_section_feature_nutrition_title_text": "تغذية صحية",
+  "landing_page_services_section_feature_nutrition_desc_text": "احصل على خطط وجبات صحية ونصائح لتغذية جسمك بشكل صحيح.",
   "landing_page_services_section_cta_explore_label": "ابدأ الآن",
 
   "landing_page_workouts_section_heading_main_text": "حول جسدك من خلال تماريننا الديناميكية",
@@ -94,8 +95,8 @@
   "landing_page_why_us_section_heading_main_text": "ارتقِ بلياقتك البدنية مع",
   "landing_page_why_us_section_heading_highlight_text": "أفضل طريقة",
   "landing_page_why_us_section_heading_suffix_text": "ممكنة",
-  "landing_page_why_us_section_paragraph_text": "غذِّ جسدك وعقلك بخطط مخصصة. انضم إلى مجتمعنا الداعم ومكِّن نفسك للازدهار. ابدأ رحلتك اليوم واشعر بالفرق.",
-  "landing_page_why_us_section_point1_title_text": "خطط عضلية مخصصة",
+  "landing_page_why_us_section_paragraph_text": "نحن نقدم رحلة لياقة بدنية مصممة خصيصًا لأهدافك، مع دعم مدربين محترفين ومجتمع ترحيبي. سواء كان هدفك خسارة الوزن، بناء العضلات، أو العافية بشكل عام، فإن أساليبنا مثبتة الفعالية.",
+  "landing_page_why_us_section_point1_title_text": "خطط لياقة مخصصة",
   "landing_page_why_us_section_point1_desc_text": "تمارين محددة مصممة لبناء كتلة العضلات وزيادة القوة البدنية العامة.",
   "landing_page_why_us_section_point2_title_text": "ساعات حصص مرنة",
   "landing_page_why_us_section_point2_desc_text": "جلسات متعددة مجدولة على مدار اليوم لتناسب أي أسلوب حياة مزدحم.",
@@ -113,15 +114,13 @@
   "landing_page_meals_section_card_dinner_title_text": "العشاء",
   "landing_page_meals_section_card_dinner_btn_label": "اقرأ المزيد",
 
-  "landing_page_footer_section_brand_desc_text": "عقل سليم، جسم سليم، حياة سعيدة. ابنِ قوتك واكتشف نسخة أكثر صحة وسعادة من نفسك.",
+  "landing_page_footer_section_brand_desc_text": "ادفع بقوة أكبر، وحقق أهدافك. رحلتك نحو اللياقة تبدأ اليوم!",
   "landing_page_footer_section_col_contact_title_text": "اتصل بنا",
-  "landing_page_footer_section_phone_label_text": "الهاتف",
-  "landing_page_footer_section_phone_value_text": "+١ ٢٣٤ ٥٦٧ ٨٩٠",
-  "landing_page_footer_section_email_label_text": "البريد الإلكتروني",
-  "landing_page_footer_section_email_value_text": "info@fitness.com",
-  "landing_page_footer_section_col_hours_title_text": "أوقات العمل",
-  "landing_page_footer_section_hours_weekdays_text": "الإثنين - الجمعة: ٦:٠٠ ص - ١٠:٠٠ م",
+  "landing_page_footer_section_phone_value_text": "+91 123 456 789",
+  "landing_page_footer_section_email_value_text": "info@gmail.com",
+  "landing_page_footer_section_col_hours_title_text": "مواعيد الجيم",
+  "landing_page_footer_section_hours_weekdays_text": "الإثنين - الجمعة: ٨:٠٠ ص - ١٠:٠٠ م",
   "landing_page_footer_section_hours_weekends_text": "السبت - الأحد: ٨:٠٠ ص - ٨:٠٠ م",
   "landing_page_footer_section_col_location_title_text": "موقعنا",
-  "landing_page_footer_section_address_value_text": "١٢٣ شارع اللياقة، القاهرة، مصر"
+  "landing_page_footer_section_address_value_text": "2715 Ash Dr. San Jose, South Dakota 83475"
 }
