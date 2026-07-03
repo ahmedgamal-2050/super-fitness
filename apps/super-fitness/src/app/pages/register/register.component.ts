@@ -59,60 +59,69 @@ export class RegisterComponent {
   private registrationData: Partial<SignupPayload> = {};
 
   // Forward navigation — save data then advance
-  onPersonalInfo(data: PersonalInfo) {
-    this.savedPersonalInfo = data;
-    this.registrationData = { ...this.registrationData, ...data };
-    this.showGender = true;
-  }
 
-  onGender(gender: 'male' | 'female') {
-    this.savedGender = gender;
-    this.registrationData.gender = gender;
-    this.showAge = true;
-  }
-
-  onAge(age: number) {
-    this.savedAge = age;
-    this.registrationData.age = age;
-    this.showWeight = true;
-  }
-
-  onWeight(weight: number) {
-    this.savedWeight = weight;
-    this.registrationData.weight = weight;
-    this.showHeight = true;
-  }
-
-  onHeight(height: number) {
-    this.savedHeight = height;
-    this.registrationData.height = height;
-    this.showGoal = true;
-  }
-
-  onGoal(goal: string) {
-    this.savedGoal = goal;
-    this.registrationData.goal = goal;
-    this.showPhysical = true;
-  }
-
-  onPhysical(physical: string) {
+  onPhysical(physical: string): void {
     this.savedPhysical = physical;
     this.registrationData.activityLevel = ACTIVITY_MAP[physical];
+    this.signup();
+  }
+
+  private signup(): void {
     this.authService.signup(this.registrationData as SignupPayload).subscribe({
       next: () => {
         this.router.navigate(['/landing/home']);
       },
-      error: (err) => {
+      error: err => {
         console.error('Signup error', err);
       },
     });
   }
 
   // Back navigation
-  goBackToPersonal() { this.showGender = false; }
-  goBackToGender()   { this.showAge = false; }
-  goBackToAge()      { this.showWeight = false; }
-  goBackToWeight()   { this.showHeight = false; }
-  goBackToHeight()   { this.showGoal = false; }
-  goBackToGoal()     { this.showPhysical = false; }
+  stepNumber = 1;
+  private next(): void {
+    this.stepNumber++;
+  }
+
+  back(): void {
+    if (this.stepNumber > 1) {
+      this.stepNumber--;
+    }
+  }
+
+  onPersonalInfo(data: PersonalInfo): void {
+    this.savedPersonalInfo = data;
+    this.registrationData = { ...this.registrationData, ...data };
+    this.next();
+  }
+
+  onGender(gender: 'male' | 'female'): void {
+    this.savedGender = gender;
+    this.registrationData.gender = gender;
+    this.next();
+  }
+
+  onAge(age: number): void {
+    this.savedAge = age;
+    this.registrationData.age = age;
+    this.next();
+  }
+
+  onWeight(weight: number): void {
+    this.savedWeight = weight;
+    this.registrationData.weight = weight;
+    this.next();
+  }
+
+  onHeight(height: number): void {
+    this.savedHeight = height;
+    this.registrationData.height = height;
+    this.next();
+  }
+
+  onGoal(goal: string): void {
+    this.savedGoal = goal;
+    this.registrationData.goal = goal;
+    this.next();
+  }
 }

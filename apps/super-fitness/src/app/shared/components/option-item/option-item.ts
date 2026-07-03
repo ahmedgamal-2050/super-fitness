@@ -11,5 +11,4 @@ import { CommonModule } from '@angular/common';
 export class OptionItem {
   label = input.required<string>();
   selected = input<boolean>(false);
-  selectOption = output<void>();
 }

@@ -41,17 +41,28 @@ export class SfWheelComponent implements ControlValueAccessor, OnInit {
   }
 
   ngOnInit(): void {
+    this.initializeItems();
+    this.initializeSelectedValue();
+  }
+
+  private initializeItems(): void {
     this.items = Array.from(
       { length: this.max() - this.min() + 1 },
       (_, i) => this.min() + i
     );
+  }
 
+  private initializeSelectedValue(): void {
     if (this.pendingValue !== null) {
       this.applyValue(this.pendingValue);
       this.pendingValue = null;
-    } else {
-      const iv = this.initialValue();
-      if (iv !== null) this.applyValue(iv);
+      return;
+    }
+
+    const initialValue = this.initialValue();
+
+    if (initialValue !== null) {
+      this.applyValue(initialValue);
     }
   }
 
