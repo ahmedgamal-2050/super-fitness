@@ -75,11 +75,9 @@ export class RequestResetEmail {
           this.isLoading.set(false);
           this.continue.emit();
         },
-        error: (err: { error?: { message?: string }; message?: string }) => {
+        error: () => {
           this.isLoading.set(false);
-          this.errorMessage.set(
-            err.error?.message || err.message || 'Something went wrong'
-          );
+          this.errorMessage.set('Something went wrong');
         },
       });
   }

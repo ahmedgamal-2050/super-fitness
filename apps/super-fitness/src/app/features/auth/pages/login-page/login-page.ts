@@ -82,17 +82,10 @@ export class LoginPage {
       .subscribe({
         next: () => {
           this.isLoading.set(false);
-          console.log('login success');
         },
-        error: (err: {
-          apiErrorMessage?: string;
-          error?: { message?: string };
-          message?: string;
-        }) => {
+        error: () => {
           this.isLoading.set(false);
-          this.errorMessage.set(
-            err.error?.message || err.message || 'Invalid email or password'
-          );
+          this.errorMessage.set('Invalid email or password');
         },
       });
   }

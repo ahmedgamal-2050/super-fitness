@@ -22,6 +22,7 @@ import { CustomButton } from '../../../../../shared/components/custom-button/cus
 import { CustomFormField } from '../../../../../shared/components/custom-form-field/custom-form-field';
 import { CustomInput } from '../../../../../shared/components/custom-input/custom-input';
 import { InputErrorMessage } from '../../../../../shared/components/input-error-message/input-error-message';
+import { passwordMatchValidator } from '../../../utils/password-match-validator';
 
 @Component({
   selector: 'app-reset-password',
@@ -55,18 +56,24 @@ export class ResetPassword {
   };
   readonly confirmPasswordErrorMessages = {
     required: 'Please confirm your password',
+    passwordMismatch: 'Passwords do not match',
   };
 
-  resetPasswordForm = new FormGroup({
-    newPassword: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required, Validators.pattern(PASSWORD_PATTERN)],
-    }),
-    confirmPassword: new FormControl('', {
-      nonNullable: true,
-      validators: [Validators.required],
-    }),
-  });
+  resetPasswordForm = new FormGroup(
+    {
+      newPassword: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.pattern(PASSWORD_PATTERN)],
+      }),
+      confirmPassword: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+    },
+    {
+      validators: passwordMatchValidator,
+    }
+  );
 
   submitResetPassword(): void {
     if (this.resetPasswordForm.invalid) {
@@ -76,21 +83,13 @@ export class ResetPassword {
     this.isLoading.set(true);
     this.errorMessage.set(null);
     const email = this.emailService.getEmail();
-
+    const { newPassword } = this.resetPasswordForm.getRawValue();
     if (!email) {
       this.errorMessage.set(
         'Email not found. Please start the reset process again.'
       );
       return;
     }
-    const { newPassword, confirmPassword } =
-      this.resetPasswordForm.getRawValue();
-
-    if (newPassword !== confirmPassword) {
-      this.errorMessage.set('Passwords do not match');
-      return;
-    }
-    this.isLoading.set(true);
     this.authFacade
       .resetPassword({
         email,
@@ -104,9 +103,7 @@ export class ResetPassword {
         },
         error: err => {
           this.isLoading.set(false);
-          this.errorMessage.set(
-            err.error?.message || err.message || 'Something went wrong'
-          );
+          this.errorMessage.set(err.message || 'Something went wrong');
         },
       });
   }

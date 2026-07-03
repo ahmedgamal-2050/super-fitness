@@ -22,9 +22,10 @@ export class AuthService {
   readonly isAuthenticated = computed(() => !!this.getToken());
 
   login(credentials: LoginRequest): Observable<LoginResponse> {
-    return this.http
-      .post<LoginResponse>(`${BASE_URL}${AuthEndpoint.SIGN_IN}`, credentials)
-      .pipe(tap(response => this.setToken(response.token)));
+    return this.http.post<LoginResponse>(
+      `${BASE_URL}${AuthEndpoint.SIGN_IN}`,
+      credentials
+    );
   }
 
   forgotPassword(
@@ -63,7 +64,7 @@ export class AuthService {
     this.cookieService.delete(APP_STORAGE.token, '/');
   }
 
-  private setToken(token: string): void {
+  setToken(token: string): void {
     sessionStorage.removeItem(APP_STORAGE.token);
     this.cookieService.set(APP_STORAGE.token, token, {
       path: '/',

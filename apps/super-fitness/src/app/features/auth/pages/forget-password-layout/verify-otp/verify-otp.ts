@@ -159,18 +159,9 @@ export class VerifyOTP {
         this.otpForm.reset();
         this.otpInputs.first?.nativeElement.focus();
       },
-      error: (err: {
-        apiErrorMessage?: string;
-        message?: string;
-        error?: { message?: string };
-      }) => {
+      error: () => {
         this.isResending.set(false);
-        this.errorMessage.set(
-          err.apiErrorMessage ||
-            err.message ||
-            err.error?.message ||
-            'Something went wrong'
-        );
+        this.errorMessage.set('Reset code is invalid or has expired');
       },
     });
   }

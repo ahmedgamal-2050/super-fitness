@@ -17,9 +17,12 @@ export class AuthFacade {
   private readonly router = inject(Router);
 
   login(credentials: LoginRequest): Observable<LoginResponse> {
-    return this.authService
-      .login(credentials)
-      .pipe(tap(() => void this.router.navigate(['/home'])));
+    return this.authService.login(credentials).pipe(
+      tap(response => {
+        this.authService.setToken(response.token);
+        void this.router.navigate(['/home']);
+      })
+    );
   }
 
   forgotPassword(
