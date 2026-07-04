@@ -1,0 +1,10 @@
+swiper-container {
+  width: 100%;
+  display: block;
+  margin: auto;
+  padding-bottom: 40px;
+}
+
+swiper-container::part(pagination) {
+  bottom: -10px;
+}

@@ -1,0 +1,26 @@
+<div class="flex gap-4 items-center relative">
+  <svg
+    lucideDumbbell
+    strokeWidth="1.5"
+    class="size-8.5 text-main shrink-0 rotate-45"></svg>
+
+  <span class="text-main font-semibold tracking-widest text-sm">
+    {{ title() | transloco }}
+  </span>
+
+  <div class="w-fit absolute bottom-2 inset-s-0 z-1">
+    @if (type() === 'why-us') {
+    <img
+      src="/assets/images/why-us-gradient-outline-text.png"
+      alt="why us gradient outline text" />
+    } @else if (type() === 'healthy') {
+    <img
+      src="/assets/images/healthy-gradient-outline-text.png"
+      alt="healthy gradient outline text" />
+    } @else {
+    <img
+      src="/assets/images/workouts-gradient-outline-text.png"
+      alt="workouts gradient outline text" />
+    }
+  </div>
+</div>

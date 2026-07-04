@@ -1,0 +1,95 @@
+<section
+  id="about"
+  class="relative py-16 md:py-24 bg-white dark:bg-dark/95 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <!-- Left: Image Overlays -->
+      <div
+        class="lg:col-span-6 relative h-185 w-full max-w-lg mx-auto lg:max-w-none">
+        <img
+          src="assets/images/about-us-images.png"
+          alt="Workout Exercise"
+          class="w-full h-full object-contain" />
+      </div>
+
+      <!-- Right: Services Text Content -->
+      <div
+        class="lg:col-span-6 flex flex-col items-start text-left rtl:text-right space-y-6 md:space-y-8">
+        <div class="space-y-3">
+          <app-landing-section-title
+            title="landing_page_services_section_subtitle_label" />
+
+          <h2
+            class="text-3xl sm:text-4xl font-bold text-dark dark:text-light leading-tight uppercase">
+            {{ 'landing_page_services_section_heading_main_text' | transloco }}
+
+            <span class="text-main">
+              {{
+                'landing_page_services_section_heading_highlight_text'
+                  | transloco
+              }}
+            </span>
+
+            {{
+              'landing_page_services_section_heading_suffix_text' | transloco
+            }}
+          </h2>
+        </div>
+
+        <p
+          class="text-dark dark:text-light text-base md:text-lg max-w-xl font-normal">
+          {{ 'landing_page_services_section_paragraph_text' | transloco }}
+        </p>
+
+        <!-- 2x2 Features Grid -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full pt-4 border-b border-dark/15 dark:border-light/15 pb-6">
+          @for (feature of features().slice(0, 2); track feature.id) {
+            <!-- Personalized plans -->
+            <div class="space-y-4">
+              <div class="flex gap-4">
+                <svg
+                  lucideArrowUpRight
+                  class="w-6 h-6 text-main shrink-0"></svg>
+
+                <h3 class="font-bold text-dark dark:text-light text-base">
+                  {{ feature.title | transloco }}
+                </h3>
+              </div>
+
+              <p class="text-lg text-dark dark:text-light font-normal">
+                {{ feature.description | transloco }}
+              </p>
+            </div>
+          }
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full pt-4">
+          @for (feature of features().slice(2, 4); track feature.id) {
+            <!-- Personalized plans -->
+            <div class="space-y-4">
+              <div class="flex gap-4">
+                <svg
+                  lucideArrowUpRight
+                  class="w-6 h-6 text-main shrink-0"></svg>
+
+                <h3 class="font-bold text-dark dark:text-light text-base">
+                  {{ feature.title | transloco }}
+                </h3>
+              </div>
+
+              <p class="text-lg text-dark dark:text-light font-normal">
+                {{ feature.description | transloco }}
+              </p>
+            </div>
+          }
+        </div>
+
+        <!-- CTA Button -->
+        <app-button type="link" [routerLink]="['/']">
+          {{ 'landing_page_hero_section_cta_start_label' | transloco }}
+        </app-button>
+      </div>
+    </div>
+  </div>
+</section>
