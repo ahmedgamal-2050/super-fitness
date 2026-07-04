@@ -5,6 +5,7 @@ import {
   input,
   viewChild,
   effect,
+  TemplateRef,
 } from '@angular/core';
 import { SharedCard } from '../shared-card/shared-card';
 import { register } from 'swiper/element/bundle';
@@ -22,8 +23,10 @@ register();
 export class CustomCarousel {
   items = input<any[]>([]);
   rows = input<number>(1);
-  slidesPerView = input<number>(4);
+  slidesPerView = input<number>(3);
   spaceBetween = input<number>(20);
+  cardButton = input<TemplateRef<unknown> | null>(null);
+  breakpoints = input<any | null>(null);
 
   swiperRef = viewChild<ElementRef>('swiper');
 
@@ -32,8 +35,20 @@ export class CustomCarousel {
       const swiper = this.swiperRef()?.nativeElement;
       if (!swiper) return;
 
+      const defaultBreakpoints = {
+        400: {
+          slidesPerView: Math.max(1, this.slidesPerView() - 2),
+        },
+        880: {
+          slidesPerView: Math.max(1, this.slidesPerView() - 1),
+        },
+        1400: {
+          slidesPerView: this.slidesPerView(),
+        },
+      };
+
       Object.assign(swiper, {
-        slidesPerView: this.slidesPerView(),
+        slidesPerView: 1,
         spaceBetween: this.spaceBetween(),
 
         grid: {
@@ -47,37 +62,36 @@ export class CustomCarousel {
         injectStyles: [
           `
     .swiper {
-      width: 70% !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      padding-bottom: 60px !important;
+      width: 100% !important;
+      margin-inline: auto !important;
+      padding-bottom: 3.5rem !important;
     }
 
     .swiper-pagination-bullet {
-      width: 11px !important;
-      height: 11px !important;
-      background: #1f2937 !important;
+      width: 0.625rem !important;
+      height: 0.625rem !important;
+      background: var(--color-dark) !important;
       opacity: 1 !important;
       transition: all 0.3s ease;
     }
 
     .swiper-pagination-bullet-active {
-      width: 70px !important;
-      height: 11px !important;
-      border-radius: 999px !important;
-      background: #f97316 !important;
+      width: 1.875rem !important;
+      height: 0.625rem !important;
+      border-radius: 10rem !important;
+      background: var(--color-main) !important;
     }
 
     .swiper-pagination {
-      bottom: 20px !important;
+      bottom: 0.5rem !important;
     }
     `,
         ],
-
         autoplay: {
           delay: 3000,
           disableOnInteraction: false,
         },
+        breakpoints: this.breakpoints() || defaultBreakpoints,
       });
 
       swiper.initialize();

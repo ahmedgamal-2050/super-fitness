@@ -10,6 +10,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
       setHeaders: {
         Authorization: `Bearer ${token}`,
         token: token,
+        'Accept-Language': localStorage.getItem(APP_STORAGE.language) ?? 'en',
       },
     });
     return next(cloned);

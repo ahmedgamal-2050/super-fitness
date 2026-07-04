@@ -20,29 +20,35 @@
     </div>
 
     <!-- Filter Category Tabs -->
-    <div
-      class="flex flex-wrap justify-center items-center gap-2 sm:gap-4 my-8 md:my-12">
-      @for (cat of categories; track cat.id) {
+    <div class="flex flex-wrap justify-center items-center my-8 md:my-12">
+      @for (cat of categories(); track cat._id; let index = $index) {
         <button
-          (click)="selectCategory(cat.id)"
+          (click)="getMusclesListByGroupId(cat._id)"
           [class]="
-            selectedCategory() === cat.id
+            selectedCategoryId() === cat._id
               ? 'bg-main text-white px-6 py-2 rounded-full font-bold shadow-lg shadow-main/30'
-              : 'text-white px-6 py-2 rounded-full font-semibold'
+              : 'text-dark dark:text-white px-6 py-2 rounded-full font-semibold'
           ">
-          {{ cat.labelKey | transloco }}
+          {{ cat.name }}
         </button>
       }
     </div>
 
     <!-- Cards Slider -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
-      @for (workout of filteredWorkouts(); track $index) {
-        <!-- Workout Card -->
-        <lib-shared-card
-          [cardTitle]="workout.titleKey | transloco"
-          [cardImage]="workout.image"
+    <div class="pt-4">
+      @if (muscleList().length) {
+        <lib-custom-carousel
+          [items]="muscleList()"
+          [rows]="1"
+          [slidesPerView]="3"
           [cardButton]="button" />
+      } @else {
+        <div
+          class="text-center text-dark dark:text-white text-2xl font-bold col-span-3 h-100 flex items-center justify-center pb-32">
+          {{
+            'landing_page_workouts_section_no_muscle_found_label' | transloco
+          }}
+        </div>
       }
     </div>
   </div>

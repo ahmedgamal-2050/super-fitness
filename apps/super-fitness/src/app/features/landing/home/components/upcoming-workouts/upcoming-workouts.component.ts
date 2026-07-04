@@ -1,134 +1,75 @@
 import {
   Component,
   signal,
-  computed,
   ChangeDetectionStrategy,
+  OnInit,
+  inject,
+  DestroyRef,
 } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { SharedCard } from '@org/shared-components';
+import { CustomCarousel } from '@org/shared-components';
 import { Button } from '../../../../../shared/components/button/button';
 import { LandingSectionTitle } from '../../../../../shared/components/landing-section-title/landing-section-title';
-
-interface WorkoutCard {
-  titleKey: string;
-  btnKey: string;
-  image: string;
-  category: string;
-}
+import { MuscleService } from '../../services/muscle/muscle.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {
+  Muscle,
+  MuscleGroup,
+  MuscleGroupResponse,
+  MuscleListResponse,
+} from '../../home.model';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-upcoming-workouts',
   standalone: true,
-  imports: [TranslocoPipe, SharedCard, Button, LandingSectionTitle],
+  imports: [TranslocoPipe, Button, LandingSectionTitle, CustomCarousel],
   templateUrl: './upcoming-workouts.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UpcomingWorkoutsComponent {
-  categories = [
-    { id: 'all', labelKey: 'landing_page_workouts_section_tab_all_label' },
-    { id: 'chest', labelKey: 'landing_page_workouts_section_tab_chest_label' },
-    { id: 'arm', labelKey: 'landing_page_workouts_section_tab_arm_label' },
-    {
-      id: 'shoulder',
-      labelKey: 'landing_page_workouts_section_tab_shoulder_label',
-    },
-    { id: 'back', labelKey: 'landing_page_workouts_section_tab_back_label' },
-    { id: 'legs', labelKey: 'landing_page_workouts_section_tab_legs_label' },
-    {
-      id: 'sensors',
-      labelKey: 'landing_page_workouts_section_tab_sensors_label',
-    },
-  ];
+export class UpcomingWorkoutsComponent implements OnInit {
+  readonly muscleService = inject(MuscleService);
+  readonly destroyRef = inject(DestroyRef);
 
-  workouts: WorkoutCard[] = [
-    {
-      titleKey: 'landing_page_workouts_section_card_group_title_text',
-      btnKey: 'landing_page_workouts_section_card_group_btn_label',
-      image: 'assets/images/fitness-card-1.png',
-      category: 'all',
-    },
-    {
-      titleKey: 'landing_page_workouts_section_card_personal_title_text',
-      btnKey: 'landing_page_workouts_section_card_personal_btn_label',
-      image: 'assets/images/fitness-card-2.png',
-      category: 'all',
-    },
-    {
-      titleKey: 'landing_page_workouts_section_card_muscle_title_text',
-      btnKey: 'landing_page_workouts_section_card_muscle_btn_label',
-      image: 'assets/images/fitness-card-3.png',
-      category: 'all',
-    },
-    // chest
-    {
-      titleKey: 'landing_page_workouts_section_card_muscle_title_text',
-      btnKey: 'landing_page_workouts_section_card_muscle_btn_label',
-      image:
-        'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=600&auto=format&fit=crop',
-      category: 'chest',
-    },
-    // arm
-    {
-      titleKey: 'landing_page_workouts_section_card_personal_title_text',
-      btnKey: 'landing_page_workouts_section_card_personal_btn_label',
-      image:
-        'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=600&auto=format&fit=crop',
-      category: 'arm',
-    },
-    // shoulder
-    {
-      titleKey: 'landing_page_workouts_section_card_group_title_text',
-      btnKey: 'landing_page_workouts_section_card_group_btn_label',
-      image:
-        'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop',
-      category: 'shoulder',
-    },
-    // back
-    {
-      titleKey: 'landing_page_workouts_section_card_muscle_title_text',
-      btnKey: 'landing_page_workouts_section_card_muscle_btn_label',
-      image:
-        'https://images.unsplash.com/photo-1605296867304-46d5465a25f1?q=80&w=600&auto=format&fit=crop',
-      category: 'back',
-    },
-    // legs
-    {
-      titleKey: 'landing_page_workouts_section_card_personal_title_text',
-      btnKey: 'landing_page_workouts_section_card_personal_btn_label',
-      image:
-        'https://images.unsplash.com/photo-1434608519344-49d77a699e1d?q=80&w=600&auto=format&fit=crop',
-      category: 'legs',
-    },
-    // sensors
-    {
-      titleKey: 'landing_page_workouts_section_card_group_title_text',
-      btnKey: 'landing_page_workouts_section_card_group_btn_label',
-      image:
-        'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop',
-      category: 'sensors',
-    },
-  ];
+  categories = signal<MuscleGroup[]>([]);
 
-  selectedCategory = signal<string>('all');
-  activeSlideIndex = signal<number>(0);
+  muscleList = signal<Muscle[]>([]);
 
-  filteredWorkouts = computed(() => {
-    const cat = this.selectedCategory();
-    if (cat === 'all') {
-      return this.workouts.filter(w => w.category === 'all');
-    }
-    // Return the selected category card along with a couple of defaults to keep 3 items in viewport
-    const filtered = this.workouts.filter(w => w.category === cat);
-    const defaults = this.workouts.filter(w => w.category === 'all');
-    return [...filtered, ...defaults].slice(0, 3);
-  });
+  selectedCategoryId = signal<string>('');
 
-  selectCategory(catId: string) {
-    this.selectedCategory.set(catId);
-    this.activeSlideIndex.set(0);
+  ngOnInit(): void {
+    this.getInitMusclesList();
   }
 
-  setSlideIndex(index: number) {
-    this.activeSlideIndex.set(index);
+  getInitMusclesList() {
+    this.muscleService
+      .getMusclesGroups()
+      .pipe(
+        switchMap((res: MuscleGroupResponse) => {
+          this.categories.set(res.musclesGroup);
+          return this.muscleService.getMusclesListByGroupId(
+            res.musclesGroup[0]._id
+          );
+        }),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe((res: MuscleListResponse) => {
+        this.selectedCategoryId.set(res.muscleGroup._id);
+        this.muscleList.set(res.muscles);
+      });
+  }
+
+  selectCategory(catId: string) {
+    this.getMusclesListByGroupId(catId);
+  }
+
+  getMusclesListByGroupId(groupId: string) {
+    this.muscleService
+      .getMusclesListByGroupId(groupId)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((res: MuscleListResponse) => {
+        this.selectedCategoryId.set(res.muscleGroup._id);
+        this.muscleList.set(res.muscles);
+      });
   }
 }
