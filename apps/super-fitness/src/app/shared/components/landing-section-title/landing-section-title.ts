@@ -11,4 +11,5 @@ import { LucideDumbbell } from '@lucide/angular';
 export class LandingSectionTitle {
   title = input.required<string>();
   type = input<'workouts' | 'why-us' | 'healthy'>('workouts');
+  isCenter = input<boolean>(false);
 }

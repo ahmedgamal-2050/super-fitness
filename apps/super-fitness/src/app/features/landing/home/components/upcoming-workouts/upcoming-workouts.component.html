@@ -1,18 +1,15 @@
 <section
   id="classes"
-  class="relative py-16 md:py-24 bg-dark dark:bg-white text-white dark:text-dark overflow-hidden">
-  <!-- Decorative background subtle light leak -->
-  <div
-    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-150 bg-main/5 rounded-full blur-3xl -z-10"></div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  class="relative py-16 dark:text-white text-dark overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-2">
     <!-- Section Title -->
     <div class="text-center max-w-3xl mx-auto space-y-4">
-      <div class="text-main font-bold tracking-widest text-sm uppercase">
-        {{ 'landing_page_why_us_section_subtitle_label' | transloco }}
-      </div>
-      <h2
-        class="text-3xl sm:text-4xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight">
+      <app-landing-section-title
+        type="workouts"
+        [isCenter]="true"
+        title="landing_page_why_us_section_subtitle_label" />
+
+      <h2 class="text-3xl sm:text-4xl font-bold uppercase">
         {{ 'landing_page_workouts_section_heading_main_text' | transloco }}
         <span class="text-main">
           {{
@@ -49,6 +46,12 @@
       }
     </div>
   </div>
+
+  <div
+    class="absolute top-20 inset-x-0 h-3/5 w-full bg-white/50 backdrop-blur-lg z-1"></div>
+
+  <div
+    class="absolute top-0 inset-x-0 h-full w-full bg-[url('assets/images/healthy-bg.jpg')] bg-no-repeat bg-cover"></div>
 </section>
 
 <ng-template #button>

@@ -1,15 +1,16 @@
-<section id="healthy" class="relative py-16 md:py-24 bg-white dark:bg-dark/95 transition-colors duration-300">
-  
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+<section id="healthy" class="relative bg-white dark:bg-dark">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-2">
     <!-- Section Title -->
     <div class="text-center max-w-3xl mx-auto space-y-4">
-      <span class="text-main font-bold tracking-widest text-sm uppercase">
-        {{ 'landing_page_meals_section_subtitle_label' | transloco }}
-      </span>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-dark dark:text-light leading-tight uppercase">
+      <app-landing-section-title
+        type="healthy"
+        [isCenter]="true"
+        title="landing_page_meals_section_subtitle_label" />
+
+      <h2
+        class="text-3xl sm:text-4xl font-bold text-dark dark:text-light leading-tight uppercase">
         {{ 'landing_page_meals_section_heading_main_text' | transloco }}
-        <span class="text-main bg-gradient-to-r from-main to-orange-500 bg-clip-text text-transparent">
+        <span class="text-main">
           {{ 'landing_page_meals_section_heading_highlight_text' | transloco }}
         </span>
         {{ 'landing_page_meals_section_heading_suffix_text' | transloco }}
@@ -18,125 +19,32 @@
 
     <!-- 3 Meal Plan Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-      
-      <!-- Breakfast Card -->
-      <div class="group rounded-[2.5rem] bg-light dark:bg-dark border border-black/5 dark:border-white/10 overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-        <div class="h-64 sm:h-72 overflow-hidden relative">
-          <img 
-            src="https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=600&auto=format&fit=crop" 
-            alt="Breakfast Meal" 
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
-        </div>
-        <div class="p-6 sm:p-8 space-y-4">
-          <h3 class="text-xl font-extrabold text-dark dark:text-light group-hover:text-main transition-colors duration-300">
-            {{ 'landing_page_meals_section_card_breakfast_title_text' | transloco }}
-          </h3>
-          <a 
-            href="#details" 
-            class="inline-flex items-center gap-2 font-bold text-dark/80 dark:text-light/80 hover:text-main dark:hover:text-main text-sm group/btn"
-          >
-            <span>{{ 'landing_page_meals_section_card_breakfast_btn_label' | transloco }}</span>
-            <div class="w-7 h-7 rounded-full bg-main text-white flex items-center justify-center shadow-md transition-transform duration-300 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1">
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke-width="3" 
-                stroke="currentColor" 
-                class="w-3.5 h-3.5 rtl:rotate-180">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Lunch Card -->
-      <div class="group rounded-[2.5rem] bg-light dark:bg-dark border border-black/5 dark:border-white/10 overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-        <div class="h-64 sm:h-72 overflow-hidden relative">
-          <img 
-            src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop" 
-            alt="Lunch Meal" 
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
-        </div>
-        <div class="p-6 sm:p-8 space-y-4">
-          <h3 class="text-xl font-extrabold text-dark dark:text-light group-hover:text-main transition-colors duration-300">
-            {{ 'landing_page_meals_section_card_lunch_title_text' | transloco }}
-          </h3>
-          <a 
-            href="#details" 
-            class="inline-flex items-center gap-2 font-bold text-dark/80 dark:text-light/80 hover:text-main dark:hover:text-main text-sm group/btn"
-          >
-            <span>{{ 'landing_page_meals_section_card_lunch_btn_label' | transloco }}</span>
-            <div class="w-7 h-7 rounded-full bg-main text-white flex items-center justify-center shadow-md transition-transform duration-300 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1">
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke-width="3" 
-                stroke="currentColor" 
-                class="w-3.5 h-3.5 rtl:rotate-180">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Dinner Card -->
-      <div class="group rounded-[2.5rem] bg-light dark:bg-dark border border-black/5 dark:border-white/10 overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-        <div class="h-64 sm:h-72 overflow-hidden relative">
-          <img 
-            src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=600&auto=format&fit=crop" 
-            alt="Dinner Meal" 
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
-        </div>
-        <div class="p-6 sm:p-8 space-y-4">
-          <h3 class="text-xl font-extrabold text-dark dark:text-light group-hover:text-main transition-colors duration-300">
-            {{ 'landing_page_meals_section_card_dinner_title_text' | transloco }}
-          </h3>
-          <a 
-            href="#details" 
-            class="inline-flex items-center gap-2 font-bold text-dark/80 dark:text-light/80 hover:text-main dark:hover:text-main text-sm group/btn"
-          >
-            <span>{{ 'landing_page_meals_section_card_dinner_btn_label' | transloco }}</span>
-            <div class="w-7 h-7 rounded-full bg-main text-white flex items-center justify-center shadow-md transition-transform duration-300 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1">
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                stroke-width="3" 
-                stroke="currentColor" 
-                class="w-3.5 h-3.5 rtl:rotate-180">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </div>
-          </a>
-        </div>
-      </div>
-
+      @for (plan of plans; track plan.titleKey) {
+        <!-- Meal Plan Card -->
+        <lib-shared-card
+          [cardTitle]="plan.titleKey | transloco"
+          [cardImage]="plan.image"
+          [cardButton]="button" />
+      }
     </div>
   </div>
 
-  <!-- Plus Scrolling Marquee Banner -->
-  <div class="w-full bg-main py-4 mt-20 overflow-hidden select-none border-y border-white/10 shadow-md">
-    <div class="marquee-container">
-      <div class="marquee-content text-white font-extrabold text-lg sm:text-xl tracking-[0.2em] uppercase">
-        <span>
-          CLASSES + OUTDOOR & ONLINE TRAINERS + PERSONAL TRAINING + LIVE CLASSES + PERSONAL TRAINERS + OUTDOOR & ONLINE TRAINERS + PERSONAL TRAINING
-        </span>
-        <!-- Duplicated content for seamless looping -->
-        <span>
-          CLASSES + OUTDOOR & ONLINE TRAINERS + PERSONAL TRAINING + LIVE CLASSES + PERSONAL TRAINERS + OUTDOOR & ONLINE TRAINERS + PERSONAL TRAINING
-        </span>
-      </div>
-    </div>
-  </div>
+  <div
+    class="absolute top-20 inset-x-0 h-3/5 w-full bg-white/50 backdrop-blur-lg z-1"></div>
 
+  <div
+    class="absolute top-0 inset-x-0 h-full w-full bg-[url('assets/images/fitness-class-bg.jpg')] bg-no-repeat bg-cover"></div>
+
+  <!-- Scrolling Marquee Banner -->
+  <app-scrolling-marquee-banner />
 </section>
+
+<ng-template #button>
+  <app-button
+    type="link"
+    [routerLink]="['/']"
+    [buttonSpacing]="'none'"
+    [buttonStyle]="'none'">
+    {{ 'landing_page_meals_section_card_breakfast_btn_label' | transloco }}
+  </app-button>
+</ng-template>

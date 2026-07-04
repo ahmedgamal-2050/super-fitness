@@ -7,6 +7,7 @@ import {
 import { TranslocoPipe } from '@jsverse/transloco';
 import { SharedCard } from '@org/shared-components';
 import { Button } from '../../../../../shared/components/button/button';
+import { LandingSectionTitle } from '../../../../../shared/components/landing-section-title/landing-section-title';
 
 interface WorkoutCard {
   titleKey: string;
@@ -18,7 +19,7 @@ interface WorkoutCard {
 @Component({
   selector: 'app-upcoming-workouts',
   standalone: true,
-  imports: [TranslocoPipe, SharedCard, Button],
+  imports: [TranslocoPipe, SharedCard, Button, LandingSectionTitle],
   templateUrl: './upcoming-workouts.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
