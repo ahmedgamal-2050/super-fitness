@@ -17,15 +17,8 @@
       </h2>
     </div>
 
-    <!-- 3 Meal Plan Cards Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-      @for (plan of plans; track plan.titleKey) {
-        <!-- Meal Plan Card -->
-        <lib-shared-card
-          [cardTitle]="plan.titleKey | transloco"
-          [cardImage]="plan.image"
-          [cardButton]="button" />
-      }
+    <div class="mt-12">
+      <lib-custom-carousel [items]="mealCategoryList()" [cardButton]="button" />
     </div>
   </div>
 

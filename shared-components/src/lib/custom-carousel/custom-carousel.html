@@ -3,7 +3,7 @@
     @for (card of items(); track $index) {
     <swiper-slide>
       <lib-shared-card
-        [cardTitle]="card.title"
+        [cardTitle]="card.name"
         [cardImage]="card.image"
         [cardButton]="cardButton()" />
     </swiper-slide>
