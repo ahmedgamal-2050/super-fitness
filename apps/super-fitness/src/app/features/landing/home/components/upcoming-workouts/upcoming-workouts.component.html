@@ -39,7 +39,7 @@
       @if (muscleList().length) {
         <lib-custom-carousel
           [items]="muscleList()"
-          [rows]="1"
+          [rows]="carouselRows()"
           [slidesPerView]="3"
           [cardButton]="button" />
       } @else {

@@ -7,7 +7,6 @@ import {
   signal,
 } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { ScrollingMarqueeBanner } from '../../../../../shared/components/scrolling-marquee-banner/scrolling-marquee-banner';
 import { LandingSectionTitle } from '../../../../../shared/components/landing-section-title/landing-section-title';
 import { CustomCarousel } from '@org/shared-components';
 import { Button } from '../../../../../shared/components/button/button';
@@ -22,13 +21,7 @@ import {
 @Component({
   selector: 'app-nutritional-plans',
   standalone: true,
-  imports: [
-    TranslocoPipe,
-    ScrollingMarqueeBanner,
-    LandingSectionTitle,
-    Button,
-    CustomCarousel,
-  ],
+  imports: [TranslocoPipe, LandingSectionTitle, Button, CustomCarousel],
   templateUrl: './nutritional-plans.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

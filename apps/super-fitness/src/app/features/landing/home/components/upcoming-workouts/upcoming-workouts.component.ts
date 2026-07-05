@@ -5,6 +5,7 @@ import {
   OnInit,
   inject,
   DestroyRef,
+  input,
 } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { CustomCarousel } from '@org/shared-components';
@@ -30,6 +31,8 @@ import { switchMap } from 'rxjs';
 export class UpcomingWorkoutsComponent implements OnInit {
   readonly muscleService = inject(MuscleService);
   readonly destroyRef = inject(DestroyRef);
+
+  carouselRows = input<number>(1);
 
   categories = signal<MuscleGroup[]>([]);
 
