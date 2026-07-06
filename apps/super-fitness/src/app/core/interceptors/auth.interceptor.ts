@@ -1,20 +1,25 @@
 import { APP_STORAGE } from './../../shared/constants/app-storage';
-import { HttpInterceptorFn } from '@angular/common/http';
+import { HttpHeaders, HttpInterceptorFn } from '@angular/common/http';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   // Get token from localStorage
   const token = localStorage.getItem(APP_STORAGE.token) ?? '';
 
+  let apiHeader = new HttpHeaders({
+    'Accept-Language': localStorage.getItem(APP_STORAGE.language) ?? 'en',
+  });
   if (token) {
-    const cloned = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`,
-        token: token,
-        'Accept-Language': localStorage.getItem(APP_STORAGE.language) ?? 'en',
-      },
-    });
-    return next(cloned);
+    apiHeader = apiHeader
+      .set('Authorization', `Bearer ${token}`)
+      .set('token', token)
+      .set(
+        'Accept-Language',
+        localStorage.getItem(APP_STORAGE.language) ?? 'en'
+      );
   }
 
-  return next(req);
+  const cloned = req.clone({
+    headers: apiHeader,
+  });
+  return next(cloned);
 };

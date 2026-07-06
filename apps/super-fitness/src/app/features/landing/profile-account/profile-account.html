@@ -26,8 +26,7 @@
     </div>
 
     <!-- Actions/Settings Grid -->
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
       <!-- Change Password -->
       <app-profile-action-card
         [label]="'profile_change_password' | transloco"
@@ -87,7 +86,7 @@
 
       <!-- Logout (Centered) -->
       <app-profile-action-card
-        class="sm:col-span-2 md:col-span-1 md:col-start-2"
+        class="col-span-1 md:col-start-2"
         [label]="'profile_logout' | transloco"
         [isDestructive]="true"
         (cardClick)="logout()">

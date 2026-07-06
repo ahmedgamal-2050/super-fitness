@@ -1,5 +1,5 @@
-import { Component, computed, inject } from '@angular/core';
-import { TranslocoPipe } from '@jsverse/transloco';
+import { Component, computed, inject, signal } from '@angular/core';
+import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import {
   LucideRefreshCw,
   LucideGlobe,
@@ -12,6 +12,7 @@ import {
 import { ProfileColumn } from './components/profile-column/profile-column';
 import { ProfileActionCard } from './components/profile-action-card/profile-action-card';
 import { ThemeService } from '../../../shared/services/theme/theme';
+import { APP_STORAGE } from '../../../shared/constants/app-storage';
 
 @Component({
   selector: 'app-profile-account',
@@ -31,6 +32,8 @@ import { ThemeService } from '../../../shared/services/theme/theme';
 })
 export class ProfileAccount {
   readonly themeService = inject(ThemeService);
+  translocoService = inject(TranslocoService);
+  lang = signal<string>(this.translocoService.getActiveLang());
 
   isDarkTheme = computed<boolean>(() => this.themeService.isDarkTheme());
 
@@ -51,7 +54,15 @@ export class ProfileAccount {
   }
 
   selectLanguage() {
-    console.log('Select Language clicked');
+    const newLang = this.lang() === 'en' ? 'ar' : 'en';
+    this.translocoService.setActiveLang(newLang);
+    this.lang.set(newLang);
+    if (newLang === 'ar') {
+      document.documentElement.dir = 'rtl';
+    } else {
+      document.documentElement.dir = 'ltr';
+    }
+    localStorage.setItem(APP_STORAGE.language, newLang);
   }
 
   toggleTheme() {
