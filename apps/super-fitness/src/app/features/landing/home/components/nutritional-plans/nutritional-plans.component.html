@@ -1,33 +1,8 @@
-<section id="healthy" class="relative bg-white dark:bg-dark">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-2">
-    <!-- Section Title -->
-    <div class="text-center max-w-3xl mx-auto space-y-4">
-      <app-landing-section-title
-        type="healthy"
-        [isCenter]="true"
-        title="landing_page_meals_section_subtitle_label" />
-
-      <h2
-        class="text-3xl sm:text-4xl font-bold text-dark dark:text-light leading-tight uppercase">
-        {{ 'landing_page_meals_section_heading_main_text' | transloco }}
-        <span class="text-main">
-          {{ 'landing_page_meals_section_heading_highlight_text' | transloco }}
-        </span>
-        {{ 'landing_page_meals_section_heading_suffix_text' | transloco }}
-      </h2>
-    </div>
-
-    <div class="mt-12">
-      <lib-custom-carousel [items]="mealCategoryList()" [cardButton]="button" />
-    </div>
+<app-healthy-wrapper>
+  <div class="mt-12">
+    <lib-custom-carousel [items]="mealCategoryList()" [cardButton]="button" />
   </div>
-
-  <div
-    class="absolute top-20 inset-x-0 h-3/5 w-full bg-white/50 backdrop-blur-lg z-1"></div>
-
-  <div
-    class="absolute top-0 inset-x-0 h-full w-full bg-[url('assets/images/fitness-class-bg.jpg')] bg-no-repeat bg-cover"></div>
-</section>
+</app-healthy-wrapper>
 
 <ng-template #button>
   <app-button

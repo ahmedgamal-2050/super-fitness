@@ -37,3 +37,23 @@ export interface MealCategory {
   image: string;
   description: string;
 }
+
+export interface MealListApiResponse {
+  meals: MealApi[];
+}
+
+export interface MealApi {
+  strMeal: string;
+  strMealThumb: string;
+  idMeal: string;
+  strArea: string;
+  strCountry: string;
+}
+
+export interface Meal {
+  _id: string;
+  name: string;
+  image: string;
+  country: string;
+  area: string;
+}

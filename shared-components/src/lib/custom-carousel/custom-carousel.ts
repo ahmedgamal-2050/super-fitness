@@ -26,7 +26,6 @@ export class CustomCarousel {
   slidesPerView = input<number>(3);
   spaceBetween = input<number>(20);
   cardButton = input<TemplateRef<unknown> | null>(null);
-  breakpoints = input<any | null>(null);
 
   swiperRef = viewChild<ElementRef>('swiper');
 
@@ -91,7 +90,7 @@ export class CustomCarousel {
           delay: 3000,
           disableOnInteraction: false,
         },
-        breakpoints: this.breakpoints() || defaultBreakpoints,
+        breakpoints: defaultBreakpoints,
       });
 
       swiper.initialize();

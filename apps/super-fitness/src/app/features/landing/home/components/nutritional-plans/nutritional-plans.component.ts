@@ -7,7 +7,6 @@ import {
   signal,
 } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { LandingSectionTitle } from '../../../../../shared/components/landing-section-title/landing-section-title';
 import { CustomCarousel } from '@org/shared-components';
 import { Button } from '../../../../../shared/components/button/button';
 import { MealService } from '../../services/meal/meal.service';
@@ -17,11 +16,12 @@ import {
   MealCategoryApi,
   MealCategoryApiResponse,
 } from '../../home.model';
+import { HealthyWrapper } from '../healthy-wrapper/healthy-wrapper';
 
 @Component({
   selector: 'app-nutritional-plans',
   standalone: true,
-  imports: [TranslocoPipe, LandingSectionTitle, Button, CustomCarousel],
+  imports: [HealthyWrapper, Button, CustomCarousel, TranslocoPipe],
   templateUrl: './nutritional-plans.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -35,9 +35,7 @@ export class UpcomingWorkoutsComponent implements OnInit {
   carouselRows = input<number>(1);
 
   categories = signal<MuscleGroup[]>([]);
-
   muscleList = signal<Muscle[]>([]);
-
   selectedCategoryId = signal<string>('');
 
   ngOnInit(): void {
