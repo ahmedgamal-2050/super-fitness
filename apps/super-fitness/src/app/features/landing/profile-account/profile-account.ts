@@ -13,6 +13,7 @@ import { ProfileColumn } from './components/profile-column/profile-column';
 import { ProfileActionCard } from './components/profile-action-card/profile-action-card';
 import { ThemeService } from '../../../shared/services/theme/theme';
 import { APP_STORAGE } from '../../../shared/constants/app-storage';
+import { ProfilePicture } from './components/profile-picture/profile-picture';
 
 @Component({
   selector: 'app-profile-account',
@@ -27,6 +28,7 @@ import { APP_STORAGE } from '../../../shared/constants/app-storage';
     LucideLogOut,
     ProfileColumn,
     ProfileActionCard,
+    ProfilePicture,
   ],
   templateUrl: './profile-account.html',
 })

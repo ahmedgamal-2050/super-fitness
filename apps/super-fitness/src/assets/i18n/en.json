@@ -140,5 +140,7 @@
   "profile_security": "Security",
   "profile_privacy_policy": "Privacy Policy",
   "profile_help": "Help",
-  "profile_logout": "Logout"
+  "profile_logout": "Logout",
+  "profile_upload_photo": "Upload Photo",
+  "profile_upload_photo_hint": "You can upload a .jpg, .png, or .gif photo with max size of 5MB."
 }

@@ -140,5 +140,7 @@
   "profile_security": "الأمان",
   "profile_privacy_policy": "سياسة الخصوصية",
   "profile_help": "المساعدة",
-  "profile_logout": "تسجيل الخروج"
+  "profile_logout": "تسجيل الخروج",
+  "profile_upload_photo": "رفع صورة",
+  "profile_upload_photo_hint": "يمكنك رفع صورة بصيغة .jpg أو .png أو .gif بحد أقصى ٥ ميجا بايت"
 }
