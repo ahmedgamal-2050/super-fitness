@@ -1,0 +1,35 @@
+<div class="flex flex-col items-center gap-4 mb-20">
+  <label for="photoInput" class="relative cursor-pointer block shrink-0">
+    @if (previewUrl()) {
+    <img
+      [src]="previewUrl()!"
+      alt="Profile"
+      class="size-32 rounded-full object-cover" />
+    } @else {
+    <div class="size-32 rounded-full bg-main flex items-center justify-center">
+      <svg icon lucideUser class="size-12 text-dark dark:text-light"></svg>
+    </div>
+    }
+    <span
+      class="absolute bottom-0 right-0 bg-main rounded-full p-0.5 border border-light dark:border-dark">
+      <svg icon lucidePlus class="size-4 text-dark dark:text-light"></svg>
+    </span>
+
+    <input
+      id="photoInput"
+      type="file"
+      accept=".jpg,.jpeg,.png,.gif"
+      class="hidden"
+      (change)="onPhotoSelected($event)" />
+  </label>
+
+  <div class="text-center">
+    <p class="font-semibold text-dark dark:text-light">
+      {{ 'profile_upload_photo' | transloco }}
+    </p>
+
+    <p class="text-sm text-dark dark:text-light mt-1">
+      {{ 'profile_upload_photo_hint' | transloco }}
+    </p>
+  </div>
+</div>

@@ -2,7 +2,10 @@
   <swiper-container #swiper init="false">
     @for (card of items(); track $index) {
     <swiper-slide>
-      <lib-shared-card [cardTitle]="card.title" />
+      <lib-shared-card
+        [cardTitle]="card.name"
+        [cardImage]="card.image"
+        [cardButton]="cardButton()" />
     </swiper-slide>
     }
   </swiper-container>

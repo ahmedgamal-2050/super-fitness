@@ -2,8 +2,9 @@ export const APP_ROUTES = {
   LANDING: {
     ROOT: 'landing',
     HOME: 'home',
-    CONTACT: 'contact',
     ABOUT: 'about',
+    CLASSES: 'classes',
+    HEALTHY: 'healthy',
     PROFILE: 'profile',
   },
   AUTH: {
