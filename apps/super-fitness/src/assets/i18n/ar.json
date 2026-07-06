@@ -124,5 +124,21 @@
   "landing_page_footer_section_hours_weekdays_text": "الإثنين - الجمعة: ٨:٠٠ ص - ١٠:٠٠ م",
   "landing_page_footer_section_hours_weekends_text": "السبت - الأحد: ٨:٠٠ ص - ٨:٠٠ م",
   "landing_page_footer_section_col_location_title_text": "موقعنا",
-  "landing_page_footer_section_address_value_text": "2715 Ash Dr. San Jose, South Dakota 83475"
+  "landing_page_footer_section_address_value_text": "2715 Ash Dr. San Jose, South Dakota 83475",
+
+  "profile_your_goal": "هدفك",
+  "profile_tap_to_change": "اضغط للتغيير",
+  "profile_lose_weight": "خسارة الوزن",
+  "profile_level": "المستوى",
+  "profile_beginner": "مبتدئ",
+  "profile_weight": "الوزن",
+  "profile_90_kg": "٩٠ كجم",
+  "profile_change_password": "تغيير كلمة المرور",
+  "profile_select_language": "اختر اللغة",
+  "profile_english": "الانجليزية",
+  "profile_mood_light": "الوضع (مضيء)",
+  "profile_security": "الأمان",
+  "profile_privacy_policy": "سياسة الخصوصية",
+  "profile_help": "المساعدة",
+  "profile_logout": "تسجيل الخروج"
 }

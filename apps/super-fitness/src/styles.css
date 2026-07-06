@@ -75,24 +75,9 @@ button {
   }
 }
 
-/* Image grid styles */
-.collage-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1rem;
-}
-
-.collage-item-1 {
-  grid-column: span 6;
-  grid-row: span 2;
-}
-
-.collage-item-2 {
-  grid-column: span 6;
-  grid-row: span 1;
-}
-
-.collage-item-3 {
-  grid-column: span 6;
-  grid-row: span 1;
+:has(.no-footer) {
+  app-footer,
+  app-scrolling-marquee-banner {
+    display: none;
+  }
 }

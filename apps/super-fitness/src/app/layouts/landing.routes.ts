@@ -25,6 +25,13 @@ export const landingRoutes: Route[] = [
       import('../features/landing/healthy/healthy').then(m => m.Healthy),
   },
   {
+    path: APP_ROUTES.LANDING.PROFILE,
+    loadComponent: () =>
+      import('../features/landing/profile-account/profile-account').then(
+        m => m.ProfileAccount
+      ),
+  },
+  {
     path: '',
     redirectTo: APP_ROUTES.LANDING.HOME,
     pathMatch: 'full',
