@@ -46,7 +46,10 @@
           </app-button>
 
           <!-- Explore More -->
-          <app-button type="link" [routerLink]="['/']" [isPrimary]="false">
+          <app-button
+            type="link"
+            [routerLink]="['/']"
+            [buttonStyle]="'outline'">
             {{ 'landing_page_hero_section_cta_video_label' | transloco }}
           </app-button>
         </div>

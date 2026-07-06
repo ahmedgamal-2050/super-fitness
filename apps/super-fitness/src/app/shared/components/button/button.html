@@ -15,9 +15,15 @@
   <ng-content />
 
   <div
-    class="absolute -inset-e-6 size-9 border-2 border-white bg-main flex items-center justify-center rounded-full"
-    [class.top-0]="!isLargeSpacing()"
-    [class.top-2]="isLargeSpacing()">
-    <svg lucideArrowUpRight class="text-white size-6 rtl:rotate-270"></svg>
+    class="absolute -inset-e-6 size-9 bg-main flex items-center justify-center rounded-full"
+    [class.border-2]="buttonSpacing() !== 'none'"
+    [class.border-white]="buttonSpacing() !== 'none'"
+    [class.top-0]="buttonSpacing() === 'small'"
+    [class.top-2]="buttonSpacing() === 'large'">
+    <svg
+      lucideArrowUpRight
+      class="size-6 rtl:rotate-270"
+      [class.text-white]="buttonSpacing() !== 'none'"
+      [class.text-dark]="buttonSpacing() === 'none'"></svg>
   </div>
 </ng-template>

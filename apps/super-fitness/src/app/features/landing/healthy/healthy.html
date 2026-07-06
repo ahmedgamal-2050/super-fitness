@@ -1,0 +1,45 @@
+<div class="mt-20">
+  <app-healthy-wrapper>
+    <!-- Filter Category Tabs -->
+    <div class="flex flex-wrap justify-center items-center my-8 md:my-12">
+      @for (mealCategory of mealCategoryList(); track mealCategory._id; let
+      index = $index) {
+      <button
+        (click)="getMealListByCategoryName(mealCategory.name)"
+        [class]="
+            selectedCategoryName() === mealCategory.name
+              ? 'bg-main text-white px-6 py-2 rounded-full font-bold shadow-lg shadow-main/30'
+              : 'text-dark dark:text-white px-6 py-2 rounded-full font-semibold'
+          ">
+        {{ mealCategory.name }}
+      </button>
+      }
+    </div>
+
+    <!-- Cards Slider -->
+    <div class="pt-4">
+      @if (mealList().length) {
+      <lib-custom-carousel
+        [items]="mealList()"
+        [rows]="2"
+        [slidesPerView]="3"
+        [cardButton]="button" />
+      } @else {
+      <div
+        class="text-center text-dark dark:text-white text-2xl font-bold col-span-3 h-100 flex items-center justify-center pb-32">
+        {{ 'landing_page_meals_section_no_meal_found_label' | transloco }}
+      </div>
+      }
+    </div>
+  </app-healthy-wrapper>
+</div>
+
+<ng-template #button>
+  <app-button
+    type="link"
+    [routerLink]="['/']"
+    [buttonSpacing]="'none'"
+    [buttonStyle]="'none'">
+    {{ 'landing_page_meals_section_card_breakfast_btn_label' | transloco }}
+  </app-button>
+</ng-template>

@@ -2,11 +2,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { HeaderComponent } from '../../shared/components/header/header.component';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from '../../shared/components/footer/footer.component';
+import { ScrollingMarqueeBanner } from '../../shared/components/scrolling-marquee-banner/scrolling-marquee-banner';
 
 @Component({
   selector: 'app-landing-wrapper',
   standalone: true,
-  imports: [HeaderComponent, RouterOutlet, FooterComponent],
+  imports: [
+    HeaderComponent,
+    RouterOutlet,
+    FooterComponent,
+    ScrollingMarqueeBanner,
+  ],
   templateUrl: './landing-wrapper.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

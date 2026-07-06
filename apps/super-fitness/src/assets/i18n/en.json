@@ -90,6 +90,7 @@
   "landing_page_workouts_section_card_personal_btn_label": "Explore",
   "landing_page_workouts_section_card_muscle_title_text": "MUSCLE BUILDUP",
   "landing_page_workouts_section_card_muscle_btn_label": "Explore",
+  "landing_page_workouts_section_no_muscle_found_label": "No muscles found",
 
   "landing_page_why_us_section_subtitle_label": "WHY US",
   "landing_page_why_us_section_heading_main_text": "ELEVATE FITNESS WITH THE",
@@ -113,6 +114,7 @@
   "landing_page_meals_section_card_lunch_btn_label": "Read More",
   "landing_page_meals_section_card_dinner_title_text": "DINNER",
   "landing_page_meals_section_card_dinner_btn_label": "Read More",
+  "landing_page_meals_section_no_meal_found_label": "No meal found",
 
   "landing_page_footer_section_brand_desc_text": "Push harder, go further. Your fitness journey starts today!",
   "landing_page_footer_section_col_contact_title_text": "CONTACT US",
@@ -122,5 +124,23 @@
   "landing_page_footer_section_hours_weekdays_text": "Mon - Fri : 08:00 AM - 10:00 PM",
   "landing_page_footer_section_hours_weekends_text": "Sat - Sun : 08:00 AM - 09:00 PM",
   "landing_page_footer_section_col_location_title_text": "OUR LOCATION",
-  "landing_page_footer_section_address_value_text": "2715 Ash Dr. San Jose, South Dakota 83475"
+  "landing_page_footer_section_address_value_text": "2715 Ash Dr. San Jose, South Dakota 83475",
+
+  "profile_your_goal": "Your Goal",
+  "profile_tap_to_change": "TAP TO CHANGE",
+  "profile_lose_weight": "Lose Weight",
+  "profile_level": "Level",
+  "profile_beginner": "Beginner",
+  "profile_weight": "Weight",
+  "profile_90_kg": "90 Kg",
+  "profile_change_password": "Change Password",
+  "profile_select_language": "Select Language",
+  "profile_english": "English",
+  "profile_mood_light": "Mood (light)",
+  "profile_security": "Security",
+  "profile_privacy_policy": "Privacy Policy",
+  "profile_help": "Help",
+  "profile_logout": "Logout",
+  "profile_upload_photo": "Upload Photo",
+  "profile_upload_photo_hint": "You can upload a .jpg, .png, or .gif photo with max size of 5MB."
 }
