@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, DOCUMENT, inject, signal } from '@angular/core';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import {
   LucideRefreshCw,
@@ -34,7 +34,9 @@ import { ProfilePicture } from './components/profile-picture/profile-picture';
 })
 export class ProfileAccount {
   readonly themeService = inject(ThemeService);
-  translocoService = inject(TranslocoService);
+  readonly translocoService = inject(TranslocoService);
+  readonly documentRef = inject(DOCUMENT);
+
   lang = signal<string>(this.translocoService.getActiveLang());
 
   isDarkTheme = computed<boolean>(() => this.themeService.isDarkTheme());
@@ -60,9 +62,9 @@ export class ProfileAccount {
     this.translocoService.setActiveLang(newLang);
     this.lang.set(newLang);
     if (newLang === 'ar') {
-      document.documentElement.dir = 'rtl';
+      this.documentRef.documentElement.dir = 'rtl';
     } else {
-      document.documentElement.dir = 'ltr';
+      this.documentRef.documentElement.dir = 'ltr';
     }
     localStorage.setItem(APP_STORAGE.language, newLang);
   }
