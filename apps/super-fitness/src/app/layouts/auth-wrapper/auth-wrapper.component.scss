@@ -1,0 +1,4 @@
+.auth-outlet-shell > :not(router-outlet) {
+  display: block;
+  width: 100%;
+}

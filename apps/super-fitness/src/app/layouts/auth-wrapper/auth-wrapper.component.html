@@ -1,6 +1,6 @@
 <section class="h-screen bg-dark/60 relative">
   <div
-    class="absolute top-0 inset-x-0 h-screen bg-[url(/assets/images/auth-bg.png)] bg-cover bg-center blur-[86px] z-0"></div>
+    class="absolute top-0 inset-x-0 min-h-screen bg-[url(/assets/images/auth-bg.png)] bg-cover bg-center blur-[86px] z-0"></div>
   <div class="grid grid-cols-1 lg:grid-cols-2 h-screen relative z-1">
     <!-- Left side -->
     <div
@@ -23,9 +23,11 @@
     <!-- Right side -->
     <div class="col-span-2 lg:col-span-1">
       <div
-        class="min-h-screen w-full flex flex-col items-center justify-center py-29 px-36.5">
-        <!-- content -->
-        <router-outlet />
+        class="min-h-screen w-full flex flex-col justify-center px-6 py-16 sm:px-10 lg:px-16 xl:px-24"
+      >
+        <div class="auth-outlet-shell w-[90%] mx-auto">
+          <router-outlet />
+        </div>
       </div>
     </div>
   </div>
