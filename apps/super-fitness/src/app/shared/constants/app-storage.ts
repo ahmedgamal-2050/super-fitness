@@ -1,6 +1,7 @@
 export const APP_STORAGE = {
   language: 'language',
   token: 'token',
+  theme: 'theme',
 };
 
 export const APP_LANGUAGES = {

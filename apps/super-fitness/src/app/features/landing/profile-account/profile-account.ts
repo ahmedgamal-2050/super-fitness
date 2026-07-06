@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
 import {
   LucideRefreshCw,
@@ -11,6 +11,7 @@ import {
 } from '@lucide/angular';
 import { ProfileColumn } from './components/profile-column/profile-column';
 import { ProfileActionCard } from './components/profile-action-card/profile-action-card';
+import { ThemeService } from '../../../shared/services/theme/theme';
 
 @Component({
   selector: 'app-profile-account',
@@ -29,7 +30,9 @@ import { ProfileActionCard } from './components/profile-action-card/profile-acti
   templateUrl: './profile-account.html',
 })
 export class ProfileAccount {
-  isDarkTheme = signal<boolean>(false);
+  readonly themeService = inject(ThemeService);
+
+  isDarkTheme = computed<boolean>(() => this.themeService.isDarkTheme());
 
   changeGoal() {
     console.log('Change Goal clicked');
@@ -52,7 +55,7 @@ export class ProfileAccount {
   }
 
   toggleTheme() {
-    console.log('Select Theme clicked');
+    this.themeService.toggleTheme();
   }
 
   viewSecurity() {
