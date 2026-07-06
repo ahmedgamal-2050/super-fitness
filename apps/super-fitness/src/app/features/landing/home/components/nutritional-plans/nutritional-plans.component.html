@@ -1,0 +1,15 @@
+<app-healthy-wrapper>
+  <div class="mt-12">
+    <lib-custom-carousel [items]="mealCategoryList()" [cardButton]="button" />
+  </div>
+</app-healthy-wrapper>
+
+<ng-template #button>
+  <app-button
+    type="link"
+    [routerLink]="['/']"
+    [buttonSpacing]="'none'"
+    [buttonStyle]="'none'">
+    {{ 'landing_page_meals_section_card_breakfast_btn_label' | transloco }}
+  </app-button>
+</ng-template>

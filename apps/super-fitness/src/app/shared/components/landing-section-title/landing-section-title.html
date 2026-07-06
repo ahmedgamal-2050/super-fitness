@@ -1,4 +1,6 @@
-<div class="flex gap-4 items-center relative">
+<div
+  class="flex gap-4 items-center relative"
+  [class.justify-center]="isCenter()">
   <svg
     lucideDumbbell
     strokeWidth="1.5"
@@ -8,7 +10,10 @@
     {{ title() | transloco }}
   </span>
 
-  <div class="w-fit absolute bottom-2 inset-s-0 z-1">
+  <div
+    class="w-fit absolute bottom-2 inset-s-0 z-1"
+    [class.inset-s-[50%]]="isCenter()"
+    [class.-translate-x-[50%]]="isCenter()">
     @if (type() === 'why-us') {
     <img
       src="/assets/images/why-us-gradient-outline-text.png"

@@ -1,0 +1,71 @@
+<section
+  id="classes"
+  class="relative py-16 dark:text-light text-dark overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-2">
+    <!-- Section Title -->
+    <div class="text-center max-w-3xl mx-auto space-y-4">
+      <app-landing-section-title
+        type="workouts"
+        [isCenter]="true"
+        title="landing_page_why_us_section_subtitle_label" />
+
+      <h2 class="text-3xl sm:text-4xl font-bold uppercase">
+        {{ 'landing_page_workouts_section_heading_main_text' | transloco }}
+        <span class="text-main">
+          {{
+            'landing_page_workouts_section_heading_highlight_text' | transloco
+          }}
+        </span>
+      </h2>
+    </div>
+
+    <!-- Filter Category Tabs -->
+    <div class="flex flex-wrap justify-center items-center my-8 md:my-12">
+      @for (cat of categories(); track cat._id; let index = $index) {
+        <button
+          (click)="getMusclesListByGroupId(cat._id)"
+          [class]="
+            selectedCategoryId() === cat._id
+              ? 'bg-main text-white px-6 py-2 rounded-full font-bold shadow-lg shadow-main/30'
+              : 'text-dark dark:text-white px-6 py-2 rounded-full font-semibold'
+          ">
+          {{ cat.name }}
+        </button>
+      }
+    </div>
+
+    <!-- Cards Slider -->
+    <div class="pt-4">
+      @if (muscleList().length) {
+        <lib-custom-carousel
+          [items]="muscleList()"
+          [rows]="carouselRows()"
+          [slidesPerView]="3"
+          [cardButton]="button" />
+      } @else {
+        <div
+          class="text-center text-dark dark:text-white text-2xl font-bold col-span-3 h-100 flex items-center justify-center pb-32">
+          {{
+            'landing_page_workouts_section_no_muscle_found_label' | transloco
+          }}
+        </div>
+      }
+    </div>
+  </div>
+
+  <div
+    class="absolute top-20 inset-x-0 h-3/5 w-full bg-white/50 dark:bg-dark/70 backdrop-blur-lg z-1"></div>
+
+  <div
+    class="absolute top-0 inset-x-0 h-full w-full bg-[url('assets/images/healthy-bg.jpg')] bg-no-repeat bg-cover"></div>
+</section>
+
+<ng-template #button>
+  <app-button
+    type="link"
+    [routerLink]="['/workouts']"
+    [buttonSpacing]="'none'"
+    [buttonStyle]="'none'">
+    {{ 'landing_page_hero_section_cta_start_label' | transloco }}
+  </app-button>
+</ng-template>

@@ -19,19 +19,33 @@ export class Button {
   type = input.required<'button' | 'link'>();
   routerLink = input<string | string[]>(['/']);
   buttonClass = input<string>(''); // to customize button class
-  isPrimary = input<boolean>(true);
-  isLargeSpacing = input<boolean>(true);
   buttonClick = output<void>();
+  buttonSpacing = input<'small' | 'large' | 'none'>('large');
+  buttonStyle = input<'solid' | 'outline' | 'none'>('solid');
 
   defaultClass = computed<string>(() => {
     let baseClass =
-      'rounded-full font-bold flex items-center justify-center gap-2 text-base relative';
+      'rounded-full font-bold inline-flex items-center justify-center gap-2 text-base relative';
 
-    const colorClass = this.isPrimary()
-      ? ' bg-main text-white'
-      : ' bg-transparent text-main border border-main';
+    let colorClass = ' bg-main text-white';
+    switch (this.buttonStyle()) {
+      case 'outline':
+        colorClass = ' bg-transparent text-main border border-main';
+        break;
+      case 'none':
+        colorClass = ' bg-transparent text-main';
+        break;
+    }
 
-    const spacingClass = this.isLargeSpacing() ? ' px-8 py-4' : ' px-4 py-2';
+    let spacingClass = ' px-8 py-4';
+    switch (this.buttonSpacing()) {
+      case 'small':
+        spacingClass = ' px-4 py-2';
+        break;
+      case 'none':
+        spacingClass = ' pe-6';
+        break;
+    }
 
     baseClass += colorClass + spacingClass;
 
