@@ -1,0 +1,27 @@
+<div class="fixed bottom-6 end-6 z-50 flex flex-col items-end gap-3">
+  @if (isOpen()) {
+  <button
+    type="button"
+    class="rounded-full bg-main text-white text-sm font-semibold px-4 py-2 shadow-lg"
+    (click)="toggle()">
+    {{ 'smart_coach_widget_close_label' | transloco }}
+  </button>
+
+  <div
+    class="w-[75%] rounded-3xl border-2 border-main flex flex-col overflow-hidden shadow-[0px_4px_217.4px_0px_#000000] backdrop-blur-[12.5px]">
+    <app-smart-coach-panel />
+  </div>
+  } @else {
+  <div class="flex flex-col items-center justify-between">
+    <button (click)="toggle()">
+      <img src="assets/images/chat_ai.svg" alt="" />
+    </button>
+    <button
+      type="button"
+      class="rounded-full bg-main text-white text-sm font-semibold px-5 py-2 shadow-lg"
+      (click)="toggle()">
+      {{ 'smart_coach_widget_cta_label' | transloco }}
+    </button>
+  </div>
+  }
+</div>

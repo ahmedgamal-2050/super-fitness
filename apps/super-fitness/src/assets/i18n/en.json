@@ -142,5 +142,13 @@
   "profile_help": "Help",
   "profile_logout": "Logout",
   "profile_upload_photo": "Upload Photo",
-  "profile_upload_photo_hint": "You can upload a .jpg, .png, or .gif photo with max size of 5MB."
+  "profile_upload_photo_hint": "You can upload a .jpg, .png, or .gif photo with max size of 5MB.",
+
+  "smart_coach_widget_cta_label": "Hey Ask Me",
+  "smart_coach_widget_close_label": "Tap To Close",
+  "smart_coach_panel_title": "Smart Coach",
+  "smart_coach_input_placeholder": "Ask Me Any Things",
+  "smart_coach_welcome_message": "Hello How Can I Assist You Today?",
+  "smart_coach_error_message": "Sorry, I couldn't process that right now. Please try again.",
+  "smart_coach_not_configured_message": "Smart Coach isn't fully set up yet. Please add a Gemini API key to enable AI replies."
 }

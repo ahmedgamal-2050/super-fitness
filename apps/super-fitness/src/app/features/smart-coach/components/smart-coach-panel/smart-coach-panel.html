@@ -1,0 +1,28 @@
+<section class="p-8 flex flex-col gap-6">
+  <div class="flex items-center justify-between">
+    <p class="font-bold text-dark dark:text-light">
+      {{ 'smart_coach_panel_title' | transloco }}
+    </p>
+    <lucide-icon [name]="icons.Menu" size="24" class="text-main" />
+  </div>
+
+  <div
+    #messagesContainer
+    class="flex-1 overflow-y-auto flex flex-col gap-3 scroll-smooth">
+    @for (message of chatService.messages(); track message.id) {
+    <app-chat-bubble [message]="message" />
+    }
+  </div>
+
+  <div
+    class="flex items-center gap-2 rounded-2xl border text-dark dark:text-light border-light p-2">
+    <lucide-icon [name]="icons.PenLine" size="18" class="shrink-0 text-main" />
+    <input
+      type="text"
+      class="flex-1 text-sm min-w-0"
+      [value]="draft()"
+      [placeholder]="'smart_coach_input_placeholder' | transloco"
+      (input)="draft.set($any($event.target).value)"
+      (keydown.enter)="onSend()" />
+  </div>
+</section>
