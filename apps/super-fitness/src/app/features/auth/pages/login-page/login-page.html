@@ -1,0 +1,117 @@
+<main class="w-full mx-auto text-light">
+  <header class="mb-8">
+    <p class="text-[18px] text-light/80 mb-2 text-center">Hey There</p>
+    <h1
+      class="text-center text-3xl lg:text-[2.75rem] font-extrabold tracking-wide leading-tight">
+      WELCOME BACK
+    </h1>
+  </header>
+
+  <div
+    class="rounded-4xl border border-[#D3D3D3]/70 bg-dark/50 backdrop-blur-sm px-12 py-8 sm:px-10 sm:py-10">
+    <h2 class="text-center text-[24px] font-normal mb-6">Login</h2>
+
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="submitLoginForm()"
+      class="flex flex-col gap-y-3">
+      <app-custom-form-field>
+        <div class="relative">
+          <lucide-icon
+            [name]="icons.Mail"
+            size="16"
+            class="pointer-events-none absolute left-3 top-1/2 z-10 -translate-y-1/2 text-disabled" />
+          <app-custom-input
+            inputClass="w-full rounded-full text-main focus:border-main border border-[#D3D3D3] bg-[#2f2f2f] py-3.5 pl-12 pr-4 text-light placeholder:text-disabled outline-none"
+            formControlName="email"
+            type="email"
+            placeholder="Email" />
+        </div>
+        <app-input-error-message
+          [control]="loginForm.controls.email"
+          [messages]="emailErrorMessages" />
+      </app-custom-form-field>
+      <app-custom-form-field>
+        <div class="relative">
+          <lucide-icon
+            [name]="icons.Lock"
+            size="16"
+            class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-disabled z-10" />
+          <app-custom-input
+            inputClass="w-full rounded-full text-main focus:border-main border border-[#D3D3D3] bg-[#2f2f2f] py-3.5 pl-12 pr-12 text-light placeholder:text-disabled outline-none"
+            formControlName="password"
+            type="password"
+            placeholder="Password" />
+        </div>
+        <app-input-error-message
+          [control]="loginForm.controls.password"
+          [messages]="passwordErrorMessages" />
+      </app-custom-form-field>
+
+      <div class="flex justify-end -mt-1">
+        <a
+          [routerLink]="['/', authRoutes.ROOT, authRoutes.FORGET_PASSWORD]"
+          class="text-sm text-main hover:underline">
+          Forget Password?
+        </a>
+      </div>
+
+      <div class="flex items-center gap-3 py-1">
+        <span class="h-px flex-1 bg-[#D3D3D3]/50"></span>
+        <span class="text-sm text-disabled">Or</span>
+        <span class="h-px flex-1 bg-[#D3D3D3]/50"></span>
+      </div>
+
+      <div class="flex items-center justify-center gap-4">
+        <app-custom-button
+          type="button"
+          variant="icon"
+          ariaLabel="Login with Facebook">
+          <img
+            [src]="socialIcons.facebook"
+            alt=""
+            class="h-10 w-10 object-contain" />
+        </app-custom-button>
+        <app-custom-button
+          type="button"
+          variant="icon"
+          ariaLabel="Login with Google">
+          <img
+            [src]="socialIcons.google"
+            alt=""
+            class="h-10 w-10 object-contain" />
+        </app-custom-button>
+        <app-custom-button
+          type="button"
+          variant="icon"
+          ariaLabel="Login with Apple">
+          <img
+            [src]="socialIcons.apple"
+            alt=""
+            class="h-10 w-10 object-contain" />
+        </app-custom-button>
+      </div>
+
+      <app-custom-button
+        type="submit"
+        buttonClass="mt-2"
+        [disabled]="loginForm.invalid"
+        [loading]="isLoading()">
+        Login
+      </app-custom-button>
+
+      @if (errorMessage()) {
+      <p class="text-center text-sm text-main">{{ errorMessage() }}</p>
+      }
+
+      <p class="pt-1 text-center text-[16px] text-disabled">
+        Dont Have An Account Yet?
+        <a
+          [routerLink]="['/', authRoutes.ROOT, authRoutes.REGISTER]"
+          class="text-main underline underline-offset-2">
+          Register
+        </a>
+      </p>
+    </form>
+  </div>
+</main>

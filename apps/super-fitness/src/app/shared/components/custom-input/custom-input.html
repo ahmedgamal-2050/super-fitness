@@ -1,0 +1,25 @@
+<div class="relative">
+  <input
+    [class]="inputClass"
+    [id]="inputId"
+    [type]="inputType()"
+    [disabled]="isDisabled()"
+    [value]="value()"
+    [placeholder]="placeholder"
+    [autocomplete]="autocomplete"
+    (input)="onInput($any($event.target).value)"
+    (blur)="onTouched()" />
+
+  @if (type === 'password') {
+  <button
+    type="button"
+    class="absolute text-gray-400 right-3.5 top-1/2 -translate-y-1/2 cursor-pointer bg-transparent border-0 p-0"
+    (click)="onToggle()"
+    (mousedown)="$event.preventDefault()"
+    aria-label="Toggle password visibility">
+    <lucide-icon
+      [name]="showPassword() ? icons.EyeOff : icons.Eye"
+      size="18"></lucide-icon>
+  </button>
+  }
+</div>

@@ -1,0 +1,76 @@
+<main class="w-full mx-auto text-light">
+  <header class="mb-8">
+    <h1
+      class="text-center text-3xl lg:text-[2.75rem] font-extrabold tracking-wide leading-tight">
+      OTP CODE
+    </h1>
+  </header>
+
+  <div
+    class="rounded-4xl border border-[#D3D3D3]/70 bg-dark/50 backdrop-blur-sm px-12 py-8 sm:px-10 sm:py-10">
+    <h2 class="text-center text-lg font-semibold mb-6">
+      Enter Your OTP<br />
+      Check Your Email
+    </h2>
+
+    <form
+      [formGroup]="otpForm"
+      (ngSubmit)="submitOtpForm()"
+      class="flex flex-col gap-y-3">
+      <div
+        class="flex items-center justify-center gap-4 sm:gap-6"
+        formArrayName="digits">
+        @for (digit of otpDigits.controls; track $index; let i = $index) {
+        <input
+          #otpInput
+          [formControlName]="i"
+          type="text"
+          inputmode="numeric"
+          maxlength="1"
+          autocomplete="one-time-code"
+          (input)="onDigitInput(i, $event)"
+          (keydown)="onDigitKeydown(i, $event)"
+          (paste)="onDigitPaste($event)"
+          class="w-10 sm:w-12 bg-transparent text-center text-3xl font-bold text-main outline-none border-b-2 pb-2 transition-colors"
+          [class.border-main]="digit.value"
+          [class.border-light]="!digit.value" />
+        }
+      </div>
+
+      <p class="pt-4 text-center text-sm text-disabled">
+        Didnt Recieve Verification Code?
+        @if (!disableResend()) {
+        <button
+          type="button"
+          (click)="resendOtp()"
+          [disabled]="isResending()"
+          class="ml-1 text-main underline underline-offset-2 cursor-pointer disabled:cursor-not-allowed disabled:opacity-50">
+          {{ isResending() ? 'Sending...' : 'Resend Code?' }}
+        </button>
+        } @if (disableResend()) {
+        <span class="ml-1 text-disabled">
+          (Resend in {{ countdown() }}s)
+        </span>
+        }
+      </p>
+
+      @if (resendSuccess()) {
+      <p class="text-center text-sm text-green-500">
+        OTP has been resent to your email.
+      </p>
+      }
+
+      <app-custom-button
+        type="submit"
+        buttonClass="mt-2"
+        [disabled]="otpForm.invalid"
+        [loading]="isLoading()">
+        Confirm
+      </app-custom-button>
+
+      @if (errorMessage()) {
+      <p class="text-center text-sm text-main">{{ errorMessage() }}</p>
+      }
+    </form>
+  </div>
+</main>

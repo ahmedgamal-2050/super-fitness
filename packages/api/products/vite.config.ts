@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
 
 export default defineConfig(() => ({
   root: __dirname,
   cacheDir: '../../../node_modules/.vite/packages/api/products',
-  plugins: [tsconfigPaths(), nxCopyAssetsPlugin(['*.md'])],
+  plugins: [nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
   test: {
     name: 'products',
     watch: false,
