@@ -14,6 +14,9 @@ import { ProfileActionCard } from './components/profile-action-card/profile-acti
 import { ThemeService } from '../../../shared/services/theme/theme';
 import { APP_STORAGE } from '../../../shared/constants/app-storage';
 import { ProfilePicture } from './components/profile-picture/profile-picture';
+import { APP_ROUTES } from '../../../shared/constants/app-routes';
+import { Router } from '@angular/router';
+import { AuthService } from '../../auth/data-access';
 
 @Component({
   selector: 'app-profile-account',
@@ -35,6 +38,8 @@ import { ProfilePicture } from './components/profile-picture/profile-picture';
 export class ProfileAccount {
   readonly themeService = inject(ThemeService);
   translocoService = inject(TranslocoService);
+  private readonly router = inject(Router);
+  private readonly authService = inject(AuthService);
   lang = signal<string>(this.translocoService.getActiveLang());
 
   isDarkTheme = computed<boolean>(() => this.themeService.isDarkTheme());
@@ -52,7 +57,11 @@ export class ProfileAccount {
   }
 
   changePassword() {
-    console.log('Change Password clicked');
+    void this.router.navigate([
+      '/',
+      APP_ROUTES.LANDING.ROOT,
+      APP_ROUTES.LANDING.CHANGE_PASSWORD,
+    ]);
   }
 
   selectLanguage() {
@@ -84,6 +93,11 @@ export class ProfileAccount {
   }
 
   logout() {
-    console.log('Logout clicked');
+    this.authService.clearToken();
+    void this.router.navigate([
+      '/',
+      APP_ROUTES.LANDING.ROOT,
+      APP_ROUTES.LANDING.HOME,
+    ]);
   }
 }

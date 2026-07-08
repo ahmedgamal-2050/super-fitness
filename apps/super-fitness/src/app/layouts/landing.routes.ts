@@ -32,6 +32,13 @@ export const landingRoutes: Route[] = [
       ),
   },
   {
+    path: APP_ROUTES.LANDING.CHANGE_PASSWORD,
+    loadComponent: () =>
+      import('../features/landing/profile-account/components/change-password/change-password').then(
+        m => m.ChangePasswordPage
+      ),
+  },
+  {
     path: '',
     redirectTo: APP_ROUTES.LANDING.HOME,
     pathMatch: 'full',
