@@ -3,12 +3,9 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { GEMINI_BASE_URL } from '../../../../shared/constants/endpoints';
-import {
-  GEMINI_API_KEY,
-  GEMINI_MODEL,
-  SMART_COACH_SYSTEM_PROMPT,
-} from '../gemini.config';
+import { GEMINI_MODEL, SMART_COACH_SYSTEM_PROMPT } from '../gemini.config';
 import { ChatMessage } from '../models/chat-message.model';
+import { GEMINI_API_KEY } from '../gemini-api-key.local.example';
 
 interface GeminiContentPart {
   text: string;
@@ -31,7 +28,10 @@ interface GeminiGenerateContentResponse {
 export class GeminiService {
   private readonly http = inject(HttpClient);
 
-  generateReply(prompt: string, history: ChatMessage[]): Observable<string | null> {
+  generateReply(
+    prompt: string,
+    history: ChatMessage[]
+  ): Observable<string | null> {
     if (!GEMINI_API_KEY) {
       return of(null);
     }

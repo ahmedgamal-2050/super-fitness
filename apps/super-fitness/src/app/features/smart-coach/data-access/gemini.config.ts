@@ -3,7 +3,6 @@ export const GEMINI_MODEL = 'gemini-2.0-flash';
 // gemini-api-key.local.ts is git-ignored; copy gemini-api-key.local.example.ts
 // to create it and paste your real key there. See that file for why the key
 // still can't be fully secret in a client-side SPA with no backend proxy.
-export { GEMINI_API_KEY } from './gemini-api-key.local';
 
 export const SMART_COACH_SYSTEM_PROMPT =
   'You are Smart Coach, a friendly AI fitness assistant embedded in the Super Fitness gym app. ' +
