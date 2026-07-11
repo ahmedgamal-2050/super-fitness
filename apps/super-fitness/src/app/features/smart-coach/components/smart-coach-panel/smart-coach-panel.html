@@ -20,23 +20,23 @@
     (click)="closeMenu()"></button>
 
   <div
-    class="smart-coach-dropdown-enter absolute top-14 end-6 z-20 w-56 max-h-72 overflow-y-auto rounded-2xl bg-dark/90 backdrop-blur-[15px] shadow-[0_0_10px_rgba(0,0,0,0.35)] p-3 flex flex-col gap-2">
-    <p class="text-light text-sm font-semibold px-1">
+    class="smart-coach-dropdown-enter absolute top-0 left-0 z-20 w-56 max-h-72 overflow-y-auto rounded-[10px] bg-dark/90 backdrop-blur-[15px] shadow-[0_0_10px_rgba(0,0,0,0.35)] px-4 py-6 flex flex-col gap-2">
+    <p class="text-light text-sm font-semibold px-1 mb-6 mx-2">
       {{ 'smart_coach_previous_conversations_title' | transloco }}
     </p>
 
-    @if (previousQuestions().length) { @for (question of previousQuestions();
-    track question.id) {
+    @for (question of [1, 2, 3]; track question) {
     <button
       type="button"
-      class="flex items-center justify-between gap-2 rounded-lg px-2 py-1.5 text-start hover:bg-white/10"
-      (click)="goToQuestion(question.id)">
-      <span class="text-light text-xs truncate">{{ question.text }}</span>
+      class="flex items-center justify-between gap-2 rounded-lg px-2 py-1.5 text-start hover:bg-white/10">
+      <span class="text-light text-xs truncate"
+        >Lorem ipsum dolor sit amet</span
+      >
+      <lucide-icon
+        [name]="icons.ChevronRight"
+        size="16"
+        class="shrink-0 text-main" />
     </button>
-    } } @else {
-    <p class="text-light/70 text-xs px-1">
-      {{ 'smart_coach_previous_conversations_empty' | transloco }}
-    </p>
     }
   </div>
   }

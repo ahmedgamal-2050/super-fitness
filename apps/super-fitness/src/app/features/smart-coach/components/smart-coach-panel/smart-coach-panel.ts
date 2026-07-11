@@ -9,7 +9,13 @@ import {
   viewChild,
 } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { LucideAngularModule, Menu, PenLine, SendHorizontal } from 'lucide-angular';
+import {
+  ChevronRight,
+  LucideAngularModule,
+  Menu,
+  PenLine,
+  SendHorizontal,
+} from 'lucide-angular';
 import { QuickQuestion } from '../../data-access/gemini.config';
 import { SmartCoachService } from '../../data-access/services/smart-coach.service';
 import { ChatBubble } from '../chat-bubble/chat-bubble';
@@ -29,7 +35,7 @@ export class SmartCoachPanel {
 
   draft = signal('');
   isMenuOpen = signal(false);
-  icons = { Menu, PenLine, SendHorizontal };
+  icons = { Menu, PenLine, SendHorizontal, ChevronRight };
 
   readonly previousQuestions = computed(() =>
     this.chatService.messages().filter(message => message.sender === 'user')
