@@ -1,2 +1,5 @@
 <router-outlet />
-<app-smart-coach />
+
+@if (!isAuthRoute) {
+  <app-smart-coach />
+}
