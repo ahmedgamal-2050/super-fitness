@@ -5,4 +5,5 @@ export const ENDPOINTS = {
   MUSCLE_LIST_BY_GROUP_ID: `${BASE_URL}/musclesGroup/{groupId}`,
   MEAL_CATEGORIES: `${SECONDARY_BASE_URL}/categories.php`,
   MEAL_LIST_BY_CATEGORY_NAME: `${SECONDARY_BASE_URL}/filter.php?c={categoryName}`,
+  MEAL_DETAILS: `${SECONDARY_BASE_URL}/lookup.php?i={mealId}`,
 } as const;
