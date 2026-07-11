@@ -7,6 +7,7 @@ import { ChatMessage } from '../../data-access/models/chat-message.model';
   imports: [LucideAngularModule],
   templateUrl: './chat-bubble.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { class: 'block w-full' },
 })
 export class ChatBubble {
   message = input.required<ChatMessage>();

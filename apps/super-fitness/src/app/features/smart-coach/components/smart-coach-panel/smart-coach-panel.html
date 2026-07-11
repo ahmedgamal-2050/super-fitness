@@ -1,21 +1,81 @@
-<section class="p-8 flex flex-col gap-6">
-  <div class="flex items-center justify-between">
+<section class="relative flex-1 min-h-0 p-6 flex flex-col gap-4">
+  <div class="flex items-center justify-between shrink-0">
     <p class="font-bold text-dark dark:text-light">
       {{ 'smart_coach_panel_title' | transloco }}
     </p>
-    <lucide-icon [name]="icons.Menu" size="24" class="text-main" />
+    <button
+      type="button"
+      class="p-1"
+      [attr.aria-expanded]="isMenuOpen()"
+      (click)="toggleMenu()">
+      <lucide-icon [name]="icons.Menu" size="24" class="text-main" />
+    </button>
   </div>
+
+  @if (isMenuOpen()) {
+  <button
+    type="button"
+    class="fixed inset-0 z-10 cursor-default"
+    aria-label="close menu"
+    (click)="closeMenu()"></button>
+
+  <div
+    class="smart-coach-dropdown-enter absolute top-14 end-6 z-20 w-56 max-h-72 overflow-y-auto rounded-2xl bg-dark/90 backdrop-blur-[15px] shadow-[0_0_10px_rgba(0,0,0,0.35)] p-3 flex flex-col gap-2">
+    <p class="text-light text-sm font-semibold px-1">
+      {{ 'smart_coach_previous_conversations_title' | transloco }}
+    </p>
+
+    @if (previousQuestions().length) { @for (question of previousQuestions();
+    track question.id) {
+    <button
+      type="button"
+      class="flex items-center justify-between gap-2 rounded-lg px-2 py-1.5 text-start hover:bg-white/10"
+      (click)="goToQuestion(question.id)">
+      <span class="text-light text-xs truncate">{{ question.text }}</span>
+    </button>
+    } } @else {
+    <p class="text-light/70 text-xs px-1">
+      {{ 'smart_coach_previous_conversations_empty' | transloco }}
+    </p>
+    }
+  </div>
+  }
 
   <div
     #messagesContainer
-    class="flex-1 overflow-y-auto flex flex-col gap-3 scroll-smooth">
+    class="flex-1 min-h-0 overflow-y-auto flex flex-col gap-3 scroll-smooth">
     @for (message of chatService.messages(); track message.id) {
-    <app-chat-bubble [message]="message" />
+    <app-chat-bubble [id]="'msg-' + message.id" [message]="message" />
+    } @if (chatService.isTyping()) {
+    <div class="flex items-center gap-1">
+      <img src="assets/images/image_bot.svg" class="w-12" alt="" />
+      <div
+        class="flex items-center gap-1 rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] rounded-tl-none bg-light dark:bg-[#00000040] backdrop-blur-[15px] shadow-[0_0_10px_rgba(0,0,0,0.25)] px-3 py-3">
+        <span
+          class="smart-coach-typing-dot size-1.5 rounded-full bg-main"></span>
+        <span
+          class="smart-coach-typing-dot size-1.5 rounded-full bg-main [animation-delay:0.15s]"></span>
+        <span
+          class="smart-coach-typing-dot size-1.5 rounded-full bg-main [animation-delay:0.3s]"></span>
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="shrink-0 flex flex-col gap-2 overflow-x-auto pb-1">
+    @for (question of chatService.quickQuestions(); track question.id) {
+    <button
+      type="button"
+      class="shrink-0 whitespace-nowrap rounded-full border border-main text-main text-xs px-3 py-1.5 disabled:opacity-40"
+      [disabled]="chatService.isTyping()"
+      (click)="onQuickQuestion(question)">
+      {{ question.questionKey | transloco }}
+    </button>
     }
   </div>
 
   <div
-    class="flex items-center gap-2 rounded-2xl border text-dark dark:text-light border-light p-2">
+    class="shrink-0 flex items-center gap-2 rounded-2xl border text-dark dark:text-light border-light p-2">
     <lucide-icon [name]="icons.PenLine" size="18" class="shrink-0 text-main" />
     <input
       type="text"
@@ -24,5 +84,12 @@
       [placeholder]="'smart_coach_input_placeholder' | transloco"
       (input)="draft.set($any($event.target).value)"
       (keydown.enter)="onSend()" />
+    <button
+      type="button"
+      class="shrink-0 disabled:opacity-40"
+      [disabled]="!draft().trim() || chatService.isTyping()"
+      (click)="onSend()">
+      <lucide-icon [name]="icons.SendHorizontal" size="18" class="text-main" />
+    </button>
   </div>
 </section>
