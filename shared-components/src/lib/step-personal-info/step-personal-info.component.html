@@ -1,0 +1,71 @@
+<section class="flex flex-col items-center gap-2 w-full px-4 sm:px-0">
+  <!-- Header text -->
+  <p class="text-white font-normal text-sm sm:text-base">Hey There</p>
+  <p class="text-white font-bold text-xl sm:text-2xl mb-2 sm:mb-4">Create An Account</p>
+
+  <!-- Form card -->
+  <form [formGroup]="form"
+    class="w-full sm:w-full lg:border lg:border-disabled rounded-[30px] sm:rounded-[50px] p-5 sm:p-8 flex flex-col justify-center gap-3 sm:gap-4">
+    <p class="text-white font-extrabold text-xl sm:text-2xl text-center">Register</p>
+
+    <!-- Inputs -->
+    <div class="flex flex-col gap-3 sm:gap-4 w-full sm:w-3/4 mx-auto">
+      <sf-input formControlName="firstName" icon="user" placeholder="First Name" />
+      <sf-input formControlName="lastName" icon="user" placeholder="Last Name" />
+      <sf-input formControlName="email" icon="email" placeholder="Email" type="email" />
+
+      <!-- Password -->
+      <div class="flex flex-col gap-1">
+        <sf-input formControlName="password" icon="lock" placeholder="Password" type="password"
+          [error]="passwordError" />
+        @if (passwordError) {
+        <p class="text-red-500 text-xs px-2">
+          Must be 8+ characters with uppercase, lowercase, number &amp; special character (#?!&#64;$%^&amp;*-).
+        </p>
+        }
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="flex flex-col gap-1">
+        <sf-input formControlName="rePassword" icon="lock" placeholder="Confirm Password" type="password"
+          [error]="rePasswordError" />
+        @if (rePasswordError) {
+        <p class="text-red-500 text-xs px-2">{{ rePasswordErrorMessage }}</p>
+        }
+      </div>
+    </div>
+
+    <!-- Forget password -->
+    <div class="text-end -mt-1 w-full sm:w-[85%] mx-auto">
+      <button type="button" class="text-main text-xs sm:text-sm font-semibold hover:underline">
+        Forget Password ?
+      </button>
+    </div>
+
+    <!-- Divider -->
+    <div class="flex items-center m-auto gap-3 my-1 w-3/4 sm:w-1/2">
+      <span class="flex-1 h-px bg-disabled"></span>
+      <span class="text-white text-xs sm:text-sm">Or</span>
+      <span class="flex-1 h-px bg-disabled"></span>
+    </div>
+
+    <!-- Social login -->
+    <div class="flex justify-center gap-4 sm:gap-5">
+      <sf-button variant="social" social="facebook" />
+      <sf-button variant="social" social="google" />
+      <sf-button variant="social" social="apple" />
+    </div>
+
+    <!-- Register button -->
+    <sf-button variant="primary" label="Register" type="submit" class="mt-1 w-full sm:w-3/4 m-auto"
+      [disabled]="form.invalid" (click)="onRegister()" />
+
+    <!-- Login link -->
+    <p class="text-white text-sm sm:text-base font-normal mt-2 sm:mt-3 text-center">
+      Already Have An Account ?
+      <button type="button" class="text-main font-semibold hover:underline ml-1">
+        Login
+      </button>
+    </p>
+  </form>
+</section>
