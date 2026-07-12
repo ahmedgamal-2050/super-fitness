@@ -11,6 +11,7 @@ import {
   LoginRequest,
   LoginResponse,
   ResetPasswordRequest,
+  User,
   VerifyResetCodeRequest,
 } from '../models/auth.models';
 
@@ -55,6 +56,23 @@ export class AuthService {
     );
   }
 
+  getUserProfile(): Observable<Omit<LoginResponse, 'token'>> {
+    return this.http.get<Omit<LoginResponse, 'token'>>(
+      `${BASE_URL}${AuthEndpoint.GET_PROFILE_DATA}`
+    );
+  }
+
+  updateProfilePicture(payload: FormData) {
+    return this.http.put(
+      `${BASE_URL}${AuthEndpoint.UPDATE_PROFILE_PICTURE}`,
+      payload
+    );
+  }
+
+  logout(): Observable<void> {
+    return this.http.get<void>(`${BASE_URL}${AuthEndpoint.LOGOUT}`);
+  }
+
   getToken(): string {
     return this.cookieService.get(APP_STORAGE.token);
   }
@@ -71,5 +89,27 @@ export class AuthService {
       sameSite: 'Lax',
       secure: !isDevMode(),
     });
+  }
+
+  setUserProfileData(profileData: User) {
+    this.cookieService.set(
+      APP_STORAGE.userProfile,
+      JSON.stringify(profileData),
+      {
+        path: '/',
+        sameSite: 'Lax',
+        secure: !isDevMode(),
+      }
+    );
+  }
+
+  getUserProfileData(): User {
+    return JSON.parse(
+      this.cookieService.get(APP_STORAGE.userProfile) || 'null'
+    );
+  }
+
+  clearUserProfileData(): void {
+    this.cookieService.delete(APP_STORAGE.userProfile, '/');
   }
 }
