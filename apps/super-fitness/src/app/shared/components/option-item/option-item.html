@@ -1,0 +1,15 @@
+<button type="button" (click)="selectOption.emit()"
+  class="w-full flex items-center justify-between px-5 py-4 rounded-full border bg-white/10 backdrop-blur-md transition-all duration-300 cursor-pointer"
+  [style.background]="selected() ? 'rgba(255,255,255,.15)' : 'rgba(255,255,255,.10)'"
+  [style.borderColor]="selected() ? '#FF4100' : 'rgba(255,255,255,.2)'">
+  <span class="font-medium text-base transition-colors duration-300" [style.color]="selected() ? '#FF4100' : '#FFFFFF'">
+    {{ label() }}
+  </span>
+
+  <span class="size-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all duration-300"
+    [style.borderColor]="selected() ? '#FF4100' : 'rgba(255,255,255,.5)'">
+    @if (selected()) {
+    <span class="size-2.5 rounded-full" style="background-color: #FF4100;"></span>
+    }
+  </span>
+</button>
