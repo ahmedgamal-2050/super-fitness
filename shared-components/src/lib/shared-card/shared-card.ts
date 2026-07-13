@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { Component, input, TemplateRef } from '@angular/core';
+import { Component, input, output, TemplateRef } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 
@@ -12,5 +12,6 @@ import { CardModule } from 'primeng/card';
 export class SharedCard {
   cardTitle = input<string>();
   cardImage = input<string>();
+  clicked = output<void>();
   cardButton = input<TemplateRef<unknown> | null>(null);
 }

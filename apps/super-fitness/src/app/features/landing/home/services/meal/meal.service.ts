@@ -2,7 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { ENDPOINTS } from '../../../../../shared/constants/endpoints';
 import { Observable } from 'rxjs';
-import { MealCategoryApiResponse, MealListApiResponse } from '../../home.model';
+import {
+  MealCategoryApiResponse,
+  mealDetailsApiResponse,
+  MealListApiResponse,
+} from '../../home.model';
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +27,10 @@ export class MealService {
       categoryName
     );
     return this.http.get<MealListApiResponse>(url);
+  }
+
+  mealDetailsById(mealId: string): Observable<mealDetailsApiResponse> {
+    const url = ENDPOINTS.Meal_DETAILS_BY_ID.replace('{mealId}', mealId);
+    return this.http.get<mealDetailsApiResponse>(url);
   }
 }

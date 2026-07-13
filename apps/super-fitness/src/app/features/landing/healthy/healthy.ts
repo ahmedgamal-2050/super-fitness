@@ -21,6 +21,7 @@ import { CustomCarousel } from '@org/shared-components';
 import { Button } from '../../../shared/components/button/button';
 import { switchMap } from 'rxjs';
 import { HealthyWrapper } from '../home/components/healthy-wrapper/healthy-wrapper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-healthy',
@@ -32,6 +33,8 @@ export class Healthy implements OnInit {
   readonly mealService = inject(MealService);
   readonly destroyRef = inject(DestroyRef);
 
+  private router = inject(Router);
+
   mealCategoryList = signal<MealCategory[]>([]);
   mealList = signal<Meal[]>([]);
   selectedCategoryName = signal<string>('');
@@ -39,6 +42,11 @@ export class Healthy implements OnInit {
   ngOnInit(): void {
     this.getInitMealList();
   }
+
+  goToMealDetails = (meal: Meal) => {
+    console.log(meal);
+    this.router.navigate(['/landing/meal-details', meal._id]);
+  };
 
   getInitMealList() {
     this.mealService

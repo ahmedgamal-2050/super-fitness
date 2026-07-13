@@ -32,6 +32,13 @@ export const landingRoutes: Route[] = [
       ),
   },
   {
+    path: `${APP_ROUTES.LANDING.Meal_Details}:id`,
+    loadComponent: () =>
+      import('../features/landing/home/services/meal/pages/meal-details/meal-details').then(
+        m => m.MealDetails
+      ),
+  },
+  {
     path: '',
     redirectTo: APP_ROUTES.LANDING.HOME,
     pathMatch: 'full',

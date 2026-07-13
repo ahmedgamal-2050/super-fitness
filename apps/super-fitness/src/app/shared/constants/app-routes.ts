@@ -6,6 +6,7 @@ export const APP_ROUTES = {
     CLASSES: 'classes',
     HEALTHY: 'healthy',
     PROFILE: 'profile',
+    Meal_Details: 'meal-details/',
   },
   AUTH: {
     ROOT: 'auth',
