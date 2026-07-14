@@ -17,11 +17,11 @@ import {
 } from '../home/home.model';
 import { MealService } from '../home/services/meal/meal.service';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { CustomCarousel } from '@org/shared-components';
 import { Button } from '../../../shared/components/button/button';
 import { switchMap } from 'rxjs';
 import { HealthyWrapper } from '../home/components/healthy-wrapper/healthy-wrapper';
 import { Router } from '@angular/router';
+import { CustomCarousel } from '@org/shared-components';
 
 @Component({
   selector: 'app-healthy',

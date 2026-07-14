@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 
 @Component({
   selector: 'app-media-area',
@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class MediaArea {
   @Input() image = '';
-
+  videoUrl = input('');
   @Input() title = '';
 
   @Input() description = '';
@@ -24,5 +24,11 @@ export class MediaArea {
     return this.description.length > 200
       ? this.description.substring(0, 200) + '...'
       : this.description;
+  }
+
+  openVideo() {
+    if (this.videoUrl()) {
+      window.open(this.videoUrl(), '_blank');
+    }
   }
 }

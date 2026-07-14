@@ -1,13 +1,4 @@
-import {
-  Component,
-  inject,
-  input,
-  Input,
-  model,
-  output,
-  signal,
-} from '@angular/core';
-import { MealService } from '../../meal.service';
+import { Component, input, model, output } from '@angular/core';
 import { MealByCategory, MealCategoryApi } from '../../../../home.model';
 import { CategoryFilter } from '../category-filter/category-filter';
 

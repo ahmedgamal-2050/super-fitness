@@ -39,6 +39,13 @@ export const landingRoutes: Route[] = [
       ),
   },
   {
+    path: `${APP_ROUTES.LANDING.Class_Details}/:groupId/:muscleId`,
+    loadComponent: () =>
+      import('../features/landing/classes/pages/class-details/class-details').then(
+        m => m.ClassDetails
+      ),
+  },
+  {
     path: '',
     redirectTo: APP_ROUTES.LANDING.HOME,
     pathMatch: 'full',
