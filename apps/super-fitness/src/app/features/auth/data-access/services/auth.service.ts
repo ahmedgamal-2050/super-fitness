@@ -9,9 +9,11 @@ import {
   AuthMessageResponse,
   ChangePasswordRequest,
   ChangePasswordResponse,
+  EditProfileRequest,
   ForgotPasswordRequest,
   LoginRequest,
   LoginResponse,
+  ProfileResponse,
   ResetPasswordRequest,
   VerifyResetCodeRequest,
 } from '../models/auth.models';
@@ -91,5 +93,18 @@ export class AuthService {
           this.setToken(response.token);
         })
       );
+  }
+
+  getProfile(): Observable<ProfileResponse> {
+    return this.http.get<ProfileResponse>(
+      `${BASE_URL}${AuthEndpoint.PROFILE_DATA}`
+    );
+  }
+
+  editProfile(payload: EditProfileRequest): Observable<ProfileResponse> {
+    return this.http.put<ProfileResponse>(
+      `${BASE_URL}${AuthEndpoint.EDIT_PROFILE}`,
+      payload
+    );
   }
 }

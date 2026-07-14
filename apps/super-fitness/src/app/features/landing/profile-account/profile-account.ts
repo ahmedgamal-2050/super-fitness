@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import {
   LucideRefreshCw,
@@ -16,7 +16,7 @@ import { APP_STORAGE } from '../../../shared/constants/app-storage';
 import { ProfilePicture } from './components/profile-picture/profile-picture';
 import { APP_ROUTES } from '../../../shared/constants/app-routes';
 import { Router } from '@angular/router';
-import { AuthService } from '../../auth/data-access';
+import { AuthFacade, AuthService, UserProfile } from '../../auth/data-access';
 
 @Component({
   selector: 'app-profile-account',
@@ -35,25 +35,59 @@ import { AuthService } from '../../auth/data-access';
   ],
   templateUrl: './profile-account.html',
 })
-export class ProfileAccount {
+export class ProfileAccount implements OnInit {
   readonly themeService = inject(ThemeService);
   translocoService = inject(TranslocoService);
   private readonly router = inject(Router);
   private readonly authService = inject(AuthService);
+  private readonly authFacade = inject(AuthFacade);
   lang = signal<string>(this.translocoService.getActiveLang());
+  profile = signal<UserProfile | null>(null);
 
   isDarkTheme = computed<boolean>(() => this.themeService.isDarkTheme());
 
+  readonly levelMap: Record<string, string> = {
+    level1: 'Rookie',
+    level2: 'Beginner',
+    level3: 'Intermediate',
+    level4: 'Advance',
+    level5: 'True Beast',
+  };
+
+  ngOnInit(): void {
+    this.getProfileData();
+  }
+
+  getProfileData() {
+    this.authFacade.getProfile().subscribe({
+      next: res => {
+        this.profile.set(res.user);
+      },
+    });
+  }
+
   changeGoal() {
-    console.log('Change Goal clicked');
+    void this.router.navigate([
+      '/',
+      APP_ROUTES.LANDING.ROOT,
+      APP_ROUTES.LANDING.CHANGE_GOAL,
+    ]);
   }
 
   changeLevel() {
-    console.log('Change Level clicked');
+    void this.router.navigate([
+      '/',
+      APP_ROUTES.LANDING.ROOT,
+      APP_ROUTES.LANDING.CHANGE_LEVEL,
+    ]);
   }
 
   changeWeight() {
-    console.log('Change Weight clicked');
+    void this.router.navigate([
+      '/',
+      APP_ROUTES.LANDING.ROOT,
+      APP_ROUTES.LANDING.CHANGE_WEIGHT,
+    ]);
   }
 
   changePassword() {

@@ -12,6 +12,7 @@ import {
   VerifyResetCodeRequest,
 } from '../models/auth.models';
 import { AuthService } from '../services/auth.service';
+import { EditProfileRequest } from '../models/auth.models';
 
 @Injectable({ providedIn: 'root' })
 export class AuthFacade {
@@ -49,5 +50,13 @@ export class AuthFacade {
     payload: ChangePasswordRequest
   ): Observable<ChangePasswordResponse> {
     return this.authService.changePassword(payload);
+  }
+
+  getProfile() {
+    return this.authService.getProfile();
+  }
+
+  editProfile(payload: EditProfileRequest) {
+    return this.authService.editProfile(payload);
   }
 }
