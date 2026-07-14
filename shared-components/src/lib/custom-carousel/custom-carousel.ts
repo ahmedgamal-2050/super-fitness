@@ -26,6 +26,7 @@ export class CustomCarousel {
   slidesPerView = input<number>(3);
   spaceBetween = input<number>(20);
   cardButton = input<TemplateRef<unknown> | null>(null);
+  onCardClick = input<(item: any) => void>();
 
   swiperRef = viewChild<ElementRef>('swiper');
 

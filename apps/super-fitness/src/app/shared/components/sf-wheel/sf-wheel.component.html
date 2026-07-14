@@ -1,0 +1,22 @@
+<p class="text-base font-normal text-main text-center">{{quantity()}}</p>
+<div class="flex items-center select-none" style="height: 64px">
+
+  <!-- Wheel viewport -->
+  <div
+    class="relative flex flex-1 items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing touch-none"
+    style="height: 100%" (wheel)="onWheel($event)" (pointerdown)="onPointerDown($event)"
+    (pointermove)="onPointerMove($event)" (pointerup)="onPointerUp()" (pointercancel)="onPointerUp()">
+
+    @for (item of items; track item; let i = $index) {
+    @if (isVisible(i)) {
+    <span class="absolute text-3xl font-semibold pointer-events-none leading-none" [class.text-main]="isSelected(i)"
+      [class.text-white]="!isSelected(i)" [style.transform]="getTransform(i)" [style.opacity]="getOpacity(i)"
+      [style.transition]="isDragging ? 'none' : 'transform 0.18s ease, opacity 0.18s ease'">
+      {{ item }}
+    </span>
+    }
+    }
+
+  </div>
+
+</div>
