@@ -26,6 +26,14 @@
 
     <!-- Header Actions -->
     <div class="hidden md:flex items-center gap-8">
+      @if (isAuthenticated()) {
+        <a
+          [routerLink]="['/landing/profile']"
+          class="size-10 rounded-full bg-main text-white flex items-center justify-center transition hover:opacity-90"
+          aria-label="Go to profile">
+          <svg icon lucideUser class="size-5"></svg>
+        </a>
+      } @else {
       <app-button
         type="link"
         [routerLink]="['/auth/login']"
@@ -40,6 +48,7 @@
         [buttonSpacing]="'small'">
         {{ 'landing_page_header_section_join_us_label' | transloco }}
       </app-button>
+      }
     </div>
 
     <!-- Mobile Menu Button -->
@@ -90,6 +99,15 @@
 
         <!-- CTA in mobile -->
         <div class="pt-2 px-3">
+          @if (isAuthenticated()) {
+            <a
+              (click)="toggleMenu()"
+              [routerLink]="['/landing/profile']"
+              class="size-10 rounded-full bg-main text-white flex items-center justify-center transition hover:opacity-90"
+              aria-label="Go to profile">
+              <svg icon lucideUser class="size-5"></svg>
+            </a>
+          } @else {
           <app-button
             (click)="toggleMenu()"
             type="link"
@@ -98,6 +116,7 @@
             [buttonSpacing]="'small'">
             {{ 'landing_page_header_section_join_us_label' | transloco }}
           </app-button>
+          }
         </div>
       </div>
     </div>

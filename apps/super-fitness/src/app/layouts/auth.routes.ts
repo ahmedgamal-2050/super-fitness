@@ -1,17 +1,24 @@
 import { Route } from '@angular/router';
-// import { forgetPasswordGuard } from '../../core/guards/forgetPassword.guard';
+import { APP_ROUTES } from '../shared/constants/app-routes';
 
 export const authRoutes: Route[] = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: APP_ROUTES.AUTH.LOGIN, pathMatch: 'full' },
   {
-    path: 'login',
+    path: APP_ROUTES.AUTH.LOGIN,
     loadComponent: () =>
       import('../features/auth/pages/login-page/login-page').then(
         m => m.LoginPage
       ),
   },
+  {
+    path: APP_ROUTES.AUTH.REGISTER,
+    loadComponent: () =>
+      import('../pages/register/register.component').then(
+        m => m.RegisterComponent
+      ),
+  },
   // {
-  //   path: 'register',
+  //   path: APP_ROUTES.AUTH.FORGET_PASSWORD,
   //   loadComponent: () =>
   //     import('./pages/register-page/register-page').then((m) => m.RegisterPage),
   // },
@@ -23,11 +30,10 @@ export const authRoutes: Route[] = [
       ),
   },
   // {
-  //   path: 'set-password',
+  //   path: APP_ROUTES.AUTH.SET_PASSWORD,
   //   loadComponent: () =>
-  //     import('./pages/set-password/set-password.component').then(
+  //     import('../pages/set-password/set-password.component').then(
   //       (m) => m.SetPasswordComponent,
   //     ),
-  //   canActivate: [forgetPasswordGuard],
   // },
 ];

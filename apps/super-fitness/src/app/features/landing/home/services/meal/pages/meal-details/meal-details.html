@@ -1,0 +1,45 @@
+<section class="min-h-screen py-10 px-4 mt-12">
+  <div class="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <aside>
+      <app-meal-list
+        [categoryList]="categoryList()"
+        [meals]="mealList()"
+        [(activeCategory)]="activeCategory"
+        (mealSelected)="getMealDetails($event)">
+      </app-meal-list>
+    </aside>
+
+    <div class="lg:col-span-2 space-y-6">
+      <app-media-area
+        [image]="mealDetails()[0].strMealThumb || ''"
+        [title]="mealDetails()[0].strMeal || ''"
+        [description]="mealDetails()[0].strInstructions || ''"
+        [stats]="[
+          { value: '100 K', label: 'Energy' },
+          { value: '15.6 G', label: 'Protein' },
+          { value: '58 G', label: 'Carbs' },
+          { value: '20 G', label: 'Fat' }
+        ]">
+      </app-media-area>
+
+      <div class="rounded-3xl p-8 mt-14">
+        <h3 class="text-2xl font-bold text-neutral-900 dark:text-white mb-6">
+          Ingredients
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          @for (item of ingredients(); track item.ingredient) {
+          <div class="flex justify-between border-b border-orange-200 pb-2">
+            <span class="dark:text-white"> {{ item.ingredient }} </span>
+
+            <span class="font-semibold text-[var(--color-main)]">
+              {{ item.measure }}
+            </span>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+s
