@@ -3,4 +3,5 @@ export enum AuthEndpoint {
   FORGOT_PASSWORD = '/auth/forgotPassword',
   RESET_PASSWORD = '/auth/resetPassword',
   VERIFY_RESET_CODE = '/auth/verifyResetCode',
+  CHANGE_PASSWORD = '/auth/change-password',
 }

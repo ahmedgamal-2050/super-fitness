@@ -5,7 +5,8 @@
       <lib-shared-card
         [cardTitle]="card.name"
         [cardImage]="card.image"
-        [cardButton]="cardButton()" />
+        [cardButton]="cardButton()"
+        (clicked)="onCardClick()?.(card)" />
     </swiper-slide>
     }
   </swiper-container>
