@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, isDevMode } from '@angular/core';
-import { SsrCookieService } from 'ngx-cookie-service-ssr';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { APP_STORAGE } from '../../../../shared/constants/app-storage';
 import { BASE_URL } from '../../../../shared/constants/endpoints';
 import { AuthEndpoint } from '../enums/auth.enums';
+import { SsrCookieService } from 'ngx-cookie-service-ssr';
 import {
   AuthMessageResponse,
   ForgotPasswordRequest,

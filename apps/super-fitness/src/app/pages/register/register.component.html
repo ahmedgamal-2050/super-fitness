@@ -1,0 +1,51 @@
+<div class="w-full flex flex-col gap-8 text-white">
+  @switch (stepNumber) {
+    @case (1) {
+      <app-step-personal-info
+        [savedData]="savedPersonalInfo"
+        (loginClicked)="onPersonalInfo($event)" />
+    }
+
+    @case (2) {
+      <lib-gender-component
+        [savedGender]="savedGender"
+        (loginClicked)="onGender($event)"
+        (backClicked)="back()" />
+    }
+
+    @case (3) {
+      <lib-age-selection
+        [savedAge]="savedAge"
+        (nextClicked)="onAge($event)"
+        (backClicked)="back()" />
+    }
+
+    @case (4) {
+      <lib-weight-selection
+        [savedWeight]="savedWeight"
+        (nextClicked)="onWeight($event)"
+        (backClicked)="back()" />
+    }
+
+    @case (5) {
+      <lib-height-selection
+        [savedHeight]="savedHeight"
+        (nextClicked)="onHeight($event)"
+        (backClicked)="back()" />
+    }
+
+    @case (6) {
+      <lib-goal-selection
+        [savedGoal]="savedGoal"
+        (nextClicked)="onGoal($event)"
+        (backClicked)="back()" />
+    }
+
+    @case (7) {
+      <lib-physcial-selection
+        [savedPhysical]="savedPhysical"
+        (nextClicked)="onPhysical($event)"
+        (backClicked)="back()" />
+    }
+  }
+</div>
