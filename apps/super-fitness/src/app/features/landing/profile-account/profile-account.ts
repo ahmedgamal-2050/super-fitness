@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, DestroyRef, inject, signal } from '@angular/core';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import {
   LucideRefreshCw,
@@ -14,9 +14,11 @@ import { ProfileActionCard } from './components/profile-action-card/profile-acti
 import { ThemeService } from '../../../shared/services/theme/theme';
 import { APP_STORAGE } from '../../../shared/constants/app-storage';
 import { ProfilePicture } from './components/profile-picture/profile-picture';
+import { AuthFacade } from '../../auth/data-access/facades/auth.facade';
+import { AuthService, User } from '../../auth/data-access';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { APP_ROUTES } from '../../../shared/constants/app-routes';
 import { Router } from '@angular/router';
-import { AuthService } from '../../auth/data-access';
 
 @Component({
   selector: 'app-profile-account',
@@ -37,12 +39,20 @@ import { AuthService } from '../../auth/data-access';
 })
 export class ProfileAccount {
   readonly themeService = inject(ThemeService);
-  translocoService = inject(TranslocoService);
+  readonly translocoService = inject(TranslocoService);
+  readonly authFacade = inject(AuthFacade);
+  readonly authService = inject(AuthService);
+  readonly destroyRef = inject(DestroyRef);
   private readonly router = inject(Router);
-  private readonly authService = inject(AuthService);
-  lang = signal<string>(this.translocoService.getActiveLang());
 
-  isDarkTheme = computed<boolean>(() => this.themeService.isDarkTheme());
+  readonly userProfile = computed<User>(() =>
+    this.authService.getUserProfileData()
+  );
+  readonly isDarkTheme = computed<boolean>(() =>
+    this.themeService.isDarkTheme()
+  );
+
+  lang = signal<string>(this.translocoService.getActiveLang());
 
   changeGoal() {
     console.log('Change Goal clicked');
@@ -93,11 +103,9 @@ export class ProfileAccount {
   }
 
   logout() {
-    this.authService.clearToken();
-    void this.router.navigate([
-      '/',
-      APP_ROUTES.LANDING.ROOT,
-      APP_ROUTES.LANDING.HOME,
-    ]);
+    this.authFacade
+      .logout()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe();
   }
 }

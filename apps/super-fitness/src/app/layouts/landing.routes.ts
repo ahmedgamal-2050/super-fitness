@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { APP_ROUTES } from '../shared/constants/app-routes';
+import { loggedInGuard } from '../core/guards/logged-in.guard';
 
 export const landingRoutes: Route[] = [
   {
@@ -30,6 +31,7 @@ export const landingRoutes: Route[] = [
       import('../features/landing/profile-account/profile-account').then(
         m => m.ProfileAccount
       ),
+    canActivate: [loggedInGuard],
   },
   {
     path: APP_ROUTES.LANDING.CHANGE_PASSWORD,
