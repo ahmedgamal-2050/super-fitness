@@ -1,4 +1,4 @@
-import { Component, computed, DestroyRef, inject, signal } from '@angular/core';
+import { Component, computed, DOCUMENT, DestroyRef, inject, signal } from '@angular/core';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import {
   LucideRefreshCw,
@@ -40,6 +40,7 @@ import { Router } from '@angular/router';
 export class ProfileAccount {
   readonly themeService = inject(ThemeService);
   readonly translocoService = inject(TranslocoService);
+  readonly documentRef = inject(DOCUMENT);
   readonly authFacade = inject(AuthFacade);
   readonly authService = inject(AuthService);
   readonly destroyRef = inject(DestroyRef);
@@ -79,9 +80,9 @@ export class ProfileAccount {
     this.translocoService.setActiveLang(newLang);
     this.lang.set(newLang);
     if (newLang === 'ar') {
-      document.documentElement.dir = 'rtl';
+      this.documentRef.documentElement.dir = 'rtl';
     } else {
-      document.documentElement.dir = 'ltr';
+      this.documentRef.documentElement.dir = 'ltr';
     }
     localStorage.setItem(APP_STORAGE.language, newLang);
   }
