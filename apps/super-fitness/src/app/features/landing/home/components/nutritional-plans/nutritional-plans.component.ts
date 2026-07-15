@@ -12,11 +12,13 @@ import { Button } from '../../../../../shared/components/button/button';
 import { MealService } from '../../services/meal/meal.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
+  MealByCategory,
   MealCategory,
   MealCategoryApi,
   MealCategoryApiResponse,
 } from '../../home.model';
 import { HealthyWrapper } from '../healthy-wrapper/healthy-wrapper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nutritional-plans',
@@ -28,6 +30,7 @@ import { HealthyWrapper } from '../healthy-wrapper/healthy-wrapper';
 export class NutritionalPlansComponent implements OnInit {
   readonly mealService = inject(MealService);
   readonly destroyRef = inject(DestroyRef);
+  private router = inject(Router);
 
   mealCategoryList = signal<MealCategory[]>([]);
 

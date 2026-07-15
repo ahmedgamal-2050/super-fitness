@@ -1,0 +1,27 @@
+<div class="flex items-center gap-2 mb-6">
+  <button
+    (click)="previous()"
+    [disabled]="startIndex() === 0"
+    class="size-10 rounded-full border border-[#000] dark:border-[#fff]">
+    <lucide-icon [img]="icons[1]" class="w-5 h-5 m-auto"></lucide-icon>
+  </button>
+
+  @for (item of visibleCategories(); track item.idCategory) {
+  <button
+    (click)="select(item.strCategory)"
+    class="px-5 py-2 rounded-full transition-all"
+    [class.bg-white]="activeItem() !== item.strCategory"
+    [class.dark:bg-neutral-800]="activeItem() !== item.strCategory"
+    [class.bg-[var(--color-main)]]="activeItem() === item.strCategory"
+    [class.text-white]="activeItem() === item.strCategory">
+    {{ item.strCategory }}
+  </button>
+  }
+
+  <button
+    (click)="next()"
+    [disabled]="startIndex() + 3 >= categories().length"
+    class="size-10 rounded-full border border-[#000] dark:border-[#fff]">
+    <lucide-icon [img]="icons[0]" class="w-5 h-5 m-auto"></lucide-icon>
+  </button>
+</div>

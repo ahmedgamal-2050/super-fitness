@@ -1,4 +1,4 @@
-import { Component, computed, DOCUMENT, inject, signal } from '@angular/core';
+import { Component, computed, DOCUMENT, DestroyRef, inject, signal } from '@angular/core';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import {
   LucideRefreshCw,
@@ -14,6 +14,11 @@ import { ProfileActionCard } from './components/profile-action-card/profile-acti
 import { ThemeService } from '../../../shared/services/theme/theme';
 import { APP_STORAGE } from '../../../shared/constants/app-storage';
 import { ProfilePicture } from './components/profile-picture/profile-picture';
+import { AuthFacade } from '../../auth/data-access/facades/auth.facade';
+import { AuthService, User } from '../../auth/data-access';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { APP_ROUTES } from '../../../shared/constants/app-routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-account',
@@ -36,10 +41,19 @@ export class ProfileAccount {
   readonly themeService = inject(ThemeService);
   readonly translocoService = inject(TranslocoService);
   readonly documentRef = inject(DOCUMENT);
+  readonly authFacade = inject(AuthFacade);
+  readonly authService = inject(AuthService);
+  readonly destroyRef = inject(DestroyRef);
+  private readonly router = inject(Router);
+
+  readonly userProfile = computed<User>(() =>
+    this.authService.getUserProfileData()
+  );
+  readonly isDarkTheme = computed<boolean>(() =>
+    this.themeService.isDarkTheme()
+  );
 
   lang = signal<string>(this.translocoService.getActiveLang());
-
-  isDarkTheme = computed<boolean>(() => this.themeService.isDarkTheme());
 
   changeGoal() {
     console.log('Change Goal clicked');
@@ -54,7 +68,11 @@ export class ProfileAccount {
   }
 
   changePassword() {
-    console.log('Change Password clicked');
+    void this.router.navigate([
+      '/',
+      APP_ROUTES.LANDING.ROOT,
+      APP_ROUTES.LANDING.CHANGE_PASSWORD,
+    ]);
   }
 
   selectLanguage() {
@@ -86,6 +104,9 @@ export class ProfileAccount {
   }
 
   logout() {
-    console.log('Logout clicked');
+    this.authFacade
+      .logout()
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe();
   }
 }

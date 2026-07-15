@@ -1,0 +1,22 @@
+<div class="p-6">
+  <h3 class="text-dark dark:text-light text-xl font-bold mb-4">
+    {{ 'landing_page_meals_section_ingredients_title_label' | transloco }}
+  </h3>
+
+  @if (ingredientList().length) {
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-3 py-4 px-2 rounded-2xl">
+    @for (ingredient of ingredientList(); track ingredient.name) {
+    <div
+      class="flex items-center justify-between gap-4 border-b border-[#2D2D2D] py-2">
+      <span class="text-dark dark:text-light font-medium"
+        >{{ ingredient.name }}</span
+      >
+      <span class="text-main font-normal text-base lightspace-nowrap"
+        >{{ ingredient.quantity }}</span
+      >
+    </div>
+    }
+  </div>
+  }
+</div>

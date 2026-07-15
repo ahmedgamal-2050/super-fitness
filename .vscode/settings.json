@@ -5,6 +5,7 @@
     "inputtext",
     "jsverse",
     "partbest",
+    "physcial",
     "primeng",
     "prodacts",
     "themealdb",
@@ -14,7 +15,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.html-language-features"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
