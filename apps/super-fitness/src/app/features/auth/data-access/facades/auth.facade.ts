@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import {
   AuthMessageResponse,
+  ChangePasswordRequest,
+  ChangePasswordResponse,
   ForgotPasswordRequest,
   LoginRequest,
   LoginResponse,
@@ -64,5 +66,11 @@ export class AuthFacade {
         this.authService.setUserProfileData(response.user);
       })
     );
+  }
+
+  changePassword(
+    payload: ChangePasswordRequest
+  ): Observable<ChangePasswordResponse> {
+    return this.authService.changePassword(payload);
   }
 }

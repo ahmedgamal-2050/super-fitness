@@ -6,4 +6,5 @@ export enum AuthEndpoint {
   LOGOUT = '/auth/logout',
   UPDATE_PROFILE_PICTURE = '/auth/upload-photo',
   GET_PROFILE_DATA = '/auth/profile-data',
+  CHANGE_PASSWORD = '/auth/change-password',
 }

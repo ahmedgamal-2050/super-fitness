@@ -17,6 +17,8 @@ import { ProfilePicture } from './components/profile-picture/profile-picture';
 import { AuthFacade } from '../../auth/data-access/facades/auth.facade';
 import { AuthService, User } from '../../auth/data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { APP_ROUTES } from '../../../shared/constants/app-routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-account',
@@ -41,6 +43,7 @@ export class ProfileAccount {
   readonly authFacade = inject(AuthFacade);
   readonly authService = inject(AuthService);
   readonly destroyRef = inject(DestroyRef);
+  private readonly router = inject(Router);
 
   readonly userProfile = computed<User>(() =>
     this.authService.getUserProfileData()
@@ -64,7 +67,11 @@ export class ProfileAccount {
   }
 
   changePassword() {
-    console.log('Change Password clicked');
+    void this.router.navigate([
+      '/',
+      APP_ROUTES.LANDING.ROOT,
+      APP_ROUTES.LANDING.CHANGE_PASSWORD,
+    ]);
   }
 
   selectLanguage() {

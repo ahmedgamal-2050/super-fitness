@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { APP_ROUTES } from './shared/constants/app-routes';
+import { MealDetails } from './features/landing/home/services/meal/pages/meal-details/meal-details';
 
 export const appRoutes: Route[] = [
   {

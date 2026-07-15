@@ -1,0 +1,35 @@
+<div
+  class="lg:col-span-1 rounded-3xl p-6 min-h-[250px] h-[250px] md:h-[890px] overflow-y-scroll">
+  <app-category-filter
+    [categories]="categoryList()"
+    [(activeItem)]="activeCategory"></app-category-filter>
+
+  <div class="space-y-4">
+    @for (meal of meals(); track meal.idMeal) {
+    <div
+      class="flex items-center gap-4 rounded-2xl bg-white dark:bg-neutral-800 p-3 shadow"
+      tabindex="0"
+      role="button"
+      (click)="mealSelected.emit(meal.idMeal)"
+      (keydown.enter)="mealSelected.emit(meal.idMeal)"
+      (keydown.space)="mealSelected.emit(meal.idMeal)">
+      <img
+        [src]="meal.strMealThumb"
+        [alt]="meal.strMeal"
+        class="h-20 w-20 rounded-xl object-cover" />
+
+      <div>
+        <h3 class="font-semibold text-neutral-900 dark:text-white">
+          {{ meal.strMeal }}
+        </h3>
+
+        @if (meal.strCountry) {
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">
+          {{ meal.strCountry }}
+        </p>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</div>

@@ -34,6 +34,20 @@ export const landingRoutes: Route[] = [
     canActivate: [loggedInGuard],
   },
   {
+    path: APP_ROUTES.LANDING.CHANGE_PASSWORD,
+    loadComponent: () =>
+      import('../features/landing/profile-account/components/change-password/change-password').then(
+        m => m.ChangePasswordPage
+      ),
+  },
+  {
+    path: `${APP_ROUTES.LANDING.Meal_Details}:id`,
+    loadComponent: () =>
+      import('../features/landing/home/services/meal/pages/meal-details/meal-details').then(
+        m => m.MealDetails
+      ),
+  },
+  {
     path: '',
     redirectTo: APP_ROUTES.LANDING.HOME,
     pathMatch: 'full',
