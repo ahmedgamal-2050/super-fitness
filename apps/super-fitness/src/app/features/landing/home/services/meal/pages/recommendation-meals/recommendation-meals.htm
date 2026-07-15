@@ -1,0 +1,12 @@
+<div class="my-2 w-[80%] mx-auto">
+    <h1 class="text-[32px] font-medium my-3">Recommendation For You</h1>
+    <lib-custom-carousel [items]="mealCategories()" [rows]="1" [slidesPerView]="3" [cardButton]="readMore"
+        [onCardClick]="openMeal">
+    </lib-custom-carousel>
+
+    <ng-template #readMore>
+        <span class="text-main font-medium">
+            Read More
+        </span>
+    </ng-template>
+</div>
