@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import {
   AuthMessageResponse,
+  ChangePasswordRequest,
+  ChangePasswordResponse,
   ForgotPasswordRequest,
   LoginRequest,
   LoginResponse,
@@ -19,6 +21,7 @@ export class AuthFacade {
   login(credentials: LoginRequest): Observable<LoginResponse> {
     return this.authService.login(credentials).pipe(
       tap(response => {
+        this.authService.setUserProfileData(response.user);
         this.authService.setToken(response.token);
         void this.router.navigate(['/home']);
       })
@@ -41,5 +44,33 @@ export class AuthFacade {
     payload: ResetPasswordRequest
   ): Observable<AuthMessageResponse> {
     return this.authService.resetPassword(payload);
+  }
+
+  logout() {
+    return this.authService.logout().pipe(
+      tap(() => {
+        this.authService.clearToken();
+        this.authService.clearUserProfileData();
+        this.router.navigate(['/auth/login']);
+      })
+    );
+  }
+
+  updateProfilePicture(payload: FormData) {
+    return this.authService.updateProfilePicture(payload);
+  }
+
+  getUserProfile() {
+    return this.authService.getUserProfile().pipe(
+      tap(response => {
+        this.authService.setUserProfileData(response.user);
+      })
+    );
+  }
+
+  changePassword(
+    payload: ChangePasswordRequest
+  ): Observable<ChangePasswordResponse> {
+    return this.authService.changePassword(payload);
   }
 }

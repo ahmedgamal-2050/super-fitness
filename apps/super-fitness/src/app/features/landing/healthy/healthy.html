@@ -23,7 +23,8 @@
         [items]="mealList()"
         [rows]="2"
         [slidesPerView]="3"
-        [cardButton]="button" />
+        [cardButton]="button"
+        [onCardClick]="goToMealDetails" />
       } @else {
       <div
         class="text-center text-dark dark:text-white text-2xl font-bold col-span-3 h-100 flex items-center justify-center pb-32">
