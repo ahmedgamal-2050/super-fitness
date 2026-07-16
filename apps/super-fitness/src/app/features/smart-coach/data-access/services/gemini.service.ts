@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { GEMINI_BASE_URL } from '../../../../shared/constants/endpoints';
 import { GEMINI_MODEL, SMART_COACH_SYSTEM_PROMPT } from '../gemini.config';
 import { ChatMessage } from '../models/chat-message.model';
-import { GEMINI_API_KEY } from '../gemini-api-key.local';
+import { GEMINI_API_KEY } from '../gemini-api-key.local.example';
 
 interface GeminiContentPart {
   text: string;

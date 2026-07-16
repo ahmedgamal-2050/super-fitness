@@ -5,5 +5,9 @@
 // here still ships inside the browser bundle and is readable by anyone via
 // devtools/network tab. Restrict it in Google Cloud Console -> Credentials
 // with an HTTP referrer restriction limited to this app's domain(s), and
+
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import { environment } from 'apps/super-fitness/src/environments/environment.local';
+
 // never use a production/billing-sensitive key here.
-export const GEMINI_API_KEY = '';
+export const GEMINI_API_KEY = environment.geminiApiKey;
