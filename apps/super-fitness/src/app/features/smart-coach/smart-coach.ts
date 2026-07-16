@@ -20,6 +20,8 @@ export class SmartCoach {
     this.isOpen.update(open => !open);
     if (this.isOpen()) {
       this.chatService.ensureGreeted();
+    } else {
+      this.chatService.reset();
     }
   }
 }

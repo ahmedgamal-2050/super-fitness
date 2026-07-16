@@ -154,7 +154,6 @@
   "smart_coach_not_configured_message": "Smart Coach isn't fully set up yet. Please add a Gemini API key to enable AI replies.",
   "smart_coach_previous_conversations_title": "Previous Conversations",
   "smart_coach_previous_conversations_empty": "No previous questions yet.",
-  "smart_coach_choose_from_list_message": "Please choose one of the questions from the list below.",
   "smart_coach_quick_question_calories": "How many calories should I eat daily?",
   "smart_coach_quick_question_workout": "What's the best workout for weight loss?",
   "smart_coach_quick_question_diet": "What should a healthy diet include?",

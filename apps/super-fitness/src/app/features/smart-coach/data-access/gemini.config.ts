@@ -18,6 +18,4 @@ export const QUICK_QUESTIONS: QuickQuestion[] = [
   { id: 'calories', questionKey: 'smart_coach_quick_question_calories' },
   { id: 'workout', questionKey: 'smart_coach_quick_question_workout' },
   { id: 'diet', questionKey: 'smart_coach_quick_question_diet' },
-  { id: 'water', questionKey: 'smart_coach_quick_question_water' },
-  { id: 'rest', questionKey: 'smart_coach_quick_question_rest' },
 ];
