@@ -1,0 +1,90 @@
+<section class="min-h-screen py-10 px-4 mt-12">
+  <!-- Filter Category Tabs -->
+  <div class="flex flex-wrap justify-center items-center mb-6 ">
+    @for (cat of categories(); track cat._id; let index = $index) {
+    <button (click)="getMusclesListByGroupId(cat._id)" [class]="
+            selectedCategoryId() === cat._id
+              ? 'bg-main text-white px-6 py-2 rounded-full font-bold shadow-lg shadow-main/30'
+              : 'text-dark dark:text-white px-6 py-2 rounded-full font-semibold'
+          ">
+      {{ cat.name }}
+    </button>
+    }
+  </div>
+  <div class="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <aside>
+      <app-class-list [levels]="levels()" [muscles]="muscleList()" [exercises]="exercises()"
+        (muscleSelected)="selectMuscle($event)" (levelSelected)="selectLevel($event)"
+        (exerciseSelected)="selectExercise($event)">
+      </app-class-list>
+    </aside>
+
+    <div class="lg:col-span-2 space-y-6">
+      @if (selectedExercise()) {
+
+      <app-media-area image="" [title]="selectedExercise()?.exercise || ''"
+        [description]="selectedExercise()?.primary_equipment || ''"
+        [videoUrl]="selectedExercise()?.short_youtube_demonstration_link || ''" [showPlayButton]="true" [stats]="[
+    { value: selectedExercise()?.difficulty_level || '', label: 'Level' },
+    { value: selectedExercise()?.body_region || '', label: 'Body Region' }
+  ]">
+      </app-media-area>
+
+      }
+      <div class="flex flex-wrap items-center justify-center gap-8 mt-3">
+
+        @for (item of [1,2,3]; track $index) {
+        <div class="flex items-center gap-4">
+
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2
+               border-orange-500 bg-orange-500 shadow-md
+               dark:border-white">
+
+            <span class="text-xl font-semibold text-white">
+              →
+            </span>
+
+          </div>
+
+          <p class="text-base font-semibold text-neutral-800 dark:text-white">
+            Expertly designed workout.
+          </p>
+
+        </div>
+        }
+
+      </div>
+      <div>
+        <!-- class details -->
+        <section class="rounded-[32px] bg-neutral-100 dark:bg-[#232522] p-8">
+
+          <h2 class="mb-8 text-3xl font-bold text-neutral-900 dark:text-white">
+            Recommendation For You
+          </h2>
+
+          <div class="grid grid-cols-1 gap-2 p-0 md:grid-cols-2 xl:grid-cols-3">
+
+            @for (meal of mealList(); track meal._id) {
+            <lib-shared-card [cardTitle]="meal.name" [cardImage]="meal.image" [cardButton]="readMoreTemplate">
+            </lib-shared-card>
+            }
+
+          </div>
+
+        </section>
+
+        <ng-template #readMoreTemplate>
+          <button class="flex items-center gap-3 font-semibold text-orange-500 transition hover:text-orange-400">
+
+            Read More
+
+            <span class="flex h-7 w-7 items-center justify-center rounded-full bg-orange-500 text-white">
+              ↗
+            </span>
+
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</section>

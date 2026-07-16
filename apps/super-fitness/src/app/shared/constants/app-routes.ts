@@ -8,6 +8,7 @@ export const APP_ROUTES = {
     PROFILE: 'profile',
     CHANGE_PASSWORD: 'change-password',
     Meal_Details: 'meal-details/',
+    Class_Details: 'class-details',
   },
   AUTH: {
     ROOT: 'auth',

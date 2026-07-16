@@ -1,24 +1,16 @@
-<div
-  class="cursor-pointer"
-  tabindex="0"
-  role="button"
-  (click)="clicked.emit()"
-  (keydown.enter)="clicked.emit()"
+<div class="cursor-pointer" tabindex="0" role="button" (click)="clicked.emit()" (keydown.enter)="clicked.emit()"
   (keydown.space)="clicked.emit()">
-  <p-card
-    [style]="{ width: '25rem', overflow: 'hidden' }"
+  <p-card styleClass="w-full h-full overflow-hidden rounded-[28px]"
     class="bg-white/70! dark:bg-dark/70! backdrop-blur-2xl">
     <ng-template #header>
-      <img
-        alt="Card"
-        class="w-full h-75 object-cover"
+      <img alt="Card" class="w-full h-75 object-cover"
         [src]="cardImage() || 'https://primefaces.org/cdn/primeng/images/card-ng.jpg'" />
     </ng-template>
 
     <ng-template #title>
       <div class="p-4.5 flex flex-col gap-3 text-start">
         <h2 class="text-dark dark:text-light font-bold text-xl">
-          {{cardTitle()}}
+          {{ cardTitle()?.split(' ')?.slice(0, 4)?.join(' ') }}
         </h2>
 
         <ng-container [ngTemplateOutlet]="cardButton()" />
