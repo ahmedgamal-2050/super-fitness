@@ -9,5 +9,7 @@
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { environment } from 'apps/super-fitness/src/environments/environment.local';
 
+// eslint-disable-next-line @nx/enforce-module-boundaries
+
 // never use a production/billing-sensitive key here.
 export const GEMINI_API_KEY = environment.geminiApiKey;
