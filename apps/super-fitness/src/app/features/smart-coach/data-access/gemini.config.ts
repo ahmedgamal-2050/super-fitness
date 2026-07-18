@@ -1,4 +1,4 @@
-export const GEMINI_MODEL = 'gemini-2.0-flash';
+export const GEMINI_MODEL = 'gemini-flash-latest';
 
 // gemini-api-key.local.ts is git-ignored; copy gemini-api-key.local.example.ts
 // to create it and paste your real key there. See that file for why the key

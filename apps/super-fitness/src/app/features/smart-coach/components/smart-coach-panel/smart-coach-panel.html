@@ -32,15 +32,11 @@
     @for (message of chatService.messages(); track message.id) {
     <app-chat-bubble [id]="'msg-' + message.id" [message]="message" />
     } @if (chatService.isTyping()) {
-    <div class="flex items-center gap-1">
-      <img src="assets/images/image_bot.svg" class="w-12" alt="" />
-      <div
-        class="flex items-center gap-1 rounded-tr-[20px] rounded-br-[20px] rounded-bl-[20px] rounded-tl-none bg-light dark:bg-[#00000040] backdrop-blur-[15px] shadow-[0_0_10px_rgba(0,0,0,0.25)] px-3 py-3">
-        <span class="smart-coach-typing-dot size-1.5 rounded-full bg-main"></span>
-        <span class="smart-coach-typing-dot size-1.5 rounded-full bg-main [animation-delay:0.15s]"></span>
-        <span class="smart-coach-typing-dot size-1.5 rounded-full bg-main [animation-delay:0.3s]"></span>
-      </div>
-    </div>
+    <app-bot-bubble wrapperClass="items-center" bubbleClass="flex items-center gap-1 px-3 py-3">
+      <span class="smart-coach-typing-dot size-1.5 rounded-full bg-main"></span>
+      <span class="smart-coach-typing-dot size-1.5 rounded-full bg-main [animation-delay:0.15s]"></span>
+      <span class="smart-coach-typing-dot size-1.5 rounded-full bg-main [animation-delay:0.3s]"></span>
+    </app-bot-bubble>
     }
   </div>
 

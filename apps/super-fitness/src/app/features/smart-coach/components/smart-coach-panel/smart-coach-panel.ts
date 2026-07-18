@@ -18,11 +18,12 @@ import {
 } from 'lucide-angular';
 import { QuickQuestion } from '../../data-access/gemini.config';
 import { SmartCoachService } from '../../data-access/services/smart-coach.service';
+import { BotBubble } from '../bot-bubble/bot-bubble';
 import { ChatBubble } from '../chat-bubble/chat-bubble';
 
 @Component({
   selector: 'app-smart-coach-panel',
-  imports: [TranslocoPipe, LucideAngularModule, ChatBubble],
+  imports: [TranslocoPipe, LucideAngularModule, ChatBubble, BotBubble],
   templateUrl: './smart-coach-panel.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'flex flex-col flex-1 min-h-0 overflow-hidden' },

@@ -1,45 +1,32 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { GEMINI_BASE_URL } from '../../../../shared/constants/endpoints';
+import { Injectable } from '@angular/core';
+import { Content, GoogleGenAI } from '@google/genai';
+import { Observable, from, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { GEMINI_MODEL, SMART_COACH_SYSTEM_PROMPT } from '../gemini.config';
-import { ChatMessage } from '../models/chat-message.model';
 import { GEMINI_API_KEY } from '../gemini-api-key.local.example';
-
-interface GeminiContentPart {
-  text: string;
-}
-
-interface GeminiContent {
-  role: 'user' | 'model';
-  parts: GeminiContentPart[];
-}
-
-interface GeminiGenerateContentResponse {
-  candidates?: {
-    content?: {
-      parts?: GeminiContentPart[];
-    };
-  }[];
-}
+import { ChatMessage } from '../models/chat-message.model';
 
 @Injectable({ providedIn: 'root' })
 export class GeminiService {
-  private readonly http = inject(HttpClient);
+  private readonly client: GoogleGenAI | null = GEMINI_API_KEY
+    ? new GoogleGenAI({ apiKey: GEMINI_API_KEY })
+    : null;
+
+  get isConfigured(): boolean {
+    return this.client !== null;
+  }
 
   generateReply(
     prompt: string,
     history: ChatMessage[]
   ): Observable<string | null> {
-    if (!GEMINI_API_KEY) {
-      return of(null);
+    if (!this.client) {
+      return throwError(() => new Error('GEMINI_NOT_CONFIGURED'));
     }
 
-    const url = `${GEMINI_BASE_URL}/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
-    const contents: GeminiContent[] = [
+    const contents: Content[] = [
       ...history.map(
-        (message): GeminiContent => ({
+        (message): Content => ({
           role: message.sender === 'user' ? 'user' : 'model',
           parts: [{ text: message.text }],
         })
@@ -47,16 +34,20 @@ export class GeminiService {
       { role: 'user', parts: [{ text: prompt }] },
     ];
 
-    return this.http
-      .post<GeminiGenerateContentResponse>(url, {
+    return from(
+      this.client.models.generateContent({
+        model: GEMINI_MODEL,
         contents,
-        systemInstruction: { parts: [{ text: SMART_COACH_SYSTEM_PROMPT }] },
+        config: {
+          systemInstruction: SMART_COACH_SYSTEM_PROMPT,
+        },
       })
-      .pipe(
-        map(
-          response =>
-            response.candidates?.[0]?.content?.parts?.[0]?.text?.trim() ?? null
-        )
-      );
+    ).pipe(
+      map(response => response.text?.trim() ?? null),
+      catchError(error => {
+        console.error('[GeminiService] generateContent failed:', error);
+        return throwError(() => error);
+      })
+    );
   }
 }
