@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { UpcomingWorkoutsComponent } from '../home/components/upcoming-workouts/upcoming-workouts.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-classes',
@@ -7,4 +8,9 @@ import { UpcomingWorkoutsComponent } from '../home/components/upcoming-workouts/
   templateUrl: './classes.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Classes {}
+export class Classes {
+  private router = inject(Router);
+  goToMealDetails = () => {
+    this.router.navigate(['/landing/class-details']);
+  };
+}

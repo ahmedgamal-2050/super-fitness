@@ -9,6 +9,8 @@ export const ENDPOINTS = {
   },
   MUSCLE_GROUP_LIST: `${BASE_URL}/muscles`,
   MUSCLE_LIST_BY_GROUP_ID: `${BASE_URL}/musclesGroup/{groupId}`,
+  DIFICULTY_LEVELS_PRIME_MOVER: `${BASE_URL}/levels/difficulty-levels/by-prime-mover?primeMoverMuscleId={primeMoverMuscleId}`,
+  EXERCISES_BY_MUSCLE_AND_DIFFICULTY: `${BASE_URL}/exercises/by-muscle-difficulty?primeMoverMuscleId={primeMoverMuscleId}&difficultyLevelId={difficultyLevelId}`,
   MEAL_CATEGORIES: `${SECONDARY_BASE_URL}/categories.php`,
   MEAL_LIST_BY_CATEGORY_NAME: `${SECONDARY_BASE_URL}/filter.php?c={categoryName}`,
   MEAL_DETAILS: `${SECONDARY_BASE_URL}/lookup.php?i={mealId}`,
