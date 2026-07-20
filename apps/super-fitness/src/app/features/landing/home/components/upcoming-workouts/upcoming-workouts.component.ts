@@ -8,7 +8,7 @@ import {
   input,
 } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { CustomCarousel } from '@org/shared-components';
+import { CustomCarousel, CustomCarouselTabs } from '@org/shared-components';
 import { Button } from '../../../../../shared/components/button/button';
 import { LandingSectionTitle } from '../../../../../shared/components/landing-section-title/landing-section-title';
 import { MuscleService } from '../../services/muscle/muscle.service';
@@ -21,12 +21,11 @@ import {
 } from '../../home.model';
 import { switchMap } from 'rxjs';
 import { Router } from '@angular/router';
-import { APP_ROUTES } from 'apps/super-fitness/src/app/shared/constants/app-routes';
 
 @Component({
   selector: 'app-upcoming-workouts',
   standalone: true,
-  imports: [TranslocoPipe, Button, LandingSectionTitle, CustomCarousel],
+  imports: [TranslocoPipe, Button, LandingSectionTitle, CustomCarousel, CustomCarouselTabs],
   templateUrl: './upcoming-workouts.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
