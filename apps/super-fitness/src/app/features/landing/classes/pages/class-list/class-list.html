@@ -1,0 +1,133 @@
+<div class="rounded-3xl p-6 min-h-[250px] h-[250px] md:h-[890px] overflow-y-auto bg-neutral-100 dark:bg-[#232522]">
+
+  <!-- ================= Difficulty Levels ================= -->
+
+  <div class="relative mb-6">
+
+    <!-- Left -->
+    <button type="button" class="absolute left-0 top-1/2 -translate-y-1/2 z-10
+         rounded-full
+         bg-white dark:bg-neutral-800
+         text-neutral-800 dark:text-white
+         border border-white dark:border-white
+         shadow-lg
+         p-2" (click)="levelsContainer.scrollBy({ left: -200, behavior: 'smooth' })">
+      ←
+    </button>
+
+    <!-- Levels -->
+    <div #levelsContainer class="mx-10 flex gap-2 overflow-x-auto scroll-smooth no-scrollbar">
+
+      @for (level of levels(); track level.id) {
+
+      <button type="button" class="px-4 py-2 rounded-full whitespace-nowrap transition duration-300"
+        [class.bg-main]="activeLevel() === level.id" [class.text-white]="activeLevel() === level.id"
+        [class.bg-white]="activeLevel() !== level.id" [class.dark:bg-neutral-800]="activeLevel() !== level.id"
+        [class.text-neutral-800]="activeLevel() !== level.id" [class.dark:text-neutral-200]="activeLevel() !== level.id"
+        (click)="activeLevel.set(level.id); levelSelected.emit(level.id)">
+
+        {{ level.name }}
+
+      </button>
+
+      }
+
+    </div>
+
+    <!-- Right -->
+    <button type="button" class="absolute right-0 top-1/2 -translate-y-1/2 z-10
+         rounded-full
+         bg-white dark:bg-neutral-800
+         text-neutral-800 dark:text-white
+         border border-white dark:border-white
+         shadow-lg
+         p-2" (click)="levelsContainer.scrollBy({ left: 200, behavior: 'smooth' })">
+      →
+    </button>
+
+  </div>
+
+  <!-- ================= Exercises ================= -->
+
+  @if (exercises().length) {
+
+  <div class="space-y-4">
+
+    @for (exercise of exercises(); track exercise._id) {
+
+    <div class="flex items-center gap-4 rounded-2xl
+             bg-white dark:bg-neutral-800
+             border border-neutral-200 dark:border-neutral-700
+             p-4 shadow transition duration-300
+             hover:border-main hover:shadow-xl
+             cursor-pointer" tabindex="0" role="button" (click)="exerciseSelected.emit(exercise)"
+      (keydown.enter)="exerciseSelected.emit(exercise)">
+
+      <!-- Image -->
+      <img src="assets/images/muscleExersise.jpg" class="h-20 w-20 rounded-xl object-cover shrink-0" />
+
+      <!-- Text -->
+      <div class="flex-1 min-w-0">
+
+        <h3 class="font-semibold text-lg text-neutral-900 dark:text-white truncate">
+          {{ exercise.exercise }}
+        </h3>
+
+        <p class="text-sm text-neutral-600 dark:text-neutral-400 truncate">
+          {{ exercise.primary_equipment }}
+        </p>
+
+      </div>
+
+      <!-- Play -->
+      <button type="button" class="w-12 h-12 flex items-center justify-center
+               rounded-full bg-main text-white
+               transition hover:scale-105">
+
+        ▶
+
+      </button>
+
+    </div>
+
+    }
+
+  </div>
+
+  }
+
+  <!-- ================= Muscles ================= -->
+
+  @else {
+
+  <div class="space-y-4">
+
+    @for (muscle of muscles(); track muscle._id) {
+
+    <div class="flex items-center gap-4 rounded-2xl
+             bg-white dark:bg-neutral-800
+             border border-neutral-200 dark:border-neutral-700
+             p-4 shadow transition duration-300
+             hover:border-main hover:shadow-xl
+             cursor-pointer" tabindex="0" role="button" (click)="muscleSelected.emit(muscle._id)"
+      (keydown.enter)="muscleSelected.emit(muscle._id)" (keydown.space)="muscleSelected.emit(muscle._id)">
+
+      <img src="assets/images/muscleExersise.jpg" alt="Muscle" class="h-20 w-20 rounded-xl object-cover shrink-0" />
+
+      <div>
+
+        <h3 class="font-semibold text-lg text-neutral-900 dark:text-white">
+          {{ muscle.name }}
+        </h3>
+
+      </div>
+
+    </div>
+
+    }
+
+  </div>
+
+  }
+
+</div>

@@ -57,4 +57,8 @@ vitest.config.*.timestamp*
 .nx/self-healing
 .nx/migrate-runs
 
-__screenshots__/
+__screenshots__/
+
+# Secrets kept out of source control (copy the matching .example file)
+apps/super-fitness/src/app/features/smart-coach/data-access/gemini-api-key.local.ts
+apps/super-fitness/src/environments/environment.local.ts

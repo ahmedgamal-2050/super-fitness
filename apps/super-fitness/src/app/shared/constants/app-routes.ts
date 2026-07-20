@@ -11,6 +11,7 @@ export const APP_ROUTES = {
     CHANGE_WEIGHT: 'change-weight',
     CHANGE_GOAL: 'change-goal',
     CHANGE_LEVEL: 'change-level',
+    Class_Details: 'class-details',
   },
   AUTH: {
     ROOT: 'auth',

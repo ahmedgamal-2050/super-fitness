@@ -20,6 +20,8 @@ import {
   MuscleListResponse,
 } from '../../home.model';
 import { switchMap } from 'rxjs';
+import { Router } from '@angular/router';
+import { APP_ROUTES } from 'apps/super-fitness/src/app/shared/constants/app-routes';
 
 @Component({
   selector: 'app-upcoming-workouts',
@@ -31,17 +33,26 @@ import { switchMap } from 'rxjs';
 export class UpcomingWorkoutsComponent implements OnInit {
   readonly muscleService = inject(MuscleService);
   readonly destroyRef = inject(DestroyRef);
-
+  readonly router = inject(Router);
   carouselRows = input<number>(1);
 
   categories = signal<MuscleGroup[]>([]);
   muscleList = signal<Muscle[]>([]);
   selectedCategoryId = signal<string>('');
-
   ngOnInit(): void {
     this.getInitMusclesList();
   }
 
+  goToWorkout = (muscle: Muscle) => {
+    console.log('clicked', muscle);
+
+    this.router.navigate([
+      '/landing',
+      'class-details',
+      this.selectedCategoryId(),
+      muscle._id,
+    ]);
+  };
   getInitMusclesList() {
     this.muscleService
       .getMusclesGroups()

@@ -1,5 +1,6 @@
 import { Route } from '@angular/router';
 import { APP_ROUTES } from '../shared/constants/app-routes';
+import { loggedInGuard } from '../core/guards/logged-in.guard';
 
 export const landingRoutes: Route[] = [
   {
@@ -30,6 +31,7 @@ export const landingRoutes: Route[] = [
       import('../features/landing/profile-account/profile-account').then(
         m => m.ProfileAccount
       ),
+    canActivate: [loggedInGuard],
   },
   {
     path: APP_ROUTES.LANDING.CHANGE_PASSWORD,
@@ -64,6 +66,13 @@ export const landingRoutes: Route[] = [
     loadComponent: () =>
       import('../features/landing/profile-account/components/change-level/change-level').then(
         m => m.ChangeLevelPage
+    ),
+  },
+  {
+    path: `${APP_ROUTES.LANDING.Class_Details}/:groupId/:muscleId`,
+    loadComponent: () =>
+      import('../features/landing/classes/pages/class-details/class-details').then(
+        m => m.ClassDetails
       ),
   },
   {

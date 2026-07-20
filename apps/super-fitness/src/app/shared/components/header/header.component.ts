@@ -8,22 +8,31 @@ import { TranslocoService, TranslocoPipe } from '@jsverse/transloco';
 import { APP_STORAGE } from '../../constants/app-storage';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Button } from '../button/button';
+import { AuthService } from '../../../features/auth/data-access/services/auth.service';
 import { LucideUser } from '@lucide/angular';
-import { AuthService } from '../../../features/auth/data-access';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [TranslocoPipe, RouterLink, RouterLinkActive, Button, LucideUser],
+  imports: [
+    TranslocoPipe,
+    RouterLink,
+    RouterLinkActive,
+    Button,
+    LucideUser,
+    NgTemplateOutlet,
+  ],
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  private translocoService = inject(TranslocoService);
-  private readonly authService = inject(AuthService);
+  readonly authService = inject(AuthService);
+  readonly translocoService = inject(TranslocoService);
+
+  readonly isAuthenticated = this.authService.isAuthenticated;
 
   isMenuOpen = signal(false);
-  isAuthenticated = this.authService.isAuthenticated;
   headerMenuList = signal([
     {
       label: 'landing_page_header_section_home_label',
