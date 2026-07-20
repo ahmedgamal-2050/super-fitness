@@ -143,5 +143,20 @@
   "profile_help": "المساعدة",
   "profile_logout": "تسجيل الخروج",
   "profile_upload_photo": "رفع صورة",
-  "profile_upload_photo_hint": "يمكنك رفع صورة بصيغة .jpg أو .png أو .gif بحد أقصى ٥ ميجا بايت"
+  "profile_upload_photo_hint": "يمكنك رفع صورة بصيغة .jpg أو .png أو .gif بحد أقصى ٥ ميجا بايت",
+
+  "smart_coach_widget_cta_label": "اسألني الآن",
+  "smart_coach_widget_close_label": "اضغط للإغلاق",
+  "smart_coach_panel_title": "المدرب الذكي",
+  "smart_coach_input_placeholder": "اسألني أي شيء",
+  "smart_coach_welcome_message": "مرحباً، كيف يمكنني مساعدتك اليوم؟",
+  "smart_coach_error_message": "عذراً، لم أتمكن من معالجة طلبك الآن. حاول مرة أخرى.",
+  "smart_coach_not_configured_message": "المدرب الذكي لم يُفعّل بعد. يرجى إضافة مفتاح Gemini API لتفعيل الردود الذكية.",
+  "smart_coach_previous_conversations_title": "المحادثات السابقة",
+  "smart_coach_previous_conversations_empty": "لا توجد أسئلة سابقة حتى الآن.",
+  "smart_coach_quick_question_calories": "كام سعرة حرارية يجب أن أتناولها يوميًا؟",
+  "smart_coach_quick_question_workout": "ما هو أفضل تمرين لخسارة الوزن؟",
+  "smart_coach_quick_question_diet": "ماذا يجب أن يتضمنه النظام الغذائي الصحي؟",
+  "smart_coach_quick_question_water": "كام كوب مياه يجب أن أشرب يوميًا؟",
+  "smart_coach_quick_question_rest": "كام يوم راحة أحتاجه أسبوعيًا؟"
 }
