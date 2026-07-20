@@ -21,11 +21,11 @@ import { Button } from '../../../shared/components/button/button';
 import { switchMap } from 'rxjs';
 import { HealthyWrapper } from '../home/components/healthy-wrapper/healthy-wrapper';
 import { Router } from '@angular/router';
-import { CustomCarousel } from '@org/shared-components';
+import { CustomCarousel, CustomCarouselTabs } from '@org/shared-components';
 
 @Component({
   selector: 'app-healthy',
-  imports: [TranslocoPipe, Button, CustomCarousel, HealthyWrapper],
+  imports: [TranslocoPipe, Button, CustomCarousel, CustomCarouselTabs, HealthyWrapper],
   templateUrl: './healthy.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

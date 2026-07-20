@@ -15,16 +15,13 @@
     </div>
 
     <!-- Filter Category Tabs -->
-    <div class="flex flex-wrap justify-center items-center my-8 md:my-12">
-      @for (cat of categories(); track cat._id; let index = $index) {
-      <button (click)="getMusclesListByGroupId(cat._id)" [class]="
-            selectedCategoryId() === cat._id
-              ? 'bg-main text-white px-6 py-2 rounded-full font-bold shadow-lg shadow-main/30'
-              : 'text-dark dark:text-white px-6 py-2 rounded-full font-semibold'
-          ">
-        {{ cat.name }}
-      </button>
-      }
+    <div class="my-8 md:my-12">
+      <lib-custom-carousel-tabs
+        [tabs]="categories()"
+        [activeTab]="selectedCategoryId()"
+        tabIdKey="_id"
+        tabLabelKey="name"
+        (tabSelected)="getMusclesListByGroupId($event._id)" />
     </div>
 
     <!-- Cards Slider -->
