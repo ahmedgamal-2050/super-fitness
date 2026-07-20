@@ -48,6 +48,27 @@ export const landingRoutes: Route[] = [
       ),
   },
   {
+    path: APP_ROUTES.LANDING.CHANGE_WEIGHT,
+    loadComponent: () =>
+      import('../features/landing/profile-account/components/change-weight/change-weight').then(
+        m => m.ChangeWeightPage
+      ),
+  },
+  {
+    path: APP_ROUTES.LANDING.CHANGE_GOAL,
+    loadComponent: () =>
+      import('../features/landing/profile-account/components/change-goal/change-goal').then(
+        m => m.ChangeGoalPage
+      ),
+  },
+  {
+    path: APP_ROUTES.LANDING.CHANGE_LEVEL,
+    loadComponent: () =>
+      import('../features/landing/profile-account/components/change-level/change-level').then(
+        m => m.ChangeLevelPage
+    ),
+  },
+  {
     path: `${APP_ROUTES.LANDING.Class_Details}/:groupId/:muscleId`,
     loadComponent: () =>
       import('../features/landing/classes/pages/class-details/class-details').then(

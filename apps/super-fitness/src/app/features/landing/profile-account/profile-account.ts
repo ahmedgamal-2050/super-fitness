@@ -1,4 +1,4 @@
-import { Component, computed, DOCUMENT, DestroyRef, inject, signal } from '@angular/core';
+import { Component, computed, DOCUMENT, DestroyRef, inject, signal, OnInit } from '@angular/core';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import {
   LucideRefreshCw,
@@ -15,7 +15,7 @@ import { ThemeService } from '../../../shared/services/theme/theme';
 import { APP_STORAGE } from '../../../shared/constants/app-storage';
 import { ProfilePicture } from './components/profile-picture/profile-picture';
 import { AuthFacade } from '../../auth/data-access/facades/auth.facade';
-import { AuthService, User } from '../../auth/data-access';
+import { AuthService, User, UserProfile } from '../../auth/data-access';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { APP_ROUTES } from '../../../shared/constants/app-routes';
 import { Router } from '@angular/router';
@@ -37,7 +37,7 @@ import { Router } from '@angular/router';
   ],
   templateUrl: './profile-account.html',
 })
-export class ProfileAccount {
+export class ProfileAccount implements OnInit {
   readonly themeService = inject(ThemeService);
   readonly translocoService = inject(TranslocoService);
   readonly documentRef = inject(DOCUMENT);
@@ -45,6 +45,8 @@ export class ProfileAccount {
   readonly authService = inject(AuthService);
   readonly destroyRef = inject(DestroyRef);
   private readonly router = inject(Router);
+  
+  profile = signal<UserProfile | null>(null);
 
   readonly userProfile = computed<User>(() =>
     this.authService.getUserProfileData()
@@ -55,16 +57,48 @@ export class ProfileAccount {
 
   lang = signal<string>(this.translocoService.getActiveLang());
 
+  readonly levelMap: Record<string, string> = {
+    level1: 'Rookie',
+    level2: 'Beginner',
+    level3: 'Intermediate',
+    level4: 'Advance',
+    level5: 'True Beast',
+  };
+
+  ngOnInit(): void {
+    this.getProfileData();
+  }
+
+  getProfileData() {
+    this.authFacade.getProfile().subscribe({
+      next: res => {
+        this.profile.set(res.user);
+      },
+    });
+  }
+
   changeGoal() {
-    console.log('Change Goal clicked');
+    void this.router.navigate([
+      '/',
+      APP_ROUTES.LANDING.ROOT,
+      APP_ROUTES.LANDING.CHANGE_GOAL,
+    ]);
   }
 
   changeLevel() {
-    console.log('Change Level clicked');
+    void this.router.navigate([
+      '/',
+      APP_ROUTES.LANDING.ROOT,
+      APP_ROUTES.LANDING.CHANGE_LEVEL,
+    ]);
   }
 
   changeWeight() {
-    console.log('Change Weight clicked');
+    void this.router.navigate([
+      '/',
+      APP_ROUTES.LANDING.ROOT,
+      APP_ROUTES.LANDING.CHANGE_WEIGHT,
+    ]);
   }
 
   changePassword() {
