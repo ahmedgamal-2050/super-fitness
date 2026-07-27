@@ -1,6 +1,13 @@
 /* eslint-disable @angular-eslint/component-selector */
 /* eslint-disable @nx/enforce-module-boundaries */
-import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  inject,
+} from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { SfButtonComponent } from 'apps/super-fitness/src/app/shared/components/sf-button/sf-button.component';
 import { SfInputComponent } from 'apps/super-fitness/src/app/shared/components/sf-input/sf-input.component';
@@ -9,10 +16,17 @@ import {
   passwordStrengthValidator,
   passwordMatchValidator,
 } from 'apps/super-fitness/src/app/shared/validators/password.validator';
+import { RouterLink } from '@angular/router';
+import { APP_ROUTES } from 'apps/super-fitness/src/app/shared/constants/app-routes';
 
 @Component({
   selector: 'app-step-personal-info',
-  imports: [SfInputComponent, SfButtonComponent, ReactiveFormsModule],
+  imports: [
+    SfInputComponent,
+    SfButtonComponent,
+    ReactiveFormsModule,
+    RouterLink,
+  ],
   templateUrl: './step-personal-info.component.html',
   standalone: true,
 })
@@ -20,7 +34,9 @@ export class StepPersonalInfoComponent implements OnInit {
   @Input() savedData: PersonalInfo | null = null;
   @Output() loginClicked = new EventEmitter<PersonalInfo>();
 
-  private fb = inject(FormBuilder);
+  readonly fb = inject(FormBuilder);
+  readonly forgetPasswordRoute = `/${APP_ROUTES.AUTH.ROOT}/${APP_ROUTES.AUTH.FORGET_PASSWORD}`;
+  readonly loginRoute = `/${APP_ROUTES.AUTH.ROOT}/${APP_ROUTES.AUTH.LOGIN}`;
 
   form = this.fb.nonNullable.group(
     {

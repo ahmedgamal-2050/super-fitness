@@ -91,26 +91,7 @@ npx nx show project shop --web
 
 [Learn more about module boundaries →](https://nx.dev/features/enforce-module-boundaries)
 
-### 2. 🐳 Docker Integration
-
-The API project includes Docker support with automated targets and release management:
-
-```bash
-# Build Docker image
-npx nx run api:docker:build
-
-# Run Docker container
-npx nx run api:docker:run
-
-# Release with automatic Docker image versioning
-npx nx release
-```
-
-**Nx Release for Docker:** The repository is configured to use Nx Release for managing Docker image versioning and publishing. When running `nx release`, Docker images for the API project are automatically versioned and published based on the release configuration in `nx.json`. This integrates seamlessly with semantic versioning and changelog generation.
-
-[Learn more about Docker integration →](https://nx.dev/recipes/nx-release/release-docker-images)
-
-### 3. 🎭 Playwright E2E Testing
+### 2. 🎭 Playwright E2E Testing
 
 End-to-end testing with Playwright is pre-configured:
 
@@ -124,7 +105,7 @@ npx nx run shop-e2e:e2e-ci
 
 [Learn more about E2E testing →](https://nx.dev/technologies/test-tools/playwright/introduction#e2e-testing)
 
-### 4. ⚡ Vitest for Unit Testing
+### 3. ⚡ Vitest for Unit Testing
 
 Fast unit testing with Vite for Angular libraries:
 
@@ -138,7 +119,7 @@ npx nx run-many -t test
 
 [Learn more about Vite testing →](https://nx.dev/recipes/vite)
 
-### 5. 🔧 Self-Healing CI
+### 4. 🔧 Self-Healing CI
 
 The CI pipeline includes `nx fix-ci` which automatically identifies and suggests fixes for common issues:
 
@@ -232,8 +213,6 @@ git commit -m "Deploy super-fitness application"
 git push origin main
 ```
 
-
-
 ## 🎯 Adding New Features
 
 ### Generate a new Angular application:
@@ -282,7 +261,6 @@ Nx Console is an editor extension that enriches your developer experience. It le
 - [Nx Documentation](https://nx.dev)
 - [Angular Monorepo Tutorial](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial)
 - [Module Boundaries](https://nx.dev/features/enforce-module-boundaries)
-- [Docker Integration](https://nx.dev/recipes/nx-release/release-docker-images)
 - [Playwright Testing](https://nx.dev/technologies/test-tools/playwright/introduction#e2e-testing)
 - [Vite with Angular](https://nx.dev/recipes/vite)
 - [Nx Cloud](https://nx.dev/ci/intro/why-nx-cloud)
