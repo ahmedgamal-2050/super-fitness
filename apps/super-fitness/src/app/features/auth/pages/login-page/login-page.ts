@@ -36,9 +36,9 @@ export class LoginPage {
   readonly authRoutes = APP_ROUTES.AUTH;
   readonly icons = { Mail, Lock };
   readonly socialIcons = {
-    facebook: '/assets/images/social/facebook.png',
-    google: '/assets/images/social/google.png',
-    apple: '/assets/images/social/apple.png',
+    facebook: 'assets/images/social/facebook.png',
+    google: 'assets/images/social/google.png',
+    apple: 'assets/images/social/apple.png',
   };
 
   isLoading = signal(false);
