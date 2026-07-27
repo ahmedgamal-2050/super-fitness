@@ -17,11 +17,6 @@ export const authRoutes: Route[] = [
         m => m.RegisterComponent
       ),
   },
-  // {
-  //   path: APP_ROUTES.AUTH.FORGET_PASSWORD,
-  //   loadComponent: () =>
-  //     import('./pages/register-page/register-page').then((m) => m.RegisterPage),
-  // },
   {
     path: 'forget-password',
     loadComponent: () =>
@@ -29,11 +24,4 @@ export const authRoutes: Route[] = [
         m => m.ForgetPasswordLayout
       ),
   },
-  // {
-  //   path: APP_ROUTES.AUTH.SET_PASSWORD,
-  //   loadComponent: () =>
-  //     import('../pages/set-password/set-password.component').then(
-  //       (m) => m.SetPasswordComponent,
-  //     ),
-  // },
 ];

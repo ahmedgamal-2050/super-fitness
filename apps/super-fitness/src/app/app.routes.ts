@@ -1,7 +1,5 @@
 import { Route } from '@angular/router';
 import { APP_ROUTES } from './shared/constants/app-routes';
-import { MealDetails } from './features/landing/home/services/meal/pages/meal-details/meal-details';
-import { ClassDetails } from './features/landing/classes/pages/class-details/class-details';
 
 export const appRoutes: Route[] = [
   {
@@ -21,15 +19,6 @@ export const appRoutes: Route[] = [
     loadChildren: () =>
       import('./layouts/landing.routes').then(m => m.landingRoutes),
   },
-  // {
-  //   path: '',
-  //   redirectTo: 'class',
-  //   pathMatch: 'full',
-  // },
-  // {
-  //   path: 'class',
-  //   component: ClassDetails,
-  // },
   {
     path: '**',
     redirectTo: APP_ROUTES.LANDING.ROOT,

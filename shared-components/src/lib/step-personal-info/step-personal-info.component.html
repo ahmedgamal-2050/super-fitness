@@ -37,9 +37,9 @@
 
     <!-- Forget password -->
     <div class="text-end -mt-1 w-full sm:w-[85%] mx-auto">
-      <button type="button" class="text-main text-xs sm:text-sm font-semibold hover:underline">
+      <a [routerLink]="[forgetPasswordRoute]" class="text-main text-xs sm:text-sm font-semibold hover:underline">
         Forget Password ?
-      </button>
+      </a>
     </div>
 
     <!-- Divider -->
@@ -63,9 +63,9 @@
     <!-- Login link -->
     <p class="text-white text-sm sm:text-base font-normal mt-2 sm:mt-3 text-center">
       Already Have An Account ?
-      <button type="button" class="text-main font-semibold hover:underline ml-1">
+      <a [routerLink]="[loginRoute]" class="text-main font-semibold hover:underline ml-1">
         Login
-      </button>
+      </a>
     </p>
   </form>
 </section>
