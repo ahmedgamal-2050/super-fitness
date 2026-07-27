@@ -219,6 +219,21 @@ npx nx run api:docker:build                        # Build Docker image
 npx nx run api:docker:run                          # Run Docker container
 ```
 
+## 🚀 Deployment
+
+The project is configured for automated deployment to **GitHub Pages** at [https://ahmedgamal-2050.github.io/super-fitness/](https://ahmedgamal-2050.github.io/super-fitness/).
+
+See the [DEPLOYMENT.md](DEPLOYMENT.md) guide for complete step-by-step instructions.
+
+```bash
+# Push changes to deploy automatically via GitHub Actions
+git add .
+git commit -m "Deploy super-fitness application"
+git push origin main
+```
+
+
+
 ## 🎯 Adding New Features
 
 ### Generate a new Angular application:
