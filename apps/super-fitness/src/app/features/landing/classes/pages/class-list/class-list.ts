@@ -1,10 +1,9 @@
 import { Component, effect, input, model, output } from '@angular/core';
-import { CategoryFilter } from '../../../home/services/meal/pages/category-filter/category-filter';
 import { DifficultyLevel, Exercise, Muscle } from '../../../home/home.model';
 
 @Component({
   selector: 'app-class-list',
-  imports: [CategoryFilter],
+  imports: [],
   templateUrl: './class-list.html',
   styleUrl: './class-list.css',
 })

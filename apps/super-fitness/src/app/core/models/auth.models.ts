@@ -12,4 +12,7 @@ export interface SignupPayload {
   activityLevel: string;
 }
 
-export type PersonalInfo = Pick<SignupPayload, 'firstName' | 'lastName' | 'email' | 'password' | 'rePassword'>;
+export type PersonalInfo = Pick<
+  SignupPayload,
+  'firstName' | 'lastName' | 'email' | 'password' | 'rePassword'
+>;

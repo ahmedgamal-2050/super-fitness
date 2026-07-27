@@ -1,5 +1,7 @@
 export const BASE_URL = 'https://fitness.elevateegy.com/api/v1';
 export const SECONDARY_BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
+export const GEMINI_BASE_URL =
+  'https://generativelanguage.googleapis.com/v1beta/models';
 export const ENDPOINTS = {
   HOME: `${BASE_URL}/home`,
   AUTH: {
@@ -11,6 +13,7 @@ export const ENDPOINTS = {
   EXERCISES_BY_MUSCLE_AND_DIFFICULTY: `${BASE_URL}/exercises/by-muscle-difficulty?primeMoverMuscleId={primeMoverMuscleId}&difficultyLevelId={difficultyLevelId}`,
   MEAL_CATEGORIES: `${SECONDARY_BASE_URL}/categories.php`,
   MEAL_LIST_BY_CATEGORY_NAME: `${SECONDARY_BASE_URL}/filter.php?c={categoryName}`,
+  MEAL_DETAILS: `${SECONDARY_BASE_URL}/lookup.php?i={mealId}`,
   Meal_DETAILS_BY_ID: `${SECONDARY_BASE_URL}/lookup.php?i={mealId}`,
   MEAL_CATEGORIES_LIST: `${SECONDARY_BASE_URL}/categories.php`,
 } as const;

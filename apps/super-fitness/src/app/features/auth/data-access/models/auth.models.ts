@@ -40,3 +40,45 @@ export interface ResetPasswordRequest {
 export interface AuthMessageResponse {
   message: string;
 }
+
+export interface ChangePasswordRequest {
+  password: string;
+  newPassword: string;
+}
+
+export interface ChangePasswordResponse {
+  message: string;
+  token: string;
+}
+
+export interface ProfileResponse {
+  message: string;
+  user: UserProfile;
+}
+
+export interface UserProfile {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  gender: string;
+  age: number;
+  weight: number;
+  height: number;
+  activityLevel: string;
+  goal: string;
+  photo: string;
+  createdAt: string;
+  resetCodeVerified: boolean;
+  passwordChangedAt: string;
+}
+
+export interface EditProfileRequest {
+  weight?: number;
+  goal?: string;
+  activityLevel?: string;
+}
+export interface ProfileResponse {
+  message: string;
+  user: UserProfile;
+}

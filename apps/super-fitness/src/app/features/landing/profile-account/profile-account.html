@@ -1,27 +1,17 @@
-<section
-  class="relative no-footer pt-32 md:pt-48 pb-24 min-h-screen flex flex-col justify-center overflow-hidden">
+<section class="relative no-footer pt-32 md:pt-48 pb-24 min-h-screen flex flex-col justify-center overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
     <!-- Goals/Metrics Row -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-16">
-      <app-profile-column
-        [title]="'profile_your_goal' | transloco"
-        [actionText]="'profile_tap_to_change' | transloco"
-        [value]="'profile_lose_weight' | transloco"
-        (action)="changeGoal()">
+      <app-profile-column [title]="'profile_your_goal' | transloco" [actionText]="'profile_tap_to_change' | transloco"
+        [value]="profile()?.goal ?? ''" (action)="changeGoal()">
       </app-profile-column>
 
-      <app-profile-column
-        [title]="'profile_level' | transloco"
-        [actionText]="'profile_tap_to_change' | transloco"
-        [value]="'profile_beginner' | transloco"
-        (action)="changeLevel()">
+      <app-profile-column [title]="'profile_level' | transloco" [actionText]="'profile_tap_to_change' | transloco"
+        [value]="levelMap[profile()?.activityLevel ?? '']" (action)="changeLevel()">
       </app-profile-column>
 
-      <app-profile-column
-        [title]="'profile_weight' | transloco"
-        [actionText]="'profile_tap_to_change' | transloco"
-        [value]="'profile_90_kg' | transloco"
-        (action)="changeWeight()">
+      <app-profile-column [title]="'profile_weight' | transloco" [actionText]="'profile_tap_to_change' | transloco"
+        [value]="profile()?.weight + ' KG'" (action)="changeWeight()">
       </app-profile-column>
     </div>
 
@@ -30,80 +20,48 @@
     <!-- Actions/Settings Grid -->
     <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
       <!-- Change Password -->
-      <app-profile-action-card
-        [label]="'profile_change_password' | transloco"
-        (cardClick)="changePassword()">
-        <svg
-          icon
-          lucideRefreshCw
-          class="w-7 h-7 text-main"
-          strokeWidth="2"></svg>
+      <app-profile-action-card [label]="'profile_change_password' | transloco" (cardClick)="changePassword()">
+        <svg icon lucideRefreshCw class="w-7 h-7 text-main" strokeWidth="2"></svg>
       </app-profile-action-card>
 
       <!-- Select Language -->
-      <app-profile-action-card
-        [label]="'profile_select_language' | transloco"
-        [subLabel]="'profile_english' | transloco"
-        (cardClick)="selectLanguage()">
+      <app-profile-action-card [label]="'profile_select_language' | transloco"
+        [subLabel]="'profile_english' | transloco" (cardClick)="selectLanguage()">
         <svg icon lucideGlobe class="w-7 h-7 text-main" strokeWidth="2"></svg>
       </app-profile-action-card>
 
       <!-- Mood (light) -->
-      <app-profile-action-card
-        [label]="'profile_mood_light' | transloco"
-        [isToggle]="true"
-        [toggleValue]="isDarkTheme()"
-        (toggleChange)="toggleTheme()">
+      <app-profile-action-card [label]="'profile_mood_light' | transloco" [isToggle]="true"
+        [toggleValue]="isDarkTheme()" (toggleChange)="toggleTheme()">
         <svg icon lucideSunMoon class="w-7 h-7 text-main" strokeWidth="2"></svg>
       </app-profile-action-card>
 
       <!-- Security -->
-      <app-profile-action-card
-        [label]="'profile_security' | transloco"
-        (cardClick)="viewSecurity()">
+      <app-profile-action-card [label]="'profile_security' | transloco" (cardClick)="viewSecurity()">
         <svg icon lucideShield class="w-7 h-7 text-main" strokeWidth="2"></svg>
       </app-profile-action-card>
 
       <!-- Privacy Policy -->
-      <app-profile-action-card
-        [label]="'profile_privacy_policy' | transloco"
-        (cardClick)="viewPrivacyPolicy()">
-        <svg
-          icon
-          lucideShieldCheck
-          class="w-7 h-7 text-main"
-          strokeWidth="2"></svg>
+      <app-profile-action-card [label]="'profile_privacy_policy' | transloco" (cardClick)="viewPrivacyPolicy()">
+        <svg icon lucideShieldCheck class="w-7 h-7 text-main" strokeWidth="2"></svg>
       </app-profile-action-card>
 
       <!-- Help -->
-      <app-profile-action-card
-        [label]="'profile_help' | transloco"
-        (cardClick)="getHelp()">
-        <svg
-          icon
-          lucideLifeBuoy
-          class="w-7 h-7 text-main"
-          strokeWidth="2"></svg>
+      <app-profile-action-card [label]="'profile_help' | transloco" (cardClick)="getHelp()">
+        <svg icon lucideLifeBuoy class="w-7 h-7 text-main" strokeWidth="2"></svg>
       </app-profile-action-card>
 
       <!-- Logout (Centered) -->
-      <app-profile-action-card
-        class="col-span-1 md:col-start-2"
-        [label]="'profile_logout' | transloco"
-        [isDestructive]="true"
-        (cardClick)="logout()">
-        <svg
-          icon
-          lucideLogOut
-          class="w-7 h-7 text-red-500"
-          strokeWidth="2"></svg>
+      <app-profile-action-card class="col-span-1 md:col-start-2" [label]="'profile_logout' | transloco"
+        [isDestructive]="true" (cardClick)="logout()">
+        <svg icon lucideLogOut class="w-7 h-7 text-red-500" strokeWidth="2"></svg>
       </app-profile-action-card>
     </div>
   </div>
 
   <!-- Background Overlays -->
   <div
-    class="absolute w-full h-full bg-[url('/assets/images/profile-bg.png')] bg-cover bg-no-repeat bg-center top-0 inset-x-0 z-0"></div>
-  <div
-    class="absolute w-full h-full bg-white/80 dark:bg-black/80 top-0 inset-x-0 z-0 backdrop-blur-2xl"></div>
+    class="absolute w-full h-full bg-[url('/assets/images/profile-bg.png')] bg-cover bg-no-repeat bg-center top-0 inset-x-0 z-0">
+  </div>
+  <div class="absolute w-full h-full bg-white/80 dark:bg-black/80 top-0 inset-x-0 z-0 backdrop-blur-2xl"></div>
 </section>

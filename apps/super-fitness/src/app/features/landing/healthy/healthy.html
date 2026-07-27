@@ -1,19 +1,13 @@
 <div class="mt-20">
   <app-healthy-wrapper>
     <!-- Filter Category Tabs -->
-    <div class="flex flex-wrap justify-center items-center my-8 md:my-12">
-      @for (mealCategory of mealCategoryList(); track mealCategory._id; let
-      index = $index) {
-      <button
-        (click)="getMealListByCategoryName(mealCategory.name)"
-        [class]="
-            selectedCategoryName() === mealCategory.name
-              ? 'bg-main text-white px-6 py-2 rounded-full font-bold shadow-lg shadow-main/30'
-              : 'text-dark dark:text-white px-6 py-2 rounded-full font-semibold'
-          ">
-        {{ mealCategory.name }}
-      </button>
-      }
+    <div class="my-8 md:my-12">
+      <lib-custom-carousel-tabs
+        [tabs]="mealCategoryList()"
+        [activeTab]="selectedCategoryName()"
+        tabIdKey="name"
+        tabLabelKey="name"
+        (tabSelected)="getMealListByCategoryName($event.name)" />
     </div>
 
     <!-- Cards Slider -->
