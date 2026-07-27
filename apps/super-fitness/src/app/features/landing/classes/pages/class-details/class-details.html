@@ -1,4 +1,10 @@
-<section class="min-h-screen py-10 px-4 mt-12">
+<section class="relativemin-h-screen py-10 px-4 mt-12">
+  <div class="absolute inset-0 bg-[url('assets/images/healthy-bg.jpg')] bg-cover bg-center bg-no-repeat -z-20">
+  </div>
+
+  <!-- Blur Overlay -->
+  <div class="absolute inset-0 bg-white/50 dark:bg-dark/70 backdrop-blur-lg -z-10">
+  </div>
   <!-- Filter Category Tabs -->
   <div class="flex flex-wrap justify-center items-center mb-6 ">
     @for (cat of categories(); track cat._id; let index = $index) {
@@ -56,7 +62,7 @@
       </div>
       <div>
         <!-- class details -->
-        <section class="rounded-[32px] bg-neutral-100 dark:bg-[#232522] p-8">
+        <section class="rounded-[32px] p-8">
 
           <h2 class="mb-8 text-3xl font-bold text-neutral-900 dark:text-white">
             Recommendation For You
