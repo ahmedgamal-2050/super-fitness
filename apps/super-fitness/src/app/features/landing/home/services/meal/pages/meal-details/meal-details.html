@@ -1,20 +1,21 @@
-<section class="min-h-screen py-10 px-4 mt-12">
+<section class="relative min-h-screen py-10 px-4 mt-12">
+  <div class="absolute inset-0 bg-[url('assets/images/healthy-bg.jpg')] bg-cover bg-center bg-no-repeat -z-20">
+  </div>
+
+  <!-- Blur Overlay -->
+  <div class="absolute inset-0 bg-white/50 dark:bg-dark/70 backdrop-blur-lg -z-10">
+  </div>
+
   <div class="mx-auto max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-8">
     <aside>
-      <app-meal-list
-        [categoryList]="categoryList()"
-        [meals]="mealList()"
-        [(activeCategory)]="activeCategory"
+      <app-meal-list [categoryList]="categoryList()" [meals]="mealList()" [(activeCategory)]="activeCategory"
         (mealSelected)="getMealDetails($event)">
       </app-meal-list>
     </aside>
 
     <div class="lg:col-span-2 space-y-6">
-      <app-media-area
-        [image]="mealDetails()[0].strMealThumb || ''"
-        [title]="mealDetails()[0].strMeal || ''"
-        [description]="mealDetails()[0].strInstructions || ''"
-        [stats]="[
+      <app-media-area [image]="mealDetails()[0].strMealThumb || ''" [title]="mealDetails()[0].strMeal || ''"
+        [description]="mealDetails()[0].strInstructions || ''" [stats]="[
           { value: '100 K', label: 'Energy' },
           { value: '15.6 G', label: 'Protein' },
           { value: '58 G', label: 'Carbs' },
@@ -42,4 +43,3 @@
     </div>
   </div>
 </section>
-s
